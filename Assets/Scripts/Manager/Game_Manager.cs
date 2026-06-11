@@ -8,16 +8,18 @@ public enum Minigame
 }
 public class Game_Manager : MonoBehaviour
 {
+    [SerializeField] Tube_Spawner TS;
+
     [Header("Minigame things")]
     [SerializeField] GameObject Translate_BTN;
     [SerializeField] GameObject miniGame;
     [SerializeField] GameObject bird;
-    [SerializeField] Vector2 startingBPos;
+    Vector2 startingBPos;
 
     [Header("difficoltà")]
-    [SerializeField] int dif1;
-    [SerializeField] int dif2;
-    [SerializeField] int dif3;
+    [SerializeField] int goal1;
+    [SerializeField] int goal2;
+    [SerializeField] int goal3;
 
     Minigame minigame = Minigame.GameOver;
 
@@ -50,9 +52,10 @@ public class Game_Manager : MonoBehaviour
                 break;
             case Minigame.GameOver:
                 Time.timeScale = 0;
+                bird.transform.position = startingBPos;
+                TS.ResetSpawner();
                 miniGame.SetActive(false);
                 Translate_BTN.SetActive(true);
-                bird.transform.position = startingBPos;
                 break;
         }
         #endregion
@@ -60,13 +63,13 @@ public class Game_Manager : MonoBehaviour
         switch (Difficulty)
         {
             case 1:
-                UI_Manager.instance.Goal = dif1;
+                UI_Manager.instance.Goal = goal1;
                 break;
             case 2:
-                UI_Manager.instance.Goal = dif2;
+                UI_Manager.instance.Goal = goal2;
                 break;
             case 3:
-                UI_Manager.instance.Goal = dif3;
+                UI_Manager.instance.Goal = goal3;
                 break;
         }
         #endregion
