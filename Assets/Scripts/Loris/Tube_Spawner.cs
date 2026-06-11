@@ -1,0 +1,82 @@
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Rendering;
+
+public class Tube_Spawner : MonoBehaviour
+{
+    [SerializeField] GameObject tubePrefab;
+    [SerializeField] float spawnRate;
+    [SerializeField] float heightOffset;
+
+    [SerializeField] int poolSize;
+
+    float timer;
+
+    Camera mainCamera;
+    Queue<Tube_Controller> tubePool = new();
+    List<Tube_Controller> allTubes = new();
+    void Awake()
+    {
+        mainCamera = Camera.main;
+        SetSpawnPos();
+        CreatePool();
+    }
+    void Update()
+    {
+        timer += Time.deltaTime;
+        while(timer > spawnRate)
+        {
+            SpawnTube();
+            timer -= spawnRate;
+        }
+    }
+    void SpawnTube()
+    {
+        if (tubePool.Count == 0)
+        {
+            return;
+        }
+        Tube_Controller tube = tubePool.Dequeue();
+
+        float randomY = Random.Range(-heightOffset, heightOffset);
+        tube.transform.position = transform.position + new Vector3(0, randomY);
+        tube.gameObject.SetActive(true);
+    }
+    void SetSpawnPos()
+    {
+        float screenRight = mainCamera.orthographicSize * mainCamera.aspect;
+        float spawnX = screenRight + 0.5f;
+        Vector3 pos = transform.position;
+        pos.x = spawnX;
+
+        transform.position = pos;
+    }
+    void CreatePool()
+    {
+        for (int i = 0; i < poolSize; i++)
+        {
+            GameObject tubeObj = Instantiate(tubePrefab, transform);
+            tubeObj.SetActive(false);
+            Tube_Controller tube = tubeObj.GetComponent<Tube_Controller>();
+            tube.Initialize(this);
+
+            tubePool.Enqueue(tube);
+            allTubes.Add(tube);
+        }
+    }
+    public void ReturnToPool(Tube_Controller tube)
+    {
+        tube.gameObject.SetActive(false);
+        tubePool.Enqueue(tube);
+    }
+    public void ResetSpawner()
+    {
+        timer = 0;
+        tubePool.Clear();
+        foreach (Tube_Controller tube in allTubes)
+        {
+            tube.gameObject.SetActive(false);
+            tubePool.Enqueue(tube);
+        }
+    }
+}

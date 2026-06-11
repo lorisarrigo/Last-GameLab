@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "name": "InputMap",
+    "maps": [
+        {
+            "name": "Bird",
+            "id": "29d8fa9a-9942-4341-8f15-bec2c7986aee",
+            "actions": [
+                {
+                    "name": "Tap",
+                    "type": "Button",
+                    "id": "8c55cf03-e26a-4797-a76a-0f1aa43c1aa5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "602807b8-5110-4315-a644-f1a0f7a00a57",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
