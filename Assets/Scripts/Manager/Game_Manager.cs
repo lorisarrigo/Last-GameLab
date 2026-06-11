@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 public enum Minigame
 {
@@ -25,18 +26,21 @@ public class Game_Manager : MonoBehaviour
 
     int Difficulty;
 
+    //eventi
+    //public static event Action OnUpdGoal;
+    public static event Action OnPoint;
     private void Start()
     {
         startingBPos = bird.transform.position;
     }
     private void OnEnable()
     {
-        UI_Manager.OnGoal += WinMinigame;
+        Bird_Controller.OnPoint += UpdateScore;
         Bird_Controller.OnColl += GameOverMinigame;
     }
     private void OnDisable()
     {
-        UI_Manager.OnGoal -= WinMinigame;
+        Bird_Controller.OnPoint -= UpdateScore;
         Bird_Controller.OnColl -= GameOverMinigame;
     }
 
@@ -62,14 +66,17 @@ public class Game_Manager : MonoBehaviour
         #region minigame difficulty
         switch (Difficulty)
         {
-            case 1:
+            case 0:
                 UI_Manager.instance.Goal = goal1;
+                OnPoint?.Invoke();
+                break;
+            case 1:
+                UI_Manager.instance.Goal = goal2;
+                OnPoint?.Invoke();
                 break;
             case 2:
-                UI_Manager.instance.Goal = goal2;
-                break;
-            case 3:
                 UI_Manager.instance.Goal = goal3;
+                OnPoint?.Invoke();
                 break;
         }
         #endregion
@@ -77,15 +84,27 @@ public class Game_Manager : MonoBehaviour
     public void Translate()
     {
         minigame = Minigame.Running;
+        Difficulty = UnityEngine.Random.Range(0, 3);
+    }
+    private void UpdateScore()
+    {
+        UI_Manager.instance.currentScore++;
+        OnPoint?.Invoke();
+        if (UI_Manager.instance.currentScore == UI_Manager.instance.Goal)
+        {
+            WinMinigame();
+        }
     }
     private void GameOverMinigame()
     {
         minigame = Minigame.GameOver;
         UI_Manager.instance.currentScore = 0;
+        UI_Manager.instance.Goal = 0;
     }
     private void WinMinigame()
     {
         minigame = Minigame.GameOver;
         UI_Manager.instance.currentScore = 0;
+        UI_Manager.instance.Goal = 0;
     }
 }

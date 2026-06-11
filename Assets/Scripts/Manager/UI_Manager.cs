@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 
@@ -8,8 +7,6 @@ public class UI_Manager : MonoBehaviour
     public int Goal;
     [Header("Score")]
     [SerializeField] TMP_Text score;
-    //eventi
-    public static event Action OnGoal;
 
     public static UI_Manager instance;
     
@@ -22,13 +19,22 @@ public class UI_Manager : MonoBehaviour
         }
         instance = this;
     }
-
+    private void OnEnable()
+    {
+        //Game_Manager.OnUpdGoal += UpdateGoal;
+        Game_Manager.OnPoint += UpdateGoal;
+    }
+    private void OnDisable()
+    {
+        //Game_Manager.OnUpdGoal -= UpdateGoal;
+        Game_Manager.OnPoint -= UpdateGoal;
+    }
+    private void UpdateGoal()
+    {
+        score.text = currentScore + "/" + Goal;
+    }
     private void UpdateScore()
     {
-        currentScore++;
-        if(currentScore == Goal)
-        {
-            OnGoal?.Invoke();
-        }
+        
     }
 }

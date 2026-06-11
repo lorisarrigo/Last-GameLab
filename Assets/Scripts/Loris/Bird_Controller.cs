@@ -14,6 +14,7 @@ public class Bird_Controller : MonoBehaviour
 
     //eventi
     public static event Action OnColl;
+    public static event Action OnPoint;
 
     //singleton
     public static Bird_Controller instance;
@@ -43,6 +44,10 @@ public class Bird_Controller : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         OnColl?.Invoke();
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        OnPoint?.Invoke();
     }
     private void Update()
     {
