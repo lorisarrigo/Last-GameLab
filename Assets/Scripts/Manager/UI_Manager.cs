@@ -21,20 +21,14 @@ public class UI_Manager : MonoBehaviour
     }
     private void OnEnable()
     {
-        //Game_Manager.OnUpdGoal += UpdateGoal;
         Game_Manager.OnPoint += UpdateGoal;
     }
     private void OnDisable()
     {
-        //Game_Manager.OnUpdGoal -= UpdateGoal;
         Game_Manager.OnPoint -= UpdateGoal;
     }
     private void UpdateGoal()
     {
         score.text = currentScore + "/" + Goal;
-    }
-    private void UpdateScore()
-    {
-        
     }
 }
