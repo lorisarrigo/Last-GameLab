@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class UI_Manager : MonoBehaviour
 {
-    public int currentScore;
-    public int Goal;
     [Header("patience")]
     [SerializeField] float patienceTimer;
     float elapsed = 0;
@@ -14,9 +12,6 @@ public class UI_Manager : MonoBehaviour
     public bool success;
     [SerializeField] Image patienceBar;
     [SerializeField] Image patienceBarFB;
-    [Header("Score")]
-    [SerializeField] TMP_Text score;
-
 
     //eventi
     public static event Action OnFinishedTimer;
@@ -74,7 +69,6 @@ public class UI_Manager : MonoBehaviour
     }
     void UpdateGoal()
     {
-        //questo serve per il minigame
-        score.text = currentScore + "/" + Goal;
+        FB_Manager.instance.score.text = FB_Manager.instance.currentScore + "/" + FB_Manager.instance.Goal;
     }
 }

@@ -3,12 +3,6 @@ using UnityEngine;
 
 public class Tube_Spawner : MonoBehaviour
 {
-    [SerializeField] GameObject tubePrefab;
-    [SerializeField] float spawnRate;
-    [SerializeField] float heightOffset;
-
-    [SerializeField] int poolSize;
-
     float timer;
 
     Camera mainCamera;
@@ -23,10 +17,10 @@ public class Tube_Spawner : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        while(timer > spawnRate)
+        while(timer > FB_Manager.instance.spawnRate)
         {
             SpawnTube();
-            timer -= spawnRate;
+            timer -= FB_Manager.instance.spawnRate;
         }
     }
     void SpawnTube()
@@ -37,7 +31,7 @@ public class Tube_Spawner : MonoBehaviour
         }
         Tube_Controller tube = tubePool.Dequeue();
 
-        float randomY = Random.Range(-heightOffset, heightOffset);
+        float randomY = Random.Range(-FB_Manager.instance.heightOffset, FB_Manager.instance.heightOffset);
         tube.transform.position = transform.position + new Vector3(0, randomY);
         tube.gameObject.SetActive(true);
     }
@@ -52,9 +46,9 @@ public class Tube_Spawner : MonoBehaviour
     }
     void CreatePool()
     {
-        for (int i = 0; i < poolSize; i++)
+        for (int i = 0; i < FB_Manager.instance.poolSize; i++)
         {
-            GameObject tubeObj = Instantiate(tubePrefab, transform);
+            GameObject tubeObj = Instantiate(FB_Manager.instance.tubePrefab, transform);
             tubeObj.SetActive(false);
             Tube_Controller tube = tubeObj.GetComponent<Tube_Controller>();
             tube.Initialize(this);

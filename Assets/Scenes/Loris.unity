@@ -547,6 +547,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 864828351}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &259041374
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 259041375}
+  - component: {fileID: 259041376}
+  m_Layer: 0
+  m_Name: FB_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &259041375
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259041374}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 797847421}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &259041376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259041374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fad7ccb95ab53354790ac49d1de0e4b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FB_Manager
+  startingBPos: {x: 0, y: 0}
+  bird: {fileID: 1673966716}
+  jumpForce: 5
+  rotSpeed: 5
+  TS: {fileID: 642542712}
+  poolSize: 6
+  tubePrefab: {fileID: 8962949524691023880, guid: a5fb0a08c0029d541a970f3a18f5014b, type: 3}
+  spawnRate: 1
+  heightOffset: 2
+  speed: 5
+  hideInX: -10
+  score: {fileID: 215845660}
+  currentScore: 0
+  Goal: 0
+  goal1: 10
+  goal2: 20
+  goal3: 30
 --- !u!1 &312883515
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,10 +1264,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75526d13c51bbdb4196dccae32dcf51d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tube_Spawner
-  tubePrefab: {fileID: 8962949524691023880, guid: a5fb0a08c0029d541a970f3a18f5014b, type: 3}
-  spawnRate: 1
-  heightOffset: 2
-  poolSize: 10
 --- !u!1 &646319277
 GameObject:
   m_ObjectHideFlags: 0
@@ -1788,16 +1845,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adbcdeabc48c749418e4d398994291c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game_Manager
-  TS: {fileID: 642542712}
   Translate_BTN: {fileID: 1490892513}
   Pause_BTN: {fileID: 815494268}
-  mainGame: {fileID: 1614876650}
+  mainGame: {fileID: 1650102945}
   miniGame: {fileID: 1277089972}
-  bird: {fileID: 1673966716}
-  goal1: 10
-  goal2: 20
-  goal3: 30
-  maingame: 2
 --- !u!1 &797847420
 GameObject:
   m_ObjectHideFlags: 0
@@ -1827,6 +1878,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 259041375}
   - {fileID: 1025689759}
   - {fileID: 781823319}
   - {fileID: 917159149}
@@ -2151,15 +2203,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc20a8c89cc8ba1428a7f559193a5e63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_Manager
-  currentScore: 0
-  Goal: 0
   patienceTimer: 10
-  elapsed: 0
-  isFilling: 0
   success: 0
   patienceBar: {fileID: 1005524617}
   patienceBarFB: {fileID: 1745935820}
-  score: {fileID: 215845660}
 --- !u!1 &941988436
 GameObject:
   m_ObjectHideFlags: 0
@@ -2775,8 +2822,6 @@ MonoBehaviour:
   - {fileID: 895955326}
   speed: 0.5
   curWaypointIndex: 0
-  canMove: 0
-  failed: 0
 --- !u!1 &1177521246
 GameObject:
   m_ObjectHideFlags: 0
@@ -3847,8 +3892,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5504a76a554ac6e4e93814fd9729683b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bird_Controller
-  jumpForce: 5
-  rotSpeed: 5
 --- !u!1 &1682376148
 GameObject:
   m_ObjectHideFlags: 0
@@ -3936,7 +3979,7 @@ GameObject:
   - component: {fileID: 1745935821}
   - component: {fileID: 1745935820}
   m_Layer: 5
-  m_Name: Patience_Bar (1)
+  m_Name: 'Patience_Bar '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
