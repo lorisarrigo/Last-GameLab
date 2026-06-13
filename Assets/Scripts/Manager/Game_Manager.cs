@@ -1,11 +1,17 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 public enum Minigame
 {
-    Running, 
-    GameOver,
+    Flapping, 
+    MinigameGO
     //nel caso serve aggiungiamo un'altro stato "Win"
+}
+public enum GameStates
+{
+    Flapping,
+    MinigameGO,
+    Running,
+    Paused
 }
 public class Game_Manager : MonoBehaviour
 {
@@ -22,40 +28,49 @@ public class Game_Manager : MonoBehaviour
     [SerializeField] int goal2;
     [SerializeField] int goal3;
 
-    Minigame minigame = Minigame.GameOver;
+    //Minigame minigame = Minigame.MinigameGO;
+    public GameStates maingame = GameStates.Paused;
 
     int Difficulty;
 
     //eventi
-    //public static event Action OnUpdGoal;
     public static event Action OnPoint;
-    private void Start()
+    void Start()
     {
         startingBPos = bird.transform.position;
     }
-    private void OnEnable()
+    void OnEnable()
     {
         Bird_Controller.OnPoint += UpdateScore;
         Bird_Controller.OnColl += GameOverMinigame;
+        BTN_Manager.OnPause += PauseGame;
+        BTN_Manager.OnResume += ResumeGame;
     }
-    private void OnDisable()
+    void OnDisable()
     {
         Bird_Controller.OnPoint -= UpdateScore;
         Bird_Controller.OnColl -= GameOverMinigame;
+        BTN_Manager.OnPause -= PauseGame;
+        BTN_Manager.OnResume -= ResumeGame;
     }
 
-    private void Update()
+    void Update()
     {
-        #region Minigame States
-        switch (minigame)
-        { 
-            case Minigame.Running:
+        #region Game States
+        switch (maingame)
+        {
+            case GameStates.Paused:
+                Time.timeScale = 0;
+                break;
+            case GameStates.Running:
+                Time.timeScale = 1.0f;
+                break;
+            case GameStates.Flapping:
                 Time.timeScale = 1.0f;
                 Translate_BTN.SetActive(false);
                 miniGame.SetActive(true);
                 break;
-            case Minigame.GameOver:
-                Time.timeScale = 0;
+            case GameStates.MinigameGO:
                 bird.transform.position = startingBPos;
                 TS.ResetSpawner();
                 miniGame.SetActive(false);
@@ -63,7 +78,7 @@ public class Game_Manager : MonoBehaviour
                 break;
         }
         #endregion
-        #region minigame difficulty
+        #region Minigame Difficulty
         switch (Difficulty)
         {
             case 0:
@@ -83,10 +98,10 @@ public class Game_Manager : MonoBehaviour
     }
     public void Translate()
     {
-        minigame = Minigame.Running;
+        maingame = GameStates.Flapping;
         Difficulty = UnityEngine.Random.Range(0, 3);
     }
-    private void UpdateScore()
+    void UpdateScore()
     {
         UI_Manager.instance.currentScore++;
         OnPoint?.Invoke();
@@ -95,16 +110,24 @@ public class Game_Manager : MonoBehaviour
             WinMinigame();
         }
     }
-    private void GameOverMinigame()
+    void GameOverMinigame()
     {
-        minigame = Minigame.GameOver;
+        maingame = GameStates.MinigameGO;
         UI_Manager.instance.currentScore = 0;
         UI_Manager.instance.Goal = 0;
     }
-    private void WinMinigame()
+    void WinMinigame()
     {
-        minigame = Minigame.GameOver;
+        maingame = GameStates.MinigameGO;
         UI_Manager.instance.currentScore = 0;
         UI_Manager.instance.Goal = 0;
+    }
+    void PauseGame()
+    {
+        maingame = GameStates.Paused;
+    }
+    void ResumeGame()
+    {
+        maingame = GameStates.Running;
     }
 }
