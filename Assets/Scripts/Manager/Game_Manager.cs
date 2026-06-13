@@ -1,11 +1,12 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
-public enum Minigame
-{
-    Flapping, 
-    MinigameGO
-    //nel caso serve aggiungiamo un'altro stato "Win"
-}
+//public enum Minigame
+//{
+//    Flapping, 
+//    MinigameGO
+//    //nel caso serve aggiungiamo un'altro stato "Win"
+//}
 public enum GameStates
 {
     Flapping,
@@ -19,6 +20,8 @@ public class Game_Manager : MonoBehaviour
 
     [Header("Minigame things")]
     [SerializeField] GameObject Translate_BTN;
+    [SerializeField] GameObject Pause_BTN;
+    [SerializeField] GameObject mainGame;
     [SerializeField] GameObject miniGame;
     [SerializeField] GameObject bird;
     Vector2 startingBPos;
@@ -29,7 +32,7 @@ public class Game_Manager : MonoBehaviour
     [SerializeField] int goal3;
 
     //Minigame minigame = Minigame.MinigameGO;
-    public GameStates maingame = GameStates.Paused;
+    public GameStates maingame = GameStates.Running;
 
     int Difficulty;
 
@@ -59,22 +62,25 @@ public class Game_Manager : MonoBehaviour
         #region Game States
         switch (maingame)
         {
+            case GameStates.Running:
+                Time.timeScale = 1;
+                break;
             case GameStates.Paused:
                 Time.timeScale = 0;
                 break;
-            case GameStates.Running:
-                Time.timeScale = 1.0f;
-                break;
             case GameStates.Flapping:
-                Time.timeScale = 1.0f;
-                Translate_BTN.SetActive(false);
+                //Translate_BTN.SetActive(false);
+                //Pause_BTN.SetActive(false);
+                mainGame.SetActive(false);
                 miniGame.SetActive(true);
                 break;
             case GameStates.MinigameGO:
                 bird.transform.position = startingBPos;
                 TS.ResetSpawner();
                 miniGame.SetActive(false);
-                Translate_BTN.SetActive(true);
+                mainGame.SetActive(true);
+                //Translate_BTN.SetActive(true);
+                //Pause_BTN.SetActive(true);
                 break;
         }
         #endregion
