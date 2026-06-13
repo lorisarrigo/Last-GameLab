@@ -1,11 +1,6 @@
 using System;
 using UnityEngine;
-public enum Minigame
-{
-    Flapping, 
-    MinigameGO
-    //nel caso serve aggiungiamo un'altro stato "Win"
-}
+
 public enum GameStates
 {
     Flapping,
@@ -15,30 +10,19 @@ public enum GameStates
 }
 public class Game_Manager : MonoBehaviour
 {
-    [SerializeField] Tube_Spawner TS;
-
-    [Header("Minigame things")]
+    [Header("Thing to activate/deactivate")]
     [SerializeField] GameObject Translate_BTN;
+    [SerializeField] GameObject Pause_BTN;
+    [SerializeField] GameObject mainGame;
     [SerializeField] GameObject miniGame;
-    [SerializeField] GameObject bird;
-    Vector2 startingBPos;
 
-    [Header("difficoltà")]
-    [SerializeField] int goal1;
-    [SerializeField] int goal2;
-    [SerializeField] int goal3;
 
-    //Minigame minigame = Minigame.MinigameGO;
-    public GameStates maingame = GameStates.Paused;
+    GameStates maingame = GameStates.Running;
 
     int Difficulty;
 
     //eventi
     public static event Action OnPoint;
-    void Start()
-    {
-        startingBPos = bird.transform.position;
-    }
     void OnEnable()
     {
         Bird_Controller.OnPoint += UpdateScore;
@@ -59,22 +43,21 @@ public class Game_Manager : MonoBehaviour
         #region Game States
         switch (maingame)
         {
+            case GameStates.Running:
+                Time.timeScale = 1;
+                break;
             case GameStates.Paused:
                 Time.timeScale = 0;
                 break;
-            case GameStates.Running:
-                Time.timeScale = 1.0f;
-                break;
             case GameStates.Flapping:
-                Time.timeScale = 1.0f;
-                Translate_BTN.SetActive(false);
+                mainGame.SetActive(false);
                 miniGame.SetActive(true);
                 break;
             case GameStates.MinigameGO:
-                bird.transform.position = startingBPos;
-                TS.ResetSpawner();
+                FB_Manager.instance.bird.transform.position = FB_Manager.instance.startingBPos;
+                FB_Manager.instance.TS.ResetSpawner();
                 miniGame.SetActive(false);
-                Translate_BTN.SetActive(true);
+                mainGame.SetActive(true);
                 break;
         }
         #endregion
@@ -82,15 +65,15 @@ public class Game_Manager : MonoBehaviour
         switch (Difficulty)
         {
             case 0:
-                UI_Manager.instance.Goal = goal1;
+                FB_Manager.instance.Goal = FB_Manager.instance.goal1;
                 OnPoint?.Invoke();
                 break;
             case 1:
-                UI_Manager.instance.Goal = goal2;
+                FB_Manager.instance.Goal = FB_Manager.instance.goal2;
                 OnPoint?.Invoke();
                 break;
             case 2:
-                UI_Manager.instance.Goal = goal3;
+                FB_Manager.instance.Goal = FB_Manager.instance.goal3;
                 OnPoint?.Invoke();
                 break;
         }
@@ -103,9 +86,9 @@ public class Game_Manager : MonoBehaviour
     }
     void UpdateScore()
     {
-        UI_Manager.instance.currentScore++;
+        FB_Manager.instance.currentScore++;
         OnPoint?.Invoke();
-        if (UI_Manager.instance.currentScore == UI_Manager.instance.Goal)
+        if (FB_Manager.instance.currentScore == FB_Manager.instance.Goal)
         {
             WinMinigame();
         }
@@ -113,14 +96,14 @@ public class Game_Manager : MonoBehaviour
     void GameOverMinigame()
     {
         maingame = GameStates.MinigameGO;
-        UI_Manager.instance.currentScore = 0;
-        UI_Manager.instance.Goal = 0;
+        FB_Manager.instance.currentScore = 0;
+        FB_Manager.instance.Goal = 0;
     }
     void WinMinigame()
     {
         maingame = GameStates.MinigameGO;
-        UI_Manager.instance.currentScore = 0;
-        UI_Manager.instance.Goal = 0;
+        FB_Manager.instance.currentScore = 0;
+        FB_Manager.instance.Goal = 0;
     }
     void PauseGame()
     {
