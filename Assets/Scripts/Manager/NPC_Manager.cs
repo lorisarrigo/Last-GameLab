@@ -23,6 +23,7 @@ public class NPC_Manager : MonoBehaviour
     float ticketS;
 
     //eventi
+    public static event Action OnRequest;
     public static event Action OnTimer;
     void Start()
     {
@@ -50,6 +51,7 @@ public class NPC_Manager : MonoBehaviour
         {
             t = 0;
             MoveTicket();
+            OnRequest?.Invoke();
             if(Ticket.transform.position == ticketDeskPos.position)
                 OnTimer?.Invoke();
             return;

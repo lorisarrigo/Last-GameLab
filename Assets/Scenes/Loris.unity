@@ -2370,6 +2370,17 @@ MonoBehaviour:
   success: 0
   patienceBar: {fileID: 1005524617}
   patienceBarFB: {fileID: 1745935820}
+  requestTxtSpace: {fileID: 1906752140}
+  Request:
+  - Cold & festival
+  - Cold & chill
+  - Hot & festival
+  - Hot & chill
+  Answers:
+  - Waiting Request...
+  - :(
+  - :)
+  - 
 --- !u!1 &941988436
 GameObject:
   m_ObjectHideFlags: 0
@@ -4373,7 +4384,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: Waiting Request...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4439,7 +4450,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 30.041565, y: 9.839844, z: 269.31134, w: 29.03743}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
