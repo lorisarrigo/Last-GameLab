@@ -4,13 +4,13 @@ using UnityEngine;
 public class FB_Manager : MonoBehaviour
 {
     [Header("Bird Things")]
-    [HideInInspector] public Vector2 startingBPos;
     [Tooltip("the bird")]
     public GameObject bird;
     [Tooltip("the jumpForce of the bird")]
     public float jumpForce;
     [Tooltip("the rotation speed of the bird")]
     public float rotSpeed;
+    [HideInInspector] public Vector2 startingBPos;
 
     [Header("tubes")]
     [Tooltip("The Tube Spawner Object")]

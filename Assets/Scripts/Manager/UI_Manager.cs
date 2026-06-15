@@ -54,6 +54,7 @@ public class UI_Manager : MonoBehaviour
             if (elapsed <= 0)
             {
                 isFilling = false;
+                patienceBar.gameObject.SetActive(false);
                 OnFinishedTimer?.Invoke();
             }
         }

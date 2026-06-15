@@ -1,8 +1,10 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class NPC_Manager : MonoBehaviour
 {
+    [Header("NPC")]
     [SerializeField] GameObject NPC;
     [SerializeField] GameObject[] Waypoints;
     [SerializeField] float speed;
@@ -13,6 +15,12 @@ public class NPC_Manager : MonoBehaviour
 
     bool canMove;
     bool failed;
+
+    [Header("Ticket")]
+    [SerializeField] GameObject Ticket;
+    [SerializeField] float ticketSpeed;
+    [SerializeField] Transform ticketDeskPos;
+    float ticketS;
 
     //eventi
     public static event Action OnTimer;
@@ -38,15 +46,21 @@ public class NPC_Manager : MonoBehaviour
         Vector3 tPos = Waypoints[curWaypointIndex].transform.position;
         t += Time.deltaTime * speed;
 
-        if (curWaypointIndex == 2 && (!canMove))
+        if (curWaypointIndex == 2 && !canMove)
         {
             t = 0;
-            OnTimer?.Invoke();
+            MoveTicket();
+            if(Ticket.transform.position == ticketDeskPos.position)
+                OnTimer?.Invoke();
             return;
         }
 
         if (failed)
+        {
             tPos = Waypoints[0].transform.position;
+            Ticket.SetActive(false);
+            Ticket.transform.position = Waypoints[1].transform.position;
+        }
 
         NPC.transform.position = Vector3.Lerp(startPos, tPos, t);
 
@@ -65,5 +79,13 @@ public class NPC_Manager : MonoBehaviour
     void Delivered()
     {
         canMove = true;
+    }
+    void MoveTicket()
+    {
+        Ticket.SetActive(true);
+
+        ticketS += Time.deltaTime * ticketSpeed;
+
+        Ticket.transform.position = Vector3.Lerp(Waypoints[1].transform.position, ticketDeskPos.position, ticketS);
     }
 }
