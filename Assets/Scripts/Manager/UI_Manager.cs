@@ -6,19 +6,23 @@ using UnityEngine.UI;
 
 public class UI_Manager : MonoBehaviour
 {
-    [Header("patience")]
+    [Header("Day & Economy")]
+    [HideInInspector] public int currentDay;
+    [SerializeField] TMP_Text dayCounter;
+
+    [Header("NPC & Requests")]
+    [SerializeField] int clientLimit;
+
+    public TMP_Text requestTxtSpace;
+    [SerializeField] List<string> Answers = new();
+
+    [Header("Patience")]
     [SerializeField] float patienceTimer;
     float elapsed = 0;
     bool isFilling = false;
     public bool success;
     [SerializeField] Image patienceBar;
     [SerializeField] Image patienceBarFB;
-
-    [Header("dialogue")]
-    [SerializeField] TMP_Text requestTxtSpace;
-    [SerializeField] List<string> Request = new ();
-    [SerializeField] List<string> Answers = new ();
-    bool requestChoosed = false;
 
     //eventi
     public static event Action OnFinishedTimer;
@@ -38,72 +42,75 @@ public class UI_Manager : MonoBehaviour
     private void OnEnable()
     {
         Game_Manager.OnPoint += UpdateGoal;
-        NPC_Manager.OnTimer += StartTimer;
         NPC_Manager.OnRequest += ChooseRequest;
+        NPC_Manager.OnTimer += StartTimer;
+        Game_Manager.OnDay += UpdateDayCounter;
     }
     private void OnDisable()
     {
         Game_Manager.OnPoint -= UpdateGoal;
-        NPC_Manager.OnTimer -= StartTimer;
         NPC_Manager.OnRequest -= ChooseRequest;
+        NPC_Manager.OnTimer -= StartTimer;
+        Game_Manager.OnDay -= UpdateDayCounter;
     }
     private void Update()
     {
         if (isFilling && elapsed > 0)
         {
-            if(success)
-            {
-                OnDeliver?.Invoke();
-                patienceBar.gameObject.SetActive(false);
-                requestTxtSpace.text = Answers[2];
-                return;
-            }
             elapsed -= Time.deltaTime;
             patienceBar.fillAmount = elapsed / patienceTimer;
             patienceBarFB.fillAmount = elapsed / patienceTimer;
             if (elapsed <= 0)
             {
-                isFilling = false;
-                patienceBar.gameObject.SetActive(false);
-                OnFinishedTimer?.Invoke();
-                requestTxtSpace.text = Answers[1];
+                TriggerFailure();
             }
         }
     }
     void ChooseRequest()
     {
-        if (!requestChoosed)
-        {
-            int randomRequest = UnityEngine.Random.Range(1, 5);
-            switch (randomRequest)
-            {
-                case 0:
-                    requestTxtSpace.text = Request[1];
-                    break;
-                case 1:
-                    requestTxtSpace.text = Request[2];
-                    break;
-                case 2:
-                    requestTxtSpace.text = Request[3];
-                    break;
-                case 3:
-                    requestTxtSpace.text = Request[4];
-                    break;
-            }
-        }
-        requestChoosed = true;
+        requestTxtSpace.text = NPC_Manager.instance.curRequest;
     }
     void StartTimer()
     {
-        if (!isFilling)
-        { 
-            patienceBar.gameObject.SetActive(true);
-            elapsed = patienceTimer;
-        }
+        success = false;
+        elapsed = patienceTimer;
+        patienceBar.gameObject.SetActive(true);
         isFilling = true;
+    }
+    public void ResolveClient(bool clientHappy)
+    {
+        if (!isFilling) return;
+
+        isFilling = false;
+        success = clientHappy;
+        patienceBar.gameObject.SetActive(false);
+
+        if (success)
+        {
+            requestTxtSpace.text = Answers[2];
+            OnDeliver?.Invoke();
+        }
+        else
+        {
+            TriggerFailure();
+        }
+    }
+    void TriggerFailure()
+    {
+        isFilling = false;
+        patienceBar.gameObject.SetActive(false);
+        requestTxtSpace.text = Answers[1];
+        OnFinishedTimer?.Invoke();
     }
     void UpdateGoal()
     {
         FB_Manager.instance.score.text = FB_Manager.instance.currentScore + "/" + FB_Manager.instance.Goal;
+    }
+    void UpdateDayCounter()
+    {
+        if(currentDay < 10)
+            dayCounter.text = "day " + "\n sn: 0" + currentDay;
+        else
+            dayCounter.text = "day " + "\n n: " + currentDay;
     }
 }
