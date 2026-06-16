@@ -5,21 +5,22 @@ using UnityEngine;
 
 public class NPC_Manager : MonoBehaviour
 {
-    [Header("NPC")]
+    [Header("NPC & Requests")]
     public int clientToday;
     public GameObject NPC;
     [SerializeField] List<Material> NPC_Mat = new();
+    [SerializeField] List<string> Requests = new();
     [SerializeField] GameObject[] Waypoints;
     [SerializeField] float speed;
-
-    public int curWaypointIndex;
     Vector3 startPos;
 
     bool canMove;
     bool clientResolved;
-    [Header("Requests")]
-    [SerializeField] List<string> Requests = new();
-    public string curRequest;
+
+    [HideInInspector] public string curRequest;
+    [HideInInspector] public string curClient;
+    public string curResult;
+
     [Header("Ticket")]
     [SerializeField] GameObject Ticket;
     [SerializeField] float ticketSpeed;
@@ -28,6 +29,8 @@ public class NPC_Manager : MonoBehaviour
     //eventi
     public static event Action OnRequest;
     public static event Action OnTimer;
+    public static event Action OnAnswer;
+
     public static event Action OnEndDay;
 
     public static NPC_Manager instance;
@@ -39,6 +42,7 @@ public class NPC_Manager : MonoBehaviour
             return;
         }
         instance = this;
+        
     }
     void Start()
     {
@@ -74,7 +78,7 @@ public class NPC_Manager : MonoBehaviour
             OnRequest?.Invoke();
 
             yield return new WaitUntil(() => clientResolved);
-
+            OnAnswer?.Invoke();
             Ticket.SetActive(false);
 
             if (UI_Manager.instance.success)
@@ -95,24 +99,14 @@ public class NPC_Manager : MonoBehaviour
         Renderer npc = NPC.GetComponent<Renderer>();
         if (clientToday > NPC_Mat.Count) clientToday = NPC_Mat.Count;
         int randomNPC = UnityEngine.Random.Range(0, clientToday);
-        switch (randomNPC)
+
+        npc.material = NPC_Mat[randomNPC];
+
+        curClient = NPC_Mat[randomNPC].name;
+
+        if(randomNPC<Requests.Count)
         {
-            case 0:
-                npc.material = NPC_Mat[0];
-                curRequest = Requests[0];
-                break;
-            case 1:
-                npc.material = NPC_Mat[1];
-                curRequest = Requests[1];
-                break;
-            case 2:
-                npc.material = NPC_Mat[2];
-                curRequest = Requests[2];
-                break;
-            case 3:
-                npc.material = NPC_Mat[3];
-                curRequest = Requests[3];
-                break;
+            curRequest = Requests[randomNPC];
         }
     }
     IEnumerator MoveNPC(GameObject startP, GameObject endP)
@@ -146,9 +140,11 @@ public class NPC_Manager : MonoBehaviour
     void NoPatience()
     {
         clientResolved = true;
+        curResult ="not satisfied";
     }
     void Delivered()
     {
         clientResolved = true;
+        curResult = "satisfied";
     }
 }
