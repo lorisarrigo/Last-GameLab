@@ -16,6 +16,9 @@ public class UI_Manager : MonoBehaviour
     public TMP_Text requestTxtSpace;
     [SerializeField] List<string> Answers = new();
 
+    [SerializeField] List<string> entry = new();
+    [SerializeField] TMP_Text logTxt;
+
     [Header("Patience")]
     [SerializeField] float patienceTimer;
     float elapsed = 0;
@@ -42,16 +45,20 @@ public class UI_Manager : MonoBehaviour
     private void OnEnable()
     {
         Game_Manager.OnPoint += UpdateGoal;
-        NPC_Manager.OnRequest += ChooseRequest;
+        NPC_Manager.OnRequest += UpdateRequest;
         NPC_Manager.OnTimer += StartTimer;
+        NPC_Manager.OnAnswer += UpdateAnswer;
         Game_Manager.OnDay += UpdateDayCounter;
+        Game_Manager.OnDay += ClearLog;
     }
     private void OnDisable()
     {
         Game_Manager.OnPoint -= UpdateGoal;
-        NPC_Manager.OnRequest -= ChooseRequest;
+        NPC_Manager.OnRequest -= UpdateRequest;
         NPC_Manager.OnTimer -= StartTimer;
+        NPC_Manager.OnAnswer -= UpdateAnswer;
         Game_Manager.OnDay -= UpdateDayCounter;
+        Game_Manager.OnDay -= ClearLog;
     }
     private void Update()
     {
@@ -66,9 +73,15 @@ public class UI_Manager : MonoBehaviour
             }
         }
     }
-    void ChooseRequest()
+    void UpdateRequest()
     {
+        //richiesta corrente
         requestTxtSpace.text = NPC_Manager.instance.curRequest;
+
+        //log
+        string log = $" - {NPC_Manager.instance.curClient} requested: {NPC_Manager.instance.curRequest}";
+        entry.Add(log);
+        logTxt.text = string.Join("\n", entry);
     }
     void StartTimer()
     {
@@ -76,6 +89,17 @@ public class UI_Manager : MonoBehaviour
         elapsed = patienceTimer;
         patienceBar.gameObject.SetActive(true);
         isFilling = true;
+    }
+    void UpdateAnswer()
+    {
+        string log = $" - {NPC_Manager.instance.curClient} is {NPC_Manager.instance.curResult}";
+        entry.Add(log);
+        logTxt.text = string.Join("\n", entry);
+    }
+    void ClearLog()
+    {
+        entry.Clear();
+        logTxt.text = string.Empty;
     }
     public void ResolveClient(bool clientHappy)
     {
@@ -108,8 +132,8 @@ public class UI_Manager : MonoBehaviour
     }
     void UpdateDayCounter()
     {
-        if(currentDay < 10)
-            dayCounter.text = "day " + "\n sn: 0" + currentDay;
+        if (currentDay < 10)
+            dayCounter.text = "day " + "\n n: 0" + currentDay;
         else
             dayCounter.text = "day " + "\n n: " + currentDay;
     }
