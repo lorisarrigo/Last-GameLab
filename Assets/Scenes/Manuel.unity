@@ -580,7 +580,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 133521146}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 606645204}
+        m_TargetAssemblyTypeName: MaterialColorChanger, Assembly-CSharp
+        m_MethodName: ApplicaS1_01
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &133521146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -819,10 +831,10 @@ MonoBehaviour:
 
     Temperature:
 
-    
 
-    Most of life begins
-    to exist in places that are not too cold or too hot, though some people
+
+    Most of life begins to
+    exist in places that are not too cold or too hot, though some people
 
     prefer
     more harsh and challenging weather and atmosphere conditions, the levels of
@@ -830,20 +842,20 @@ MonoBehaviour:
     temperature
     are:
 
-    
+
 
     hot
 
-    
+
 
     tempered
 
-    
+
 
     cold
 
 
-    
+
 
 '
   m_isRightToLeft: 0
@@ -2353,25 +2365,25 @@ MonoBehaviour:
 
     population
 
-    
 
-    population tells you exactly which race
-    of alien you may find on the planet, some Aliens
 
-    may not be confortable
-    to spend their vacations on the same planet as monsters.
+    population tells you exactly which race of alien
+    you may find on the planet, some Aliens
 
-    Some examples
-    of particular populations are:
+    may not be confortable to spend
+    their vacations on the same planet as monsters.
+
+    Some examples of particular
+    populations are:
 
 
     monsters
 
-    
+
 
     indigenous
 
-    
+
 
     gods
 
@@ -2455,6 +2467,109 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409840264}
   m_CullTransparentMesh: 1
+--- !u!1 &421879029
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 421879030}
+  - component: {fileID: 421879033}
+  - component: {fileID: 421879032}
+  - component: {fileID: 421879031}
+  m_Layer: 5
+  m_Name: Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &421879030
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421879029}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 25, y: 100, z: 12.5}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1835032747}
+  m_Father: {fileID: 1824198102}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 2.5}
+  m_SizeDelta: {x: 0.39, y: 0.1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &421879031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421879029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GraphicRaycaster
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &421879032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421879029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 1
+--- !u!223 &421879033
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421879029}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_UseReflectionProbes: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &425001036
 GameObject:
   m_ObjectHideFlags: 0
@@ -2819,7 +2934,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 450156749}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 606645204}
+        m_TargetAssemblyTypeName: MaterialColorChanger, Assembly-CSharp
+        m_MethodName: ApplicaS2_04
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &450156749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3161,6 +3288,66 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 506299119}
   m_CullTransparentMesh: 1
+--- !u!1 &606645203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 606645205}
+  - component: {fileID: 606645204}
+  m_Layer: 0
+  m_Name: TicketManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &606645204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606645203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d60831d554dd61b47a65cbd074eaf2ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MaterialColorChanger
+  targetImage: {fileID: 1835032745}
+  materiale_S1_01: {fileID: 2100000, guid: 4576b9fc21e137f48a3c5f4f98879016, type: 2}
+  materiale_S1_02: {fileID: 2100000, guid: d402fa1faba410843a706858788d3cdb, type: 2}
+  materiale_S1_03: {fileID: 2100000, guid: 74161de5a6591ac4caa1f0494ef6a897, type: 2}
+  materiale_S1_04: {fileID: 2100000, guid: 160944131c42ed74d892b53757abd2e6, type: 2}
+  materiale_S1_05: {fileID: 2100000, guid: 2783aaec198a89f4ebf77a5022587995, type: 2}
+  materiale_S2_01: {fileID: 2100000, guid: ef58e5a5bcc5abb4fb5061bfac134f68, type: 2}
+  materiale_S2_02: {fileID: 2100000, guid: eb6336d37d5f49645bd3805e29a77d1c, type: 2}
+  materiale_S2_03: {fileID: 2100000, guid: 35f1ec9525d75a743918544b9986ddf7, type: 2}
+  materiale_S2_04: {fileID: 2100000, guid: 6e74fa696d69f4141968aa7b15dac65f, type: 2}
+  materiale_S2_05: {fileID: 2100000, guid: de131de0120ffe149a5b8139362c1da5, type: 2}
+  materiale_S3_01: {fileID: 2100000, guid: ce1b9a4d3258e8c4ab095eaf5961cf7f, type: 2}
+  materiale_S3_02: {fileID: 2100000, guid: f68f2591c506bb04a896fc0a89b5bcc8, type: 2}
+  materiale_S3_03: {fileID: 2100000, guid: 0946fcea51ae46c4db39b47e5562ea3f, type: 2}
+  materiale_S3_04: {fileID: 2100000, guid: 406cde17c8133874e846810cc23aed42, type: 2}
+  materiale_S3_05: {fileID: 2100000, guid: 7fd3b66355645e648972eb812541618c, type: 2}
+--- !u!4 &606645205
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606645203}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.10332, y: 4.34336, z: -2.98422}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &697014421
 GameObject:
   m_ObjectHideFlags: 0
@@ -3388,7 +3575,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 698006983}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 606645204}
+        m_TargetAssemblyTypeName: MaterialColorChanger, Assembly-CSharp
+        m_MethodName: ApplicaS1_04
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &698006983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3735,7 +3934,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 756320132}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 606645204}
+        m_TargetAssemblyTypeName: MaterialColorChanger, Assembly-CSharp
+        m_MethodName: ApplicaS3_03
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &756320132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3933,7 +4144,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 766883694}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 606645204}
+        m_TargetAssemblyTypeName: MaterialColorChanger, Assembly-CSharp
+        m_MethodName: ApplicaS2_01
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &766883694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5348,7 +5571,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 963150107}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 606645204}
+        m_TargetAssemblyTypeName: MaterialColorChanger, Assembly-CSharp
+        m_MethodName: ApplicaS2_05
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &963150107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5469,7 +5704,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 968459710}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 606645204}
+        m_TargetAssemblyTypeName: MaterialColorChanger, Assembly-CSharp
+        m_MethodName: ApplicaS2_02
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &968459710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6282,29 +6529,28 @@ MonoBehaviour:
 
     LIfe
 
-    
 
-    this parameters indicates how much life there
-    is actually on the planet, which counts
 
-    plants and animals. Some aliens
-    prefer to go in a place they can recall as familiar fo rthem.
+    this parameters indicates how much life there is actually
+    on the planet, which counts
 
-    the levels
-    of life are:
+    plants and animals. Some aliens prefer to go
+    in a place they can recall as familiar fo rthem.
 
-    
+    the levels of life are:
+
+
 
     bountyful
 
-    
+
 
     present
 
-    
 
-    little to
-    none
+
+    little
+    to none
 
 '
   m_isRightToLeft: 0
@@ -7008,7 +7254,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1339941129}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 606645204}
+        m_TargetAssemblyTypeName: MaterialColorChanger, Assembly-CSharp
+        m_MethodName: ApplicaS3_04
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1339941129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7266,7 +7524,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1390354345}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 606645204}
+        m_TargetAssemblyTypeName: MaterialColorChanger, Assembly-CSharp
+        m_MethodName: ApplicaS1_05
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1390354345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7541,7 +7811,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1467248978}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 606645204}
+        m_TargetAssemblyTypeName: MaterialColorChanger, Assembly-CSharp
+        m_MethodName: ApplicaS3_01
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1467248978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8105,7 +8387,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1538758578}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 606645204}
+        m_TargetAssemblyTypeName: MaterialColorChanger, Assembly-CSharp
+        m_MethodName: ApplicaS3_05
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1538758578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8363,7 +8657,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1589505463}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 606645204}
+        m_TargetAssemblyTypeName: MaterialColorChanger, Assembly-CSharp
+        m_MethodName: ApplicaS1_03
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1589505463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8621,7 +8927,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1601304803}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 606645204}
+        m_TargetAssemblyTypeName: MaterialColorChanger, Assembly-CSharp
+        m_MethodName: ApplicaS3_02
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1601304803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10818,7 +11136,8 @@ Transform:
   m_LocalPosition: {x: -0.715, y: 0, z: 0}
   m_LocalScale: {x: 0.04, y: 0.01, z: 0.08}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 421879030}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1824198103
@@ -10930,7 +11249,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1829711587}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 606645204}
+        m_TargetAssemblyTypeName: MaterialColorChanger, Assembly-CSharp
+        m_MethodName: ApplicaS1_02
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1829711587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10969,6 +11300,78 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1829711584}
   m_CullTransparentMesh: 1
+--- !u!1 &1835032744
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1835032747}
+  - component: {fileID: 1835032746}
+  - component: {fileID: 1835032745}
+  m_Layer: 5
+  m_Name: RawImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1835032745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835032744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
+  m_Material: {fileID: 2100000, guid: 35f1ec9525d75a743918544b9986ddf7, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 0}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &1835032746
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835032744}
+  m_CullTransparentMesh: 1
+--- !u!224 &1835032747
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835032744}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 421879030}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1854425455
 GameObject:
   m_ObjectHideFlags: 0
@@ -11291,7 +11694,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1917227986}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 606645204}
+        m_TargetAssemblyTypeName: MaterialColorChanger, Assembly-CSharp
+        m_MethodName: ApplicaS2_03
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1917227986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12023,3 +12438,4 @@ SceneRoots:
   - {fileID: 1736996100}
   - {fileID: 1053315503}
   - {fileID: 28066301}
+  - {fileID: 606645205}
