@@ -8,6 +8,7 @@ public enum ScoreResult { Failed, Reduced, MaxScore }
 
 public class UI_Manager : MonoBehaviour
 {
+    public ScoreResult result;
     [Header("Day & Economy")]
     [HideInInspector] public int currentDay;
     [SerializeField] TMP_Text dayCounter;
@@ -18,6 +19,9 @@ public class UI_Manager : MonoBehaviour
 
     [SerializeField] List<string> entry = new();
     [SerializeField] TMP_Text logTxt;
+
+    [Header("Planets")]
+    [SerializeField] List<PlanetRequirements> planetDatabase = new();
 
     [Header("Patience")]
     [SerializeField] float patienceTimer;
@@ -31,7 +35,6 @@ public class UI_Manager : MonoBehaviour
     [SerializeField] bool isStamped = false;
 
     //eventi
-    //public static event Action OnFinishedTimer;
     public static event Action OnDeliver;
 
     public static UI_Manager instance;
@@ -50,7 +53,6 @@ public class UI_Manager : MonoBehaviour
         Game_Manager.OnPoint += UpdateGoal;
         NPC_Manager.OnRequest += UpdateRequest;
         NPC_Manager.OnTimer += StartTimer;
-        //NPC_Manager.OnAnswer += UpdateAnswer;
         Game_Manager.OnDay += UpdateDayCounter;
         Game_Manager.OnDay += ClearLog;
     }
@@ -59,7 +61,6 @@ public class UI_Manager : MonoBehaviour
         Game_Manager.OnPoint -= UpdateGoal;
         NPC_Manager.OnRequest -= UpdateRequest;
         NPC_Manager.OnTimer -= StartTimer;
-        //NPC_Manager.OnAnswer -= UpdateAnswer;
         Game_Manager.OnDay -= UpdateDayCounter;
         Game_Manager.OnDay -= ClearLog;
     }
@@ -80,7 +81,7 @@ public class UI_Manager : MonoBehaviour
     {
         //richiesta corrente
         requestTxtSpace.text = NPC_Manager.instance.curRequest;
-
+        
         //log
         string log = $" - {NPC_Manager.instance.curClient} requested: {NPC_Manager.instance.curRequest}";
         entry.Add(log);
@@ -96,10 +97,18 @@ public class UI_Manager : MonoBehaviour
         isFilling = true;
         RemoveStampData();
     }
+    public void SelectPlanet(int planetIndex)
+    {
+        if(planetIndex >= 0 && planetIndex < planetDatabase.Count)
+        {
+            ApplyStampData(planetDatabase[planetIndex]);
+        }
+    }
     public void ApplyStampData(PlanetRequirements planetData)
     {
         selPlanetData = planetData;
         isStamped = true;
+        DeliverAndCalculate();
     }
     public void RemoveStampData()
     {
@@ -110,37 +119,36 @@ public class UI_Manager : MonoBehaviour
     {
         if (!isStamped) return;
         PlanetRequirements npcRequirements = NPC_Manager.instance.curRequirements;
-        int requiredParameters = 0;
-        int guessedParameters = 0;
 
+        int required = 0;
+        int guessed = 0;
         if (npcRequirements.temperature != Temperature.None)
         {
-            requiredParameters++;
-            if (selPlanetData.temperature == npcRequirements.temperature) guessedParameters++;
+            required++;
+            if (selPlanetData.temperature == npcRequirements.temperature) guessed++;
         }
         if (npcRequirements.lifeQuantity != LifeQuantity.None)
         {
-            requiredParameters++;
-            if (selPlanetData.lifeQuantity == npcRequirements.lifeQuantity) guessedParameters++;
+            required++;
+            if (selPlanetData.lifeQuantity == npcRequirements.lifeQuantity) guessed++;
         }
         if (npcRequirements.population != Population.None)
         {
-            requiredParameters++;
-            if (selPlanetData.population == npcRequirements.population) guessedParameters++;
+            required++;
+            if (selPlanetData.population == npcRequirements.population) guessed++;
         }
         if (npcRequirements.permanance != Permanance.None)
         {
-            requiredParameters++;
-            if (selPlanetData.permanance == npcRequirements.permanance) guessedParameters++;
+            required++;
+            if (selPlanetData.permanance == npcRequirements.permanance) guessed++;
         }
         if (npcRequirements.sector != Sector.None)
         {
-            requiredParameters++;
-            if (selPlanetData.sector == npcRequirements.sector) guessedParameters++;
+            required++;
+            if (selPlanetData.sector == npcRequirements.sector) guessed++;
         }
-        ScoreResult result;
-        if (guessedParameters == requiredParameters) result = ScoreResult.MaxScore;
-        else if (guessedParameters >= (requiredParameters / 2f)) result = ScoreResult.Reduced;
+        if (guessed == required) result = ScoreResult.MaxScore;
+        else if (guessed >= (required / 2f) && guessed != required) result = ScoreResult.Reduced;
         else result = ScoreResult.Failed;
 
         ProcessFinalScore(result);
@@ -184,31 +192,11 @@ public class UI_Manager : MonoBehaviour
         entry.Clear();
         logTxt.text = string.Empty;
     }
-    //public void ResolveClient(bool clientHappy)
-    //{
-    //    if (!isFilling) return;
-
-    //    isFilling = false;
-    //    success = clientHappy;
-    //    patienceBar.gameObject.SetActive(false);
-
-    //    if (success)
-    //    {
-    //        requestTxtSpace.text = Answers[2];
-    //        OnDeliver?.Invoke();
-    //    }
-    //    else
-    //    {
-    //        TriggerFailure();
-    //    }
-    //}
     void TriggerFailure()
     {
         isFilling = false;
         patienceBar.gameObject.SetActive(false);
         ProcessFinalScore(ScoreResult.Failed);
-        //requestTxtSpace.text = Answers[1];
-        //OnFinishedTimer?.Invoke();
     }
     void UpdateGoal()
     {
