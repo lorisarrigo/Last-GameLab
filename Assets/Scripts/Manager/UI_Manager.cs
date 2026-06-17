@@ -4,15 +4,15 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum ScoreResult { Failed, Reduced, MaxScore }
+
 public class UI_Manager : MonoBehaviour
 {
     [Header("Day & Economy")]
     [HideInInspector] public int currentDay;
     [SerializeField] TMP_Text dayCounter;
 
-    [Header("NPC & Requests")]
-    [SerializeField] int clientLimit;
-
+    [Header("Requests")]
     public TMP_Text requestTxtSpace;
     [SerializeField] List<string> Answers = new();
 
@@ -27,8 +27,11 @@ public class UI_Manager : MonoBehaviour
     [SerializeField] Image patienceBar;
     [SerializeField] Image patienceBarFB;
 
+    [SerializeField] PlanetRequirements selPlanetData;
+    [SerializeField] bool isStamped = false;
+
     //eventi
-    public static event Action OnFinishedTimer;
+    //public static event Action OnFinishedTimer;
     public static event Action OnDeliver;
 
     public static UI_Manager instance;
@@ -47,7 +50,7 @@ public class UI_Manager : MonoBehaviour
         Game_Manager.OnPoint += UpdateGoal;
         NPC_Manager.OnRequest += UpdateRequest;
         NPC_Manager.OnTimer += StartTimer;
-        NPC_Manager.OnAnswer += UpdateAnswer;
+        //NPC_Manager.OnAnswer += UpdateAnswer;
         Game_Manager.OnDay += UpdateDayCounter;
         Game_Manager.OnDay += ClearLog;
     }
@@ -56,7 +59,7 @@ public class UI_Manager : MonoBehaviour
         Game_Manager.OnPoint -= UpdateGoal;
         NPC_Manager.OnRequest -= UpdateRequest;
         NPC_Manager.OnTimer -= StartTimer;
-        NPC_Manager.OnAnswer -= UpdateAnswer;
+        //NPC_Manager.OnAnswer -= UpdateAnswer;
         Game_Manager.OnDay -= UpdateDayCounter;
         Game_Manager.OnDay -= ClearLog;
     }
@@ -87,44 +90,125 @@ public class UI_Manager : MonoBehaviour
     {
         success = false;
         elapsed = patienceTimer;
+        patienceBar.fillAmount = 1;
+        patienceBarFB.fillAmount = 1;
         patienceBar.gameObject.SetActive(true);
         isFilling = true;
+        RemoveStampData();
     }
-    void UpdateAnswer()
+    public void ApplyStampData(PlanetRequirements planetData)
     {
-        string log = $" - {NPC_Manager.instance.curClient} is {NPC_Manager.instance.curResult}";
+        selPlanetData = planetData;
+        isStamped = true;
+    }
+    public void RemoveStampData()
+    {
+        selPlanetData = new PlanetRequirements();
+        isStamped = false;
+    }
+    public void DeliverAndCalculate()
+    {
+        if (!isStamped) return;
+        PlanetRequirements npcRequirements = NPC_Manager.instance.curRequirements;
+        int requiredParameters = 0;
+        int guessedParameters = 0;
+
+        if (npcRequirements.temperature != Temperature.None)
+        {
+            requiredParameters++;
+            if (selPlanetData.temperature == npcRequirements.temperature) guessedParameters++;
+        }
+        if (npcRequirements.lifeQuantity != LifeQuantity.None)
+        {
+            requiredParameters++;
+            if (selPlanetData.lifeQuantity == npcRequirements.lifeQuantity) guessedParameters++;
+        }
+        if (npcRequirements.population != Population.None)
+        {
+            requiredParameters++;
+            if (selPlanetData.population == npcRequirements.population) guessedParameters++;
+        }
+        if (npcRequirements.permanance != Permanance.None)
+        {
+            requiredParameters++;
+            if (selPlanetData.permanance == npcRequirements.permanance) guessedParameters++;
+        }
+        if (npcRequirements.sector != Sector.None)
+        {
+            requiredParameters++;
+            if (selPlanetData.sector == npcRequirements.sector) guessedParameters++;
+        }
+        ScoreResult result;
+        if (guessedParameters == requiredParameters) result = ScoreResult.MaxScore;
+        else if (guessedParameters >= (requiredParameters / 2f)) result = ScoreResult.Reduced;
+        else result = ScoreResult.Failed;
+
+        ProcessFinalScore(result);
+    }
+    public void ProcessFinalScore(ScoreResult result)
+    {
+        isFilling = false;
+        patienceBar.gameObject.SetActive(false);
+        string logResult = "";
+
+        switch(result)
+        {
+            case ScoreResult.MaxScore:
+                success = true;
+                NPC_Manager.instance.curResult = "Perfect Evaluation";
+                requestTxtSpace.text = Answers[2];
+                logResult = "PERFECT  (Max Score)";
+                break;
+            case ScoreResult.Reduced:
+                success = true;
+                NPC_Manager.instance.curResult = "Partially Satisfied";
+                requestTxtSpace.text = Answers[2];
+                logResult = "PARTIAL  (Reduced Score)";
+                break;
+            case ScoreResult.Failed:
+                success = false;
+                NPC_Manager.instance.curResult = "Not Satisfied";
+                requestTxtSpace.text = Answers[1];
+                logResult = "FAIL  (0 Points)";
+                break;
+        }
+
+        string log = $" - {NPC_Manager.instance.curClient} is {logResult}";
         entry.Add(log);
         logTxt.text = string.Join("\n", entry);
+        OnDeliver?.Invoke();
     }
+
     void ClearLog()
     {
         entry.Clear();
         logTxt.text = string.Empty;
     }
-    public void ResolveClient(bool clientHappy)
-    {
-        if (!isFilling) return;
+    //public void ResolveClient(bool clientHappy)
+    //{
+    //    if (!isFilling) return;
 
-        isFilling = false;
-        success = clientHappy;
-        patienceBar.gameObject.SetActive(false);
+    //    isFilling = false;
+    //    success = clientHappy;
+    //    patienceBar.gameObject.SetActive(false);
 
-        if (success)
-        {
-            requestTxtSpace.text = Answers[2];
-            OnDeliver?.Invoke();
-        }
-        else
-        {
-            TriggerFailure();
-        }
-    }
+    //    if (success)
+    //    {
+    //        requestTxtSpace.text = Answers[2];
+    //        OnDeliver?.Invoke();
+    //    }
+    //    else
+    //    {
+    //        TriggerFailure();
+    //    }
+    //}
     void TriggerFailure()
     {
         isFilling = false;
         patienceBar.gameObject.SetActive(false);
-        requestTxtSpace.text = Answers[1];
-        OnFinishedTimer?.Invoke();
+        ProcessFinalScore(ScoreResult.Failed);
+        //requestTxtSpace.text = Answers[1];
+        //OnFinishedTimer?.Invoke();
     }
     void UpdateGoal()
     {

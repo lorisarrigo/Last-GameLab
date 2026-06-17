@@ -2211,7 +2211,7 @@ MonoBehaviour:
   mainGame: {fileID: 1650102945}
   miniGame: {fileID: 1277089972}
   baseClients: 3
-  clientToAdd: 2
+  clientToAdd: 1
 --- !u!1 &797847420
 GameObject:
   m_ObjectHideFlags: 0
@@ -2712,8 +2712,6 @@ MonoBehaviour:
   - Waiting Request...
   - :(
   - :)
-  names: []
-  history: []
   entry: []
   logTxt: {fileID: 107050618}
   patienceTimer: 10
@@ -3369,11 +3367,20 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 3b6d7a9240eae5344bcacc391f02a16d, type: 2}
   - {fileID: 2100000, guid: a917adb563250fd4bb5bafa205b2308e, type: 2}
   - {fileID: 2100000, guid: b6bcf3828107a0b47aa5fdf2a6c169a6, type: 2}
+  - {fileID: 2100000, guid: 8aab80c9f7bcf164083b9461fba9c75b, type: 2}
+  - {fileID: 2100000, guid: 60ed6b386e52ef7499d31fb6abeecc8b, type: 2}
+  - {fileID: 2100000, guid: 69a3ceacba2e72a4b9a8ddf629cb3397, type: 2}
   Requests:
-  - Cold & festival
-  - Cold & chill
-  - Hot & festival
-  - Hot & chill
+  - A planet with a lot of life
+  - years & beta
+  - cold, present & week
+  - gamma, gods & hot
+  - week & beta
+  - alpha, week, monster & present
+  - tempered, bountyful & months
+  - none, mothths & hot
+  - present & alpha
+  - cold, none, gods & years
   Waypoints:
   - {fileID: 678415144}
   - {fileID: 228072659}
@@ -3381,9 +3388,25 @@ MonoBehaviour:
   speed: 0.5
   curRequest: 
   curClient: 
+  curResult: 
   Ticket: {fileID: 1843210288}
   ticketSpeed: 0.7
   ticketDeskPos: {fileID: 1106976990}
+  hot: 0
+  tempered: 0
+  cold: 0
+  bountyful: 0
+  present: 0
+  none: 0
+  monsters: 0
+  indigenous: 0
+  gods: 0
+  week: 0
+  months: 0
+  years: 0
+  alpha: 0
+  beta: 0
+  gamma: 0
 --- !u!1 &1177521246
 GameObject:
   m_ObjectHideFlags: 0
@@ -4170,7 +4193,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1624095674
 RectTransform:
   m_ObjectHideFlags: 0
