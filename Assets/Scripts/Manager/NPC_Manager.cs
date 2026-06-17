@@ -3,19 +3,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Temperature {None, Hot, Tempered, Cold }
+public enum LifeQuantity {None, Bountyful, Present, Little }
+public enum Population {None, Monster, Indigenous, Gods }
+public enum Permanance {None, Week, Months, Years }
+public enum Sector {None, Alpha, Beta, Gamma }
+
+[System.Serializable]
+public struct PlanetRequirements
+{
+    public Temperature temperature;
+    public LifeQuantity lifeQuantity;
+    public Population population;
+    public Permanance permanance;
+    public Sector sector;
+
+    public PlanetRequirements(Temperature temp = Temperature.None, LifeQuantity lifeQ = LifeQuantity.None, Population pop = Population.None, Permanance per = Permanance.None, Sector sec = Sector.None)
+    {
+        temperature = temp;
+        lifeQuantity = lifeQ;
+        population = pop;
+        permanance = per;
+        sector = sec;
+    }
+}
+
 public class NPC_Manager : MonoBehaviour
 {
+    bool canMove;
+    bool clientResolved;
+    
     [Header("NPC & Requests")]
-    public int clientToday;
+    public int clientToday; 
     public GameObject NPC;
     [SerializeField] List<Material> NPC_Mat = new();
     [SerializeField] List<string> Requests = new();
     [SerializeField] GameObject[] Waypoints;
     [SerializeField] float speed;
-    Vector3 startPos;
 
-    bool canMove;
-    bool clientResolved;
 
     [HideInInspector] public string curRequest;
     [HideInInspector] public string curClient;
@@ -26,11 +51,16 @@ public class NPC_Manager : MonoBehaviour
     [SerializeField] float ticketSpeed;
     [SerializeField] Transform ticketDeskPos;
 
+    [Header("Current Client Requirements")]
+    public PlanetRequirements curRequirements;
+
+    //parameters
+    public List<PlanetRequirements> clientDatabase = new();
+
     //eventi
     public static event Action OnRequest;
     public static event Action OnTimer;
     public static event Action OnAnswer;
-
     public static event Action OnEndDay;
 
     public static NPC_Manager instance;
@@ -42,20 +72,13 @@ public class NPC_Manager : MonoBehaviour
             return;
         }
         instance = this;
-        
-    }
-    void Start()
-    {
-        startPos = Waypoints[0].transform.position;
     }
     private void OnEnable()
     {
-        UI_Manager.OnFinishedTimer += NoPatience;
         UI_Manager.OnDeliver += Delivered;
     }
     private void OnDisable()
     {
-        UI_Manager.OnFinishedTimer -= NoPatience;
         UI_Manager.OnDeliver -= Delivered;
     }
     public void StartDay(int clients)
@@ -78,8 +101,8 @@ public class NPC_Manager : MonoBehaviour
             OnRequest?.Invoke();
 
             yield return new WaitUntil(() => clientResolved);
-            OnAnswer?.Invoke();
-            Ticket.SetActive(false);
+            OnAnswer?.Invoke();         
+            Ticket.SetActive(false);    
 
             if (UI_Manager.instance.success)
             {
@@ -94,6 +117,7 @@ public class NPC_Manager : MonoBehaviour
         }
         OnEndDay?.Invoke();
     }
+
     void RandomClient()
     {
         Renderer npc = NPC.GetComponent<Renderer>();
@@ -107,6 +131,7 @@ public class NPC_Manager : MonoBehaviour
         if(randomNPC<Requests.Count)
         {
             curRequest = Requests[randomNPC];
+            if (randomNPC < clientDatabase.Count) curRequirements = clientDatabase[randomNPC];
         }
     }
     IEnumerator MoveNPC(GameObject startP, GameObject endP)
@@ -137,14 +162,8 @@ public class NPC_Manager : MonoBehaviour
         }
         OnTimer?.Invoke();
     }
-    void NoPatience()
-    {
-        clientResolved = true;
-        curResult ="not satisfied";
-    }
     void Delivered()
     {
         clientResolved = true;
-        curResult = "satisfied";
     }
 }
