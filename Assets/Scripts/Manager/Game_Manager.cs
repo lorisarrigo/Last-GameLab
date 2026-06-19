@@ -15,12 +15,14 @@ public class Game_Manager : MonoBehaviour
     [SerializeField] GameObject Pause_BTN;
     [SerializeField] GameObject mainGame;
     [SerializeField] GameObject miniGame;
+    [SerializeField] GameObject gameOverScreen;
 
     [Header("Day variables")]
-    //public int currentDay;
     public int baseClients;
     public int clientToAdd;
 
+    [Header("Balance")]
+    [SerializeField] GameObject balance_Pannel;
     GameStates maingame = GameStates.Running;
 
     int Difficulty;
@@ -90,18 +92,35 @@ public class Game_Manager : MonoBehaviour
         }
         #endregion
     }
+    public void StartDayBTN()
+    {
+        if (UI_Manager.instance.overallTotal > 0)
+        {
+            //UI_Manager.instance.currentMoney -= UI_Manager.instance.todayExpanses;
+            UI_Manager.instance.currentMoney = UI_Manager.instance.overallTotal;
+            UI_Manager.instance.moneyCounter.text = UI_Manager.instance.currentMoney + " Æ";
+            StartFlow();
+            balance_Pannel.SetActive(false);
+            UI_Manager.instance.todayGains = 0;
+        }
+        else
+        {
+            balance_Pannel.SetActive(false);
+            gameOverScreen.gameObject.SetActive(true);
+        }
+    }
     void StartFlow()
     {
         NPC_Manager.instance.clientToday = baseClients + (UI_Manager.instance.currentDay * clientToAdd);
-        Debug.Log("giorno: " + UI_Manager.instance.currentDay + " con " + NPC_Manager.instance.clientToday + " clienti");
+        //Debug.Log("giorno: " + UI_Manager.instance.currentDay + " con " + NPC_Manager.instance.clientToday + " clienti");
         NPC_Manager.instance.StartDay(NPC_Manager.instance.clientToday);
+
     }
     void EndDay()
     {
-        Debug.Log("Giornata Finita");
+        balance_Pannel.SetActive(true);
         UI_Manager.instance.currentDay++;
         OnDay?.Invoke();
-        StartFlow();
     }
     #region minigame
     public void Translate()

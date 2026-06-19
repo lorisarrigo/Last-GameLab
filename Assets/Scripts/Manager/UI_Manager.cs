@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -13,6 +14,21 @@ public class UI_Manager : MonoBehaviour
     [HideInInspector] public int currentDay;
     [SerializeField] TMP_Text dayCounter;
 
+    public TMP_Text plusMoney;
+
+    public TMP_Text moneyCounter;
+    public int currentMoney;
+
+    [Header("Balance")]
+    public int todayGains; 
+    public int todayExpanses;
+    public int todayTotal; 
+    public int overallTotal; 
+    [SerializeField] TMP_Text todayGains_Txt;
+    [SerializeField] TMP_Text todayExpanses_Txt;
+    [SerializeField] TMP_Text todayTotal_Txt;
+    [SerializeField] TMP_Text overallTotal_Txt;
+
     [Header("Requests")]
     public TMP_Text requestTxtSpace;
     [SerializeField] List<string> Answers = new();
@@ -24,8 +40,8 @@ public class UI_Manager : MonoBehaviour
     [SerializeField] List<PlanetRequirements> planetDatabase = new();
 
     [Header("Patience")]
-    [SerializeField] float patienceTimer;
-    float elapsed = 0;
+    [SerializeField] float maxPatience;
+    float curPatience = 0;
     bool isFilling = false;
     public bool success;
     [SerializeField] Image patienceBar;
@@ -54,6 +70,7 @@ public class UI_Manager : MonoBehaviour
         NPC_Manager.OnRequest += UpdateRequest;
         NPC_Manager.OnTimer += StartTimer;
         Game_Manager.OnDay += UpdateDayCounter;
+        Game_Manager.OnDay += UpdateExpeses;
         Game_Manager.OnDay += ClearLog;
     }
     private void OnDisable()
@@ -62,16 +79,17 @@ public class UI_Manager : MonoBehaviour
         NPC_Manager.OnRequest -= UpdateRequest;
         NPC_Manager.OnTimer -= StartTimer;
         Game_Manager.OnDay -= UpdateDayCounter;
+        Game_Manager.OnDay -= UpdateExpeses;
         Game_Manager.OnDay -= ClearLog;
     }
     private void Update()
     {
-        if (isFilling && elapsed > 0)
+        if (isFilling && curPatience > 0)
         {
-            elapsed -= Time.deltaTime;
-            patienceBar.fillAmount = elapsed / patienceTimer;
-            patienceBarFB.fillAmount = elapsed / patienceTimer;
-            if (elapsed <= 0)
+            curPatience -= Time.deltaTime;
+            patienceBar.fillAmount = curPatience / maxPatience;
+            patienceBarFB.fillAmount = curPatience / maxPatience;
+            if (curPatience <= 0)
             {
                 TriggerFailure();
             }
@@ -81,7 +99,7 @@ public class UI_Manager : MonoBehaviour
     {
         //richiesta corrente
         requestTxtSpace.text = NPC_Manager.instance.curRequest;
-        
+
         //log
         string log = $" - {NPC_Manager.instance.curClient} requested: {NPC_Manager.instance.curRequest}";
         entry.Add(log);
@@ -90,7 +108,7 @@ public class UI_Manager : MonoBehaviour
     void StartTimer()
     {
         success = false;
-        elapsed = patienceTimer;
+        curPatience = maxPatience;
         patienceBar.fillAmount = 1;
         patienceBarFB.fillAmount = 1;
         patienceBar.gameObject.SetActive(true);
@@ -99,7 +117,7 @@ public class UI_Manager : MonoBehaviour
     }
     public void SelectPlanet(int planetIndex)
     {
-        if(planetIndex >= 0 && planetIndex < planetDatabase.Count)
+        if (planetIndex >= 0 && planetIndex < planetDatabase.Count)
         {
             ApplyStampData(planetDatabase[planetIndex]);
         }
@@ -158,32 +176,53 @@ public class UI_Manager : MonoBehaviour
         isFilling = false;
         patienceBar.gameObject.SetActive(false);
         string logResult = "";
+        
 
-        switch(result)
+        float mult = curPatience / (maxPatience / 2);
+        Debug.Log(mult);
+        float Y = 0;
+        int addMoney = 0;
+
+        switch (result)
         {
             case ScoreResult.MaxScore:
                 success = true;
                 NPC_Manager.instance.curResult = "Perfect Evaluation";
+                Y = 100;
+                addMoney = Mathf.RoundToInt(Y * mult);
+
+                StartCoroutine(LerpTransparency(addMoney));
+                
+
+                currentMoney += addMoney;
+                todayGains += addMoney;
                 requestTxtSpace.text = Answers[2];
-                logResult = "PERFECT  (Max Score)";
+                logResult = $"PERFECT  (added Money: {addMoney} Æ, total Money: {currentMoney})";
                 break;
             case ScoreResult.Reduced:
                 success = true;
                 NPC_Manager.instance.curResult = "Partially Satisfied";
+                Y = 50;
+                addMoney = Mathf.RoundToInt(Y * mult);
+
+                StartCoroutine (LerpTransparency(addMoney));
+
+                todayGains += addMoney;
                 requestTxtSpace.text = Answers[2];
-                logResult = "PARTIAL  (Reduced Score)";
+                logResult = $"PARTIAL  (added Money: {addMoney} Æ, total Money: {currentMoney})";
                 break;
             case ScoreResult.Failed:
                 success = false;
                 NPC_Manager.instance.curResult = "Not Satisfied";
                 requestTxtSpace.text = Answers[1];
-                logResult = "FAIL  (0 Points)";
+                logResult = $"FAIL  (added Money: 0 Æ total Money: {currentMoney})";
                 break;
         }
 
         string log = $" - {NPC_Manager.instance.curClient} is {logResult}";
         entry.Add(log);
         logTxt.text = string.Join("\n", entry);
+        moneyCounter.text = currentMoney + " Æ";
         OnDeliver?.Invoke();
     }
 
@@ -208,5 +247,39 @@ public class UI_Manager : MonoBehaviour
             dayCounter.text = "day " + "\n n: 0" + currentDay;
         else
             dayCounter.text = "day " + "\n n: " + currentDay;
+    }
+    void UpdateExpeses()
+    {
+        todayGains_Txt.text = $"today gains Æ: {todayGains} Æ";
+        int curExpenses = todayExpanses + (25 * currentDay);
+        todayExpanses_Txt.text = $"Today expenses: {curExpenses} Æ";
+        todayTotal = todayGains - curExpenses;
+        todayTotal_Txt.text = $"today Total: {todayTotal} Æ";
+        overallTotal = currentMoney - curExpenses;
+        overallTotal_Txt.text = $"overall Total: {overallTotal} Æ";
+    }
+    IEnumerator LerpTransparency(int mon)
+    {
+        plusMoney.text = $"+ {mon} Æ";
+        Color plusMoneyCol = plusMoney.color;
+        
+        plusMoney.gameObject.SetActive(true);
+        plusMoneyCol.a = 1;
+        plusMoney.color = plusMoneyCol;
+
+        float fadeDuration = 1.5f;
+        float timer = 0f;
+
+        while (timer <1)
+        {
+            timer += Time.deltaTime / fadeDuration;
+
+            
+            plusMoneyCol.a = Mathf.Lerp(1, 0, timer);
+
+            plusMoney.color = plusMoneyCol;
+            yield return null;
+        }
+        plusMoney.gameObject.SetActive(false);
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BTN_Manager : MonoBehaviour
 {
@@ -9,6 +10,12 @@ public class BTN_Manager : MonoBehaviour
 
     public static event Action OnPause;
     public static event Action OnResume;
+
+    public void LoadMainGame()
+    {
+        //SceneManager.LoadScene("Level1"); considerando il fatto che verrà usato anche nel mai questa funzione, per il momento usiamo la linea sotto 
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
     public void Pause()
     {
         OnPause?.Invoke();

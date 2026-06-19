@@ -32,8 +32,9 @@ public class NPC_Manager : MonoBehaviour
 {
     bool canMove;
     bool clientResolved;
-    
+
     [Header("NPC & Requests")]
+    //public bool DayON;
     public int clientToday; 
     public GameObject NPC;
     [SerializeField] List<Material> NPC_Mat = new();
@@ -73,6 +74,7 @@ public class NPC_Manager : MonoBehaviour
         }
         instance = this;
     }
+
     private void OnEnable()
     {
         UI_Manager.OnDeliver += Delivered;
