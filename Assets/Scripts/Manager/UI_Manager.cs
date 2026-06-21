@@ -179,7 +179,6 @@ public class UI_Manager : MonoBehaviour
         
 
         float mult = curPatience / (maxPatience / 2);
-        Debug.Log(mult);
         float Y = 0;
         int addMoney = 0;
 
@@ -197,7 +196,7 @@ public class UI_Manager : MonoBehaviour
                 currentMoney += addMoney;
                 todayGains += addMoney;
                 requestTxtSpace.text = Answers[2];
-                logResult = $"PERFECT  (added Money: {addMoney} Æ, total Money: {currentMoney})";
+                logResult = $"PERFECT  (added Money: {addMoney} Æ, total Money: {currentMoney} Æ)";
                 break;
             case ScoreResult.Reduced:
                 success = true;
@@ -209,13 +208,13 @@ public class UI_Manager : MonoBehaviour
 
                 todayGains += addMoney;
                 requestTxtSpace.text = Answers[2];
-                logResult = $"PARTIAL  (added Money: {addMoney} Æ, total Money: {currentMoney})";
+                logResult = $"PARTIAL  (added Money: {addMoney} Æ, total Money: {currentMoney} Æ)";
                 break;
             case ScoreResult.Failed:
                 success = false;
                 NPC_Manager.instance.curResult = "Not Satisfied";
                 requestTxtSpace.text = Answers[1];
-                logResult = $"FAIL  (added Money: 0 Æ total Money: {currentMoney})";
+                logResult = $"FAIL  (added Money: 0 Æ total Money: {currentMoney} Æ)";
                 break;
         }
 
@@ -270,7 +269,7 @@ public class UI_Manager : MonoBehaviour
         float fadeDuration = 1.5f;
         float timer = 0f;
 
-        while (timer <1)
+        while (timer < 1)
         {
             timer += Time.deltaTime / fadeDuration;
 

@@ -1,13 +1,7 @@
 using System;
 using UnityEngine;
 
-public enum GameStates
-{
-    Flapping,
-    MinigameGO,
-    Running,
-    Paused
-}
+public enum GameStates { Flapping, MinigameGO, Running, Paused }
 public class Game_Manager : MonoBehaviour
 {
     [Header("Things to activate/deactivate")]
@@ -96,9 +90,14 @@ public class Game_Manager : MonoBehaviour
     {
         if (UI_Manager.instance.overallTotal > 0)
         {
-            //UI_Manager.instance.currentMoney -= UI_Manager.instance.todayExpanses;
             UI_Manager.instance.currentMoney = UI_Manager.instance.overallTotal;
             UI_Manager.instance.moneyCounter.text = UI_Manager.instance.currentMoney + " Æ";
+            
+            if(Save_Manager.instance != null)
+            {
+                Save_Manager.instance.SaveGame();
+            }
+            
             StartFlow();
             balance_Pannel.SetActive(false);
             UI_Manager.instance.todayGains = 0;
@@ -106,15 +105,13 @@ public class Game_Manager : MonoBehaviour
         else
         {
             balance_Pannel.SetActive(false);
-            gameOverScreen.gameObject.SetActive(true);
+            gameOverScreen.SetActive(true);
         }
     }
     void StartFlow()
     {
         NPC_Manager.instance.clientToday = baseClients + (UI_Manager.instance.currentDay * clientToAdd);
-        //Debug.Log("giorno: " + UI_Manager.instance.currentDay + " con " + NPC_Manager.instance.clientToday + " clienti");
         NPC_Manager.instance.StartDay(NPC_Manager.instance.clientToday);
-
     }
     void EndDay()
     {
