@@ -865,7 +865,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 143789300}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5499358}
+        m_TargetAssemblyTypeName: BTN_Manager, Assembly-CSharp
+        m_MethodName: MainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &143789300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2116,8 +2128,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 917159150}
-        m_TargetAssemblyTypeName: UI_Manager, Assembly-CSharp
+      - m_Target: {fileID: 2003966418}
+        m_TargetAssemblyTypeName: Jew_Manager, Assembly-CSharp
         m_MethodName: SelectPlanet
         m_Mode: 3
         m_Arguments:
@@ -3474,12 +3486,44 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6603288544238880309, guid: 78a8fcf60c0300b4abbb73c7fa116ba5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6603288544238880309, guid: 78a8fcf60c0300b4abbb73c7fa116ba5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6603288544238880309, guid: 78a8fcf60c0300b4abbb73c7fa116ba5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5499358}
     - target: {fileID: 6603288544238880309, guid: 78a8fcf60c0300b4abbb73c7fa116ba5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1456399100}
+    - target: {fileID: 6603288544238880309, guid: 78a8fcf60c0300b4abbb73c7fa116ba5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6603288544238880309, guid: 78a8fcf60c0300b4abbb73c7fa116ba5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Resume
+      objectReference: {fileID: 0}
+    - target: {fileID: 6603288544238880309, guid: 78a8fcf60c0300b4abbb73c7fa116ba5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_isStatic
+      objectReference: {fileID: 0}
+    - target: {fileID: 6603288544238880309, guid: 78a8fcf60c0300b4abbb73c7fa116ba5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6603288544238880309, guid: 78a8fcf60c0300b4abbb73c7fa116ba5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6603288544238880309, guid: 78a8fcf60c0300b4abbb73c7fa116ba5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7100801914329528816, guid: 78a8fcf60c0300b4abbb73c7fa116ba5, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4066,6 +4110,7 @@ MonoBehaviour:
   mainGame: {fileID: 1650102945}
   miniGame: {fileID: 1277089972}
   gameOverScreen: {fileID: 1179092665}
+  currentDay: 0
   baseClients: 3
   clientToAdd: 1
   balance_Pannel: {fileID: 629955082}
@@ -4100,6 +4145,7 @@ Transform:
   m_Children:
   - {fileID: 781823319}
   - {fileID: 5499359}
+  - {fileID: 2003966417}
   - {fileID: 917159149}
   - {fileID: 1025689759}
   - {fileID: 1157983173}
@@ -4193,6 +4239,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: BTN_Manager, Assembly-CSharp
         m_MethodName: Pause
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1456399100}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4654,8 +4712,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 917159150}
-        m_TargetAssemblyTypeName: UI_Manager, Assembly-CSharp
+      - m_Target: {fileID: 2003966418}
+        m_TargetAssemblyTypeName: Jew_Manager, Assembly-CSharp
         m_MethodName: SelectPlanet
         m_Mode: 3
         m_Arguments:
@@ -4928,16 +4986,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc20a8c89cc8ba1428a7f559193a5e63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_Manager
-  result: 0
-  currentDay: 0
   dayCounter: {fileID: 2031568860}
-  plusMoney: {fileID: 326964001}
   moneyCounter: {fileID: 1056062823}
-  currentMoney: 100
-  todayGains: 0
-  todayExpanses: 125
-  todayTotal: 0
-  overallTotal: 0
+  plusMoney: {fileID: 326964001}
   todayGains_Txt: {fileID: 936198394}
   todayExpanses_Txt: {fileID: 429077924}
   todayTotal_Txt: {fileID: 1922967205}
@@ -4949,6 +5000,17 @@ MonoBehaviour:
   - :)
   entry: []
   logTxt: {fileID: 107050618}
+  maxPatience: 60
+  patienceBar: {fileID: 1005524617}
+  patienceBarFB: {fileID: 1745935820}
+  success: 0
+  result: 0
+  currentDay: 0
+  currentMoney: 100
+  todayGains: 0
+  todayExpanses: 125
+  todayTotal: 0
+  overallTotal: 0
   planetDatabase:
   - temperature: 1
     lifeQuantity: 3
@@ -5000,17 +5062,12 @@ MonoBehaviour:
     population: 1
     permanance: 2
     sector: 3
-  maxPatience: 60
-  success: 0
-  patienceBar: {fileID: 1005524617}
-  patienceBarFB: {fileID: 1745935820}
   selPlanetData:
     temperature: 0
     lifeQuantity: 0
     population: 0
     permanance: 0
     sector: 0
-  isStamped: 0
 --- !u!1 &936198392
 GameObject:
   m_ObjectHideFlags: 0
@@ -5462,7 +5519,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5499358}
         m_TargetAssemblyTypeName: BTN_Manager, Assembly-CSharp
-        m_MethodName: LoadMainGame
+        m_MethodName: Retry
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6024,8 +6081,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 917159150}
-        m_TargetAssemblyTypeName: UI_Manager, Assembly-CSharp
+      - m_Target: {fileID: 2003966418}
+        m_TargetAssemblyTypeName: Jew_Manager, Assembly-CSharp
         m_MethodName: SelectPlanet
         m_Mode: 3
         m_Arguments:
@@ -6168,8 +6225,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 917159150}
-        m_TargetAssemblyTypeName: UI_Manager, Assembly-CSharp
+      - m_Target: {fileID: 2003966418}
+        m_TargetAssemblyTypeName: Jew_Manager, Assembly-CSharp
         m_MethodName: SelectPlanet
         m_Mode: 3
         m_Arguments:
@@ -9308,8 +9365,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 917159150}
-        m_TargetAssemblyTypeName: UI_Manager, Assembly-CSharp
+      - m_Target: {fileID: 2003966418}
+        m_TargetAssemblyTypeName: Jew_Manager, Assembly-CSharp
         m_MethodName: SelectPlanet
         m_Mode: 3
         m_Arguments:
@@ -9588,7 +9645,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 564238034}
-  - {fileID: 1682376149}
   - {fileID: 646319278}
   - {fileID: 1003134984}
   - {fileID: 777999456}
@@ -9746,8 +9802,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 917159150}
-        m_TargetAssemblyTypeName: UI_Manager, Assembly-CSharp
+      - m_Target: {fileID: 2003966418}
+        m_TargetAssemblyTypeName: Jew_Manager, Assembly-CSharp
         m_MethodName: SelectPlanet
         m_Mode: 3
         m_Arguments:
@@ -10226,8 +10282,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 917159150}
-        m_TargetAssemblyTypeName: UI_Manager, Assembly-CSharp
+      - m_Target: {fileID: 2003966418}
+        m_TargetAssemblyTypeName: Jew_Manager, Assembly-CSharp
         m_MethodName: SelectPlanet
         m_Mode: 3
         m_Arguments:
@@ -10604,81 +10660,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5504a76a554ac6e4e93814fd9729683b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bird_Controller
---- !u!1 &1682376148
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1682376149}
-  - component: {fileID: 1682376151}
-  - component: {fileID: 1682376150}
-  m_Layer: 5
-  m_Name: Image (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &1682376149
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1682376148}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1614876651}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1682376150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1682376148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.8431373, g: 0.8431373, b: 0.8431373, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 87bdd357125b9dd4e9fd42d6857daaa0, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1682376151
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1682376148}
-  m_CullTransparentMesh: 1
 --- !u!1 &1745935818
 GameObject:
   m_ObjectHideFlags: 0
@@ -11121,8 +11102,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 917159150}
-        m_TargetAssemblyTypeName: UI_Manager, Assembly-CSharp
+      - m_Target: {fileID: 2003966418}
+        m_TargetAssemblyTypeName: Jew_Manager, Assembly-CSharp
         m_MethodName: SelectPlanet
         m_Mode: 3
         m_Arguments:
@@ -12396,6 +12377,106 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1066b8f2c39a3ee4ea5b02c1331719c8, type: 3}
+--- !u!1 &2003966416
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2003966417}
+  - component: {fileID: 2003966418}
+  m_Layer: 0
+  m_Name: Economy_manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2003966417
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003966416}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 797847421}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2003966418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003966416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82d996c7b767ee140ac5a258f08d51e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Jew_Manager
+  currentMoney: 100
+  todayGains: 0
+  todayExpanses: 125
+  todayTotal: 0
+  overallTotal: 0
+  planetDB:
+  - temperature: 1
+    lifeQuantity: 3
+    population: 0
+    permanance: 2
+    sector: 1
+  - temperature: 1
+    lifeQuantity: 2
+    population: 0
+    permanance: 2
+    sector: 1
+  - temperature: 1
+    lifeQuantity: 2
+    population: 1
+    permanance: 1
+    sector: 1
+  - temperature: 2
+    lifeQuantity: 1
+    population: 0
+    permanance: 2
+    sector: 2
+  - temperature: 2
+    lifeQuantity: 3
+    population: 3
+    permanance: 1
+    sector: 2
+  - temperature: 2
+    lifeQuantity: 1
+    population: 1
+    permanance: 3
+    sector: 2
+  - temperature: 3
+    lifeQuantity: 3
+    population: 3
+    permanance: 3
+    sector: 2
+  - temperature: 3
+    lifeQuantity: 2
+    population: 1
+    permanance: 1
+    sector: 3
+  - temperature: 1
+    lifeQuantity: 3
+    population: 3
+    permanance: 3
+    sector: 3
+  - temperature: 3
+    lifeQuantity: 1
+    population: 1
+    permanance: 2
+    sector: 3
 --- !u!1 &2031568858
 GameObject:
   m_ObjectHideFlags: 0
@@ -12910,8 +12991,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 917159150}
-        m_TargetAssemblyTypeName: UI_Manager, Assembly-CSharp
+      - m_Target: {fileID: 2003966418}
+        m_TargetAssemblyTypeName: Jew_Manager, Assembly-CSharp
         m_MethodName: SelectPlanet
         m_Mode: 3
         m_Arguments:
@@ -13054,8 +13135,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 917159150}
-        m_TargetAssemblyTypeName: UI_Manager, Assembly-CSharp
+      - m_Target: {fileID: 2003966418}
+        m_TargetAssemblyTypeName: Jew_Manager, Assembly-CSharp
         m_MethodName: SelectPlanet
         m_Mode: 3
         m_Arguments:

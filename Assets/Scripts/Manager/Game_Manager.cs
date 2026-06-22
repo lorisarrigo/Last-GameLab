@@ -12,6 +12,7 @@ public class Game_Manager : MonoBehaviour
     [SerializeField] GameObject gameOverScreen;
 
     [Header("Day variables")]
+    public int currentDay;
     public int baseClients;
     public int clientToAdd;
 
@@ -24,6 +25,14 @@ public class Game_Manager : MonoBehaviour
     //eventi
     public static event Action OnPoint;
     public static event Action OnDay;
+
+    public static Game_Manager instance;
+
+    private void Awake()
+    {
+        if (instance != null) { Destroy(gameObject); return; }
+        instance = this;
+    }
     private void Start()
     {
         StartFlow();
@@ -50,12 +59,8 @@ public class Game_Manager : MonoBehaviour
         #region Game States
         switch (maingame)
         {
-            case GameStates.Running:
-                Time.timeScale = 1;
-                break;
-            case GameStates.Paused:
-                Time.timeScale = 0;
-                break;
+            case GameStates.Running: Time.timeScale = 1; break;
+            case GameStates.Paused: Time.timeScale = 0; break;
             case GameStates.Flapping:
                 mainGame.SetActive(false);
                 miniGame.SetActive(true);
@@ -68,30 +73,13 @@ public class Game_Manager : MonoBehaviour
                 break;
         }
         #endregion
-        #region Minigame Difficulty
-        switch (Difficulty)
-        {
-            case 0:
-                FB_Manager.instance.Goal = FB_Manager.instance.goal1;
-                OnPoint?.Invoke();
-                break;
-            case 1:
-                FB_Manager.instance.Goal = FB_Manager.instance.goal2;
-                OnPoint?.Invoke();
-                break;
-            case 2:
-                FB_Manager.instance.Goal = FB_Manager.instance.goal3;
-                OnPoint?.Invoke();
-                break;
-        }
-        #endregion
     }
     public void StartDayBTN()
     {
-        if (UI_Manager.instance.overallTotal > 0)
+        if (Jew_Manager.instance.overallTotal > 0)
         {
-            UI_Manager.instance.currentMoney = UI_Manager.instance.overallTotal;
-            UI_Manager.instance.moneyCounter.text = UI_Manager.instance.currentMoney + " Æ";
+            Jew_Manager.instance.currentMoney = Jew_Manager.instance.overallTotal;
+            UI_Manager.instance.moneyCounter.text = Jew_Manager.instance.currentMoney + " Æ";
 
             if (Save_Manager.instance != null)
             {
@@ -100,7 +88,7 @@ public class Game_Manager : MonoBehaviour
 
             StartFlow();
             balance_Pannel.SetActive(false);
-            UI_Manager.instance.todayGains = 0;
+            Jew_Manager.instance.ResetDailyGains();
         }
         else
         {
@@ -110,53 +98,50 @@ public class Game_Manager : MonoBehaviour
     }
     void StartFlow()
     {
-        NPC_Manager.instance.clientToday = baseClients + (UI_Manager.instance.currentDay * clientToAdd);
+        NPC_Manager.instance.clientToday = baseClients + (currentDay * clientToAdd);
         NPC_Manager.instance.StartDay(NPC_Manager.instance.clientToday);
     }
     void EndDay()
     {
         balance_Pannel.SetActive(true);
-        UI_Manager.instance.currentDay++;
+        currentDay++;
+        Jew_Manager.instance.CalculateEndDayExpanses(currentDay);
         OnDay?.Invoke();
-        //if (Save_Manager.instance != null)
-        //{
-        //    Save_Manager.instance.SaveGame();
-        //}
     }
     #region minigame
     public void Translate()
     {
         maingame = GameStates.Flapping;
         Difficulty = UnityEngine.Random.Range(0, 3);
+        switch (Difficulty)
+        {
+            case 0: FB_Manager.instance.Goal = FB_Manager.instance.goal1; break;
+            case 1: FB_Manager.instance.Goal = FB_Manager.instance.goal2; break;
+            case 2: FB_Manager.instance.Goal = FB_Manager.instance.goal3; break;
+        }
+        OnPoint?.Invoke();
     }
     void UpdateScore()
     {
         FB_Manager.instance.currentScore++;
         OnPoint?.Invoke();
-        if (FB_Manager.instance.currentScore == FB_Manager.instance.Goal)
-        {
-            WinMinigame();
-        }
+        if (FB_Manager.instance.currentScore == FB_Manager.instance.Goal) WinMinigame();
     }
     void GameOverMinigame()
     {
-        maingame = GameStates.MinigameGO;
-        FB_Manager.instance.currentScore = 0;
-        FB_Manager.instance.Goal = 0;
+        ResetMG();
     }
     void WinMinigame()
     {
+        ResetMG();
+    }
+    void ResetMG()
+    {
         maingame = GameStates.MinigameGO;
         FB_Manager.instance.currentScore = 0;
         FB_Manager.instance.Goal = 0;
     }
-#endregion
-    void PauseGame()
-    {
-        maingame = GameStates.Paused;
-    }
-    void ResumeGame()
-    {
-        maingame = GameStates.Running;
-    }
+    #endregion
+    void PauseGame() { maingame = GameStates.Paused; }
+    void ResumeGame() { maingame = GameStates.Running; }
 }

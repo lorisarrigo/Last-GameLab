@@ -53,8 +53,6 @@ public class NPC_Manager : MonoBehaviour
 
     [Header("Current Client Requirements")]
     public PlanetRequirements curRequirements;
-
-    //parameters
     public List<PlanetRequirements> clientDatabase = new();
 
     //eventi
@@ -66,30 +64,17 @@ public class NPC_Manager : MonoBehaviour
     public static NPC_Manager instance;
     void Awake()
     {
-        if (instance != null)
-        {
-            Destroy(this);
-            return;
-        }
+        if (instance != null) { Destroy(this); return; }
         instance = this;
     }
 
-    private void OnEnable()
-    {
-        UI_Manager.OnDeliver += Delivered;
-    }
-    private void OnDisable()
-    {
-        UI_Manager.OnDeliver -= Delivered;
-    }
-    public void StartDay(int clients)
-    {
-        StartCoroutine(DailyLoop(clients));
-    }
+    private void OnEnable() { UI_Manager.OnDeliver += Delivered; }
+    private void OnDisable() { UI_Manager.OnDeliver -= Delivered; }
+    public void StartDay(int clients) { StartCoroutine(DailyLoop(clients)); }
 
     IEnumerator DailyLoop(int nClients)
     {
-        while (nClients >0)
+        while (nClients > 0)
         {
             RandomClient();
             canMove = false;
@@ -106,7 +91,6 @@ public class NPC_Manager : MonoBehaviour
             Ticket.SetActive(false);    
 
             if (UI_Manager.instance.success) StartCoroutine(MoveNPC(Waypoints[1], Waypoints[2]));
-            
             else StartCoroutine(MoveNPC(Waypoints[1], Waypoints[0]));
 
             yield return new WaitForSeconds(3);
@@ -157,8 +141,5 @@ public class NPC_Manager : MonoBehaviour
         }
         OnTimer?.Invoke();
     }
-    void Delivered()
-    {
-        clientResolved = true;
-    }
+    void Delivered() { clientResolved = true; }
 }

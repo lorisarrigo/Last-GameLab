@@ -21,26 +21,13 @@ public class BTN_Manager : MonoBehaviour
     }
     public void NewGameBtn()
     {
-        if(Save_Manager.instance != null)
-        {
-            Save_Manager.instance.NewGame();
-        }
-    }
-    public void LoadMainGame()
-    {
-        //SceneManager.LoadScene("Level1"); considerando il fatto che verrà usato anche nel mai questa funzione, per il momento usiamo la linea sotto 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if(Save_Manager.instance != null) Save_Manager.instance.NewGame();
     }
     public void Pause()
     {
         OnPause?.Invoke();
         MainGameCanva.SetActive(false);
         PauseMenu.SetActive(true);
-        //if (LoadBtn != null)
-        //{
-        //    bool haSave = PlayerPrefs.GetInt("HasSavedData", 0) == 1;
-        //    LoadBtn.interactable = haSave;
-        //}
         CheckLoadButton();
     }
     public void Resume()
@@ -51,10 +38,7 @@ public class BTN_Manager : MonoBehaviour
     }
     public void LoadGame()
     {
-        if (Save_Manager.instance != null)
-        {
-            Save_Manager.instance.LoadGame();
-        }
+        if (Save_Manager.instance != null) Save_Manager.instance.LoadGame();
     }
     void CheckLoadButton()
     {
@@ -64,12 +48,7 @@ public class BTN_Manager : MonoBehaviour
             LoadBtn.interactable = hasSave;
         }
     }
-    public void MainMenu()
-    {
-        SceneManager.LoadScene(mainMenuScene);
-    }
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
+    public void Retry() { SceneManager.LoadScene(SceneManager.GetActiveScene().name); }
+    public void MainMenu() { SceneManager.LoadScene(mainMenuScene); }
+    public void QuitGame() { Application.Quit(); }
 }
