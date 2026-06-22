@@ -1,13 +1,7 @@
 using System;
 using UnityEngine;
 
-public enum GameStates
-{
-    Flapping,
-    MinigameGO,
-    Running,
-    Paused
-}
+public enum GameStates { Flapping, MinigameGO, Running, Paused }
 public class Game_Manager : MonoBehaviour
 {
     [Header("Things to activate/deactivate")]
@@ -15,19 +9,31 @@ public class Game_Manager : MonoBehaviour
     [SerializeField] GameObject Pause_BTN;
     [SerializeField] GameObject mainGame;
     [SerializeField] GameObject miniGame;
+    [SerializeField] GameObject gameOverScreen;
 
     [Header("Day variables")]
-    //public int currentDay;
+    public int currentDay;
     public int baseClients;
     public int clientToAdd;
 
+    [Header("Balance")]
+    [SerializeField] GameObject balance_Pannel;
     GameStates maingame = GameStates.Running;
 
     int Difficulty;
 
     //eventi
-    public static event Action OnPoint;
     public static event Action OnDay;
+    public static event Action OnPoint;
+    public static event Action OnRefreshUI;
+
+    public static Game_Manager instance;
+
+    private void Awake()
+    {
+        if (instance != null) { Destroy(gameObject); return; }
+        instance = this;
+    }
     private void Start()
     {
         StartFlow();
@@ -54,12 +60,8 @@ public class Game_Manager : MonoBehaviour
         #region Game States
         switch (maingame)
         {
-            case GameStates.Running:
-                Time.timeScale = 1;
-                break;
-            case GameStates.Paused:
-                Time.timeScale = 0;
-                break;
+            case GameStates.Running: Time.timeScale = 1; break;
+            case GameStates.Paused: Time.timeScale = 0; break;
             case GameStates.Flapping:
                 mainGame.SetActive(false);
                 miniGame.SetActive(true);
@@ -72,71 +74,76 @@ public class Game_Manager : MonoBehaviour
                 break;
         }
         #endregion
-        #region Minigame Difficulty
-        switch (Difficulty)
+    }
+    public void StartDayBTN()
+    {
+        if (Jew_Manager.instance.overallTotal > 0)
         {
-            case 0:
-                FB_Manager.instance.Goal = FB_Manager.instance.goal1;
-                OnPoint?.Invoke();
-                break;
-            case 1:
-                FB_Manager.instance.Goal = FB_Manager.instance.goal2;
-                OnPoint?.Invoke();
-                break;
-            case 2:
-                FB_Manager.instance.Goal = FB_Manager.instance.goal3;
-                OnPoint?.Invoke();
-                break;
+            Jew_Manager.instance.currentMoney = Jew_Manager.instance.overallTotal;
+            UI_Manager.instance.moneyCounter.text = Jew_Manager.instance.currentMoney + " Æ";
+
+            if (Save_Manager.instance != null)
+            {
+                Save_Manager.instance.SaveGame();
+            }
+
+            StartFlow();
+            balance_Pannel.SetActive(false);
+            Jew_Manager.instance.ResetDailyGains();
         }
-        #endregion
+        else
+        {
+            balance_Pannel.SetActive(false);
+            gameOverScreen.SetActive(true);
+        }
     }
     void StartFlow()
     {
-        NPC_Manager.instance.clientToday = baseClients + (UI_Manager.instance.currentDay * clientToAdd);
-        Debug.Log("giorno: " + UI_Manager.instance.currentDay + " con " + NPC_Manager.instance.clientToday + " clienti");
+        OnDay?.Invoke();
+        NPC_Manager.instance.clientToday = baseClients + (currentDay * clientToAdd);
         NPC_Manager.instance.StartDay(NPC_Manager.instance.clientToday);
     }
     void EndDay()
     {
-        Debug.Log("Giornata Finita");
-        UI_Manager.instance.currentDay++;
-        OnDay?.Invoke();
-        StartFlow();
+        balance_Pannel.SetActive(true);
+        currentDay++;
+        Jew_Manager.instance.CalculateEndDayExpanses(currentDay);
+        OnRefreshUI?.Invoke();
     }
     #region minigame
     public void Translate()
     {
         maingame = GameStates.Flapping;
         Difficulty = UnityEngine.Random.Range(0, 3);
+        switch (Difficulty)
+        {
+            case 0: FB_Manager.instance.Goal = FB_Manager.instance.goal1; break;
+            case 1: FB_Manager.instance.Goal = FB_Manager.instance.goal2; break;
+            case 2: FB_Manager.instance.Goal = FB_Manager.instance.goal3; break;
+        }
+        OnPoint?.Invoke();
     }
     void UpdateScore()
     {
         FB_Manager.instance.currentScore++;
         OnPoint?.Invoke();
-        if (FB_Manager.instance.currentScore == FB_Manager.instance.Goal)
-        {
-            WinMinigame();
-        }
+        if (FB_Manager.instance.currentScore == FB_Manager.instance.Goal) WinMinigame();
     }
     void GameOverMinigame()
     {
-        maingame = GameStates.MinigameGO;
-        FB_Manager.instance.currentScore = 0;
-        FB_Manager.instance.Goal = 0;
+        ResetMG();
     }
     void WinMinigame()
     {
+        ResetMG();
+    }
+    void ResetMG()
+    {
         maingame = GameStates.MinigameGO;
         FB_Manager.instance.currentScore = 0;
         FB_Manager.instance.Goal = 0;
     }
-#endregion
-    void PauseGame()
-    {
-        maingame = GameStates.Paused;
-    }
-    void ResumeGame()
-    {
-        maingame = GameStates.Running;
-    }
+    #endregion
+    void PauseGame() { maingame = GameStates.Paused; }
+    void ResumeGame() { maingame = GameStates.Running; }
 }
