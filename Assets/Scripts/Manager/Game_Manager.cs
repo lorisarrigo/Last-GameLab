@@ -23,8 +23,9 @@ public class Game_Manager : MonoBehaviour
     int Difficulty;
 
     //eventi
-    public static event Action OnPoint;
     public static event Action OnDay;
+    public static event Action OnPoint;
+    public static event Action OnRefreshUI;
 
     public static Game_Manager instance;
 
@@ -98,6 +99,7 @@ public class Game_Manager : MonoBehaviour
     }
     void StartFlow()
     {
+        OnDay?.Invoke();
         NPC_Manager.instance.clientToday = baseClients + (currentDay * clientToAdd);
         NPC_Manager.instance.StartDay(NPC_Manager.instance.clientToday);
     }
@@ -106,7 +108,7 @@ public class Game_Manager : MonoBehaviour
         balance_Pannel.SetActive(true);
         currentDay++;
         Jew_Manager.instance.CalculateEndDayExpanses(currentDay);
-        OnDay?.Invoke();
+        OnRefreshUI?.Invoke();
     }
     #region minigame
     public void Translate()

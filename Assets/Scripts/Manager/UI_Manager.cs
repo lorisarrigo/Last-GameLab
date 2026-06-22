@@ -10,6 +10,7 @@ public enum ScoreResult { Failed, Reduced, MaxScore }
 public class UI_Manager : MonoBehaviour
 {
     [Header("Day & Economy Visuals")]
+    int day;
     [SerializeField] TMP_Text dayCounter;
     public TMP_Text moneyCounter;
     public TMP_Text plusMoney;
@@ -73,17 +74,19 @@ public class UI_Manager : MonoBehaviour
     }
     private void OnEnable()
     {
+        Game_Manager.OnDay += UpdateDate; 
         Game_Manager.OnPoint += UpdateGoal;
         NPC_Manager.OnRequest += UpdateRequest;
         NPC_Manager.OnTimer += StartTimer;
-        Game_Manager.OnDay += RefreshUIFields;
+        Game_Manager.OnRefreshUI += RefreshUIFields;
     }
     private void OnDisable()
     {
+        Game_Manager.OnDay -= UpdateDate; 
         Game_Manager.OnPoint -= UpdateGoal;
         NPC_Manager.OnRequest -= UpdateRequest;
         NPC_Manager.OnTimer -= StartTimer;
-        Game_Manager.OnDay -= RefreshUIFields;
+        Game_Manager.OnRefreshUI -= RefreshUIFields;
     }
     private void Update()
     {
@@ -97,6 +100,11 @@ public class UI_Manager : MonoBehaviour
         }
     }
     public float GetPatienceMultiplier() { return curPatience / (maxPatience / 2); }
+    void UpdateDate()
+    {
+        day = Game_Manager.instance.currentDay;
+        dayCounter.text = "day \n n: " + (day < 10 ? "0" : "") + day;
+    }
     void UpdateRequest()
     {
         //richiesta corrente
@@ -134,10 +142,6 @@ public class UI_Manager : MonoBehaviour
 
     void RefreshUIFields()
     {
-        //giorno corrente
-        int day = Game_Manager.instance.currentDay;
-        dayCounter.text = "day \n n: " + (day < 10 ? "0" : "") + day;
-
         //balance scrren
         todayGains_Txt.text = $"today gains Æ: {Jew_Manager.instance.todayGains} Æ";
         int totalExpanses = Jew_Manager.instance.todayExpanses + (25 * day);

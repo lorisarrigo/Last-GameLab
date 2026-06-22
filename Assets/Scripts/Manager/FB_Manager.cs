@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class FB_Manager : MonoBehaviour
 {
+    
+
     [Header("Bird Things")]
     [Tooltip("the bird")]
     public GameObject bird;

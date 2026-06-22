@@ -11,7 +11,7 @@ public class Jew_Manager : MonoBehaviour
     public int overallTotal;
 
     [Header("Planets Database")]
-    [SerializeField] public List<PlanetRequirements> planetDB = new();
+    [SerializeField] List<PlanetRequirements> planetDB = new();
 
     PlanetRequirements selPlanetData;
     bool isStamped = false;

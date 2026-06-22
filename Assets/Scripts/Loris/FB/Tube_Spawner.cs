@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Tube_Spawner : MonoBehaviour
 {
+    float cumulativeOffset;
     float timer;
 
     Camera mainCamera;
@@ -13,6 +14,10 @@ public class Tube_Spawner : MonoBehaviour
         mainCamera = Camera.main;
         SetSpawnPos();
         CreatePool();
+    }
+    private void OnEnable()
+    {
+        cumulativeOffset = 0;
     }
     void Update()
     {
@@ -31,8 +36,12 @@ public class Tube_Spawner : MonoBehaviour
         }
         Tube_Controller tube = tubePool.Dequeue();
 
-        float randomY = Random.Range(-FB_Manager.instance.heightOffset, FB_Manager.instance.heightOffset);
+        float randomY = Random.Range(cumulativeOffset + -FB_Manager.instance.heightOffset, cumulativeOffset + FB_Manager.instance.heightOffset);
+        cumulativeOffset = randomY;
+        if (randomY > 3) randomY = 3;
+        if (randomY < -3) randomY = -3; 
         tube.transform.position = transform.position + new Vector3(0, randomY);
+
         tube.gameObject.SetActive(true);
     }
     void SetSpawnPos()
