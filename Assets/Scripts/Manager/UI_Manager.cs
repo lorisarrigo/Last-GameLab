@@ -33,6 +33,7 @@ public class UI_Manager : MonoBehaviour
 
     [SerializeField] PlanetRequirements selPlanetData;
     [SerializeField] bool isStamped = false;
+    public GameObject Timbro;
 
     //eventi
     public static event Action OnDeliver;
@@ -101,7 +102,7 @@ public class UI_Manager : MonoBehaviour
     {
         if(planetIndex >= 0 && planetIndex < planetDatabase.Count)
         {
-            ApplyStampData(planetDatabase[planetIndex]);
+           //ApplyStampData(planetDatabase[planetIndex]);
         }
     }
     public void ApplyStampData(PlanetRequirements planetData)
@@ -209,4 +210,5 @@ public class UI_Manager : MonoBehaviour
         else
             dayCounter.text = "day " + "\n n: " + currentDay;
     }
+    
 }
