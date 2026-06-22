@@ -6752,12 +6752,12 @@ MonoBehaviour:
   NPC: {fileID: 1650387364}
   NPC_Sprite:
   - {fileID: 21300000, guid: 7c74489cdaf5bd643905593582172676, type: 3}
-  - {fileID: 21300000, guid: a8a8d056e0b1c97478bfe6239931b257, type: 3}
+  - {fileID: 21300000, guid: 1a2fb0658786d5646bfec1943747a3bf, type: 3}
   - {fileID: 21300000, guid: ef2df297f5e49b04ea3bafde22d1fee9, type: 3}
   - {fileID: 21300000, guid: 45f25a8c914821b43a0b797815e35382, type: 3}
   - {fileID: 21300000, guid: c1c02d8f5e4fa244884aa54ac65082be, type: 3}
   - {fileID: 21300000, guid: 7726cfaf387516e47bcb7a538cf50801, type: 3}
-  - {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 21300000, guid: d82fc878db1cb934dbc83c7d3cb7820b, type: 3}
   - {fileID: 21300000, guid: deee7987ef523b846804924bb8d0327e, type: 3}
   - {fileID: 21300000, guid: 6dcc0a4b10ef249448613f5383422e8f, type: 3}
   - {fileID: 21300000, guid: 7f3c1407d41db984391f2ca90ffccb5d, type: 3}

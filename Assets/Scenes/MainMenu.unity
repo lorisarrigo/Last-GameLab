@@ -202,8 +202,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 883004133}
-        m_TargetAssemblyTypeName: Save_Manager, Assembly-CSharp
+      - m_Target: {fileID: 292802418}
+        m_TargetAssemblyTypeName: BTN_Manager, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
@@ -379,6 +379,55 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &292802416
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 292802417}
+  - component: {fileID: 292802418}
+  m_Layer: 0
+  m_Name: BTN_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &292802417
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292802416}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 532067010}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &292802418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292802416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61c9f296125c7c747a538e0e7e346f91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BTN_Manager
+  Maingame: {fileID: 0}
+  MainGameCanva: {fileID: 0}
+  PauseMenu: {fileID: 0}
+  LoadBtn: {fileID: 1862695917}
+  mainMenuScene: 
 --- !u!1 &416888965
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,6 +596,7 @@ Transform:
   m_Children:
   - {fileID: 1046695436}
   - {fileID: 883004132}
+  - {fileID: 292802417}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &676838079
@@ -730,8 +780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e719d1c787ab75440b337500c552e439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Save_Manager
-  mainGameSceneName: Loris
-  loadBtn: {fileID: 1862695917}
+  sceneToLoad: Loris
   startingMoney: 100
 --- !u!1 &978553340
 GameObject:
@@ -1032,9 +1081,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 883004133}
-        m_TargetAssemblyTypeName: Save_Manager, Assembly-CSharp
-        m_MethodName: NewGame
+      - m_Target: {fileID: 292802418}
+        m_TargetAssemblyTypeName: BTN_Manager, Assembly-CSharp
+        m_MethodName: NewGameBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1248,8 +1297,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 883004133}
-        m_TargetAssemblyTypeName: Save_Manager, Assembly-CSharp
+      - m_Target: {fileID: 292802418}
+        m_TargetAssemblyTypeName: BTN_Manager, Assembly-CSharp
         m_MethodName: LoadGame
         m_Mode: 1
         m_Arguments:

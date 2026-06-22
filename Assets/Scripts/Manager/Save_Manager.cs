@@ -6,11 +6,11 @@ using Unity.VisualScripting;
 public class Save_Manager : MonoBehaviour
 {
     [Header("Scene Settings")]
-    [SerializeField] string mainGameSceneName = "";
+    [SerializeField] string sceneToLoad = "";
 
     [Header("Main Menu UI Buttons")]
     //[SerializeField] Button mainMenuContinueBtn;
-    [SerializeField] Button loadBtn;
+    //[SerializeField] Button loadBtn;
 
     [Header("Starting Settings")]
     [SerializeField] int startingMoney = 100;
@@ -31,10 +31,13 @@ public class Save_Manager : MonoBehaviour
             return;
         }
         instance = this;
+
+        transform.SetParent(null);
+
         DontDestroyOnLoad(gameObject);
     }
 
-    void Start() { UpdateButtonInteractability(); }
+    //void Start() { UpdateButtonInteractability(); }
 
     void OnEnable() { SceneManager.sceneLoaded += OnSceneLoaded; }
     void OnDisable() { SceneManager.sceneLoaded -= OnSceneLoaded; }
@@ -42,19 +45,19 @@ public class Save_Manager : MonoBehaviour
     public void NewGame()
     {
         shouldLoadSavedData = false;
-        SceneManager.LoadScene(mainGameSceneName);
+        SceneManager.LoadScene(sceneToLoad);
     }
     public void LoadGame()
     {
         if(PlayerPrefs.GetInt(KEY_HAS_SAVE, 0) == 1)
         {
             shouldLoadSavedData = true;
-            SceneManager.LoadScene(mainGameSceneName);
+            SceneManager.LoadScene(sceneToLoad);
         }
     }
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if(scene.name == mainGameSceneName)
+        if(scene.name == sceneToLoad)
         {
             if(shouldLoadSavedData)
             {
@@ -74,36 +77,32 @@ public class Save_Manager : MonoBehaviour
 
             UI_Manager.instance.moneyCounter.text = UI_Manager.instance.currentMoney + " Æ";
         }
-        else
-        {
-            UpdateButtonInteractability();
-        }
+        //else
+        //{
+        //    UpdateButtonInteractability();
+        //}
     }
     public void SaveGame()
     {
         if (UI_Manager.instance != null)
         { 
             int _currentDay = UI_Manager.instance.currentDay;
-            if(_currentDay > 0)
+            if(_currentDay >= 0)
             {
                 PlayerPrefs.SetFloat(KEY_DAY, (float)_currentDay);
-                PlayerPrefs.SetFloat(KEY_MONEY, (float)UI_Manager.instance.currentMoney);
+                PlayerPrefs.SetFloat(KEY_MONEY, (float)UI_Manager.instance.overallTotal);
                 PlayerPrefs.SetInt(KEY_HAS_SAVE, 1);
                 PlayerPrefs.Save();
 
                 Debug.Log($"[SaveSystem] Giocosalvato su disco. Giorno{_currentDay}, Soldi: {UI_Manager.instance.currentMoney}");
-                UpdateButtonInteractability();
+                //UpdateButtonInteractability();
             }
         }
     }
-    public void UpdateButtonInteractability()
-    {
-        bool hasSave = PlayerPrefs.GetInt(KEY_HAS_SAVE, 0) == 1;
+    //public void UpdateButtonInteractability()
+    //{
+    //    bool hasSave = PlayerPrefs.GetInt(KEY_HAS_SAVE, 0) == 1;
 
-        if(loadBtn != null) loadBtn.interactable = hasSave;
-    }
-    public void QuitGame()
-    {
-        Application.Quit(); 
-    }
+    //    if(loadBtn != null) loadBtn.interactable = hasSave;
+    //}
 }

@@ -17,10 +17,13 @@ public class BTN_Manager : MonoBehaviour
 
     private void Start()
     {
-        if (LoadBtn != null)
+        CheckLoadButton();
+    }
+    public void NewGameBtn()
+    {
+        if(Save_Manager.instance != null)
         {
-            bool haSave = PlayerPrefs.GetInt("HasSavedData", 0) == 1;
-            LoadBtn.interactable = haSave;
+            Save_Manager.instance.NewGame();
         }
     }
     public void LoadMainGame()
@@ -33,6 +36,12 @@ public class BTN_Manager : MonoBehaviour
         OnPause?.Invoke();
         MainGameCanva.SetActive(false);
         PauseMenu.SetActive(true);
+        //if (LoadBtn != null)
+        //{
+        //    bool haSave = PlayerPrefs.GetInt("HasSavedData", 0) == 1;
+        //    LoadBtn.interactable = haSave;
+        //}
+        CheckLoadButton();
     }
     public void Resume()
     {
@@ -45,6 +54,14 @@ public class BTN_Manager : MonoBehaviour
         if (Save_Manager.instance != null)
         {
             Save_Manager.instance.LoadGame();
+        }
+    }
+    void CheckLoadButton()
+    {
+        if(LoadBtn != null)
+        {
+            bool hasSave = PlayerPrefs.GetInt("HasSavedData", 0) == 1;
+            LoadBtn.interactable = hasSave;
         }
     }
     public void MainMenu()

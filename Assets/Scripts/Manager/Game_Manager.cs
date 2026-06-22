@@ -92,12 +92,12 @@ public class Game_Manager : MonoBehaviour
         {
             UI_Manager.instance.currentMoney = UI_Manager.instance.overallTotal;
             UI_Manager.instance.moneyCounter.text = UI_Manager.instance.currentMoney + " Æ";
-            
-            if(Save_Manager.instance != null)
+
+            if (Save_Manager.instance != null)
             {
                 Save_Manager.instance.SaveGame();
             }
-            
+
             StartFlow();
             balance_Pannel.SetActive(false);
             UI_Manager.instance.todayGains = 0;
@@ -118,6 +118,10 @@ public class Game_Manager : MonoBehaviour
         balance_Pannel.SetActive(true);
         UI_Manager.instance.currentDay++;
         OnDay?.Invoke();
+        //if (Save_Manager.instance != null)
+        //{
+        //    Save_Manager.instance.SaveGame();
+        //}
     }
     #region minigame
     public void Translate()
