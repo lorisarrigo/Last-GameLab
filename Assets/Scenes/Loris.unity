@@ -284,6 +284,7 @@ MonoBehaviour:
   MainGameCanva: {fileID: 1614876650}
   PauseMenu: {fileID: 706555788}
   LoadBtn: {fileID: 706555790}
+  TranslateBtn: {fileID: 1490892515}
   mainMenuScene: MainMenu
 --- !u!4 &5499359
 Transform:
@@ -4384,10 +4385,11 @@ MonoBehaviour:
   mainGame: {fileID: 1650102945}
   miniGame: {fileID: 1277089972}
   gameOverScreen: {fileID: 1179092665}
-  currentDay: 0
+  currentDay: 33
   baseClients: 3
   clientToAdd: 1
   balance_Pannel: {fileID: 629955082}
+  Difficulty: 0
 --- !u!1 &797847420
 GameObject:
   m_ObjectHideFlags: 0
@@ -5434,7 +5436,7 @@ MonoBehaviour:
   - :)
   entry: []
   logTxt: {fileID: 107050618}
-  maxPatience: 10
+  maxPatience: 120
   patienceBar: {fileID: 1005524617}
   patienceBarFB: {fileID: 1745935820}
   success: 0
@@ -7419,7 +7421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd76dbf1209d5464388c5e2613be4e67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC_Manager
-  clientToday: 0
+  clientToday: 10
   NPC: {fileID: 1650387364}
   NPC_Sprite:
   - {fileID: 21300000, guid: 7c74489cdaf5bd643905593582172676, type: 3}
@@ -7670,8 +7672,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -9459,7 +9461,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1490892516}
   m_OnClick:
     m_PersistentCalls:

@@ -31,7 +31,7 @@ public class UI_Manager : MonoBehaviour
     [SerializeField] TMP_Text logTxt;
 
     [Header("Patience Visual Bars")]
-    [SerializeField] float maxPatience;
+    public float maxPatience;
     [SerializeField] Image patienceBar;
     [SerializeField] Image patienceBarFB;
 
@@ -80,6 +80,7 @@ public class UI_Manager : MonoBehaviour
     {
         Game_Manager.OnDay += UpdateDate; 
         Game_Manager.OnPoint += UpdateGoal;
+        Game_Manager.OnWinFB += Translate;
         NPC_Manager.OnRequest += UpdateRequest;
         NPC_Manager.OnTimer += StartTimer;
         Game_Manager.OnRefreshUI += RefreshUIFields;
@@ -88,6 +89,7 @@ public class UI_Manager : MonoBehaviour
     {
         Game_Manager.OnDay -= UpdateDate; 
         Game_Manager.OnPoint -= UpdateGoal;
+        Game_Manager.OnWinFB -= Translate;
         NPC_Manager.OnRequest -= UpdateRequest;
         NPC_Manager.OnTimer -= StartTimer;
         Game_Manager.OnRefreshUI -= RefreshUIFields;
@@ -112,10 +114,8 @@ public class UI_Manager : MonoBehaviour
     void UpdateRequest()
     {
         //richiesta corrente
-        if (NPC_Manager.instance.randomNPC >= 7)
-        {
-            requestTxtSpace.font = alien;
-        }
+        if(NPC_Manager.instance.randomNPC < 7) requestTxtSpace.font = normal;
+        else requestTxtSpace.font = alien;
         requestTxtSpace.text = NPC_Manager.instance.curRequest;
 
         //log
@@ -132,6 +132,10 @@ public class UI_Manager : MonoBehaviour
         patienceBar.gameObject.SetActive(true);
         isFilling = true;
         Jew_Manager.instance.RemoveStampData();
+    }
+    void Translate()
+    {
+        requestTxtSpace.font = normal;
     }
     public void ShowEvaluationResult(int answerIndex, int moneyAdded, string logResult)
     {
