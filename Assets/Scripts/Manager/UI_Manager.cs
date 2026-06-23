@@ -1,6 +1,9 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,81 +11,113 @@ public enum ScoreResult { Failed, Reduced, MaxScore }
 
 public class UI_Manager : MonoBehaviour
 {
-    public ScoreResult result;
-    [Header("Day & Economy")]
-    [HideInInspector] public int currentDay;
+    [Header("Day & Economy Visuals")]
+    int day;
     [SerializeField] TMP_Text dayCounter;
+    public TMP_Text moneyCounter;
+    public TMP_Text plusMoney;
 
-    [Header("Requests")]
+
+    [Header("Balance Screen Visuals")]
+    [SerializeField] TMP_Text todayGains_Txt;
+    [SerializeField] TMP_Text todayExpanses_Txt;
+    [SerializeField] TMP_Text todayTotal_Txt;
+    [SerializeField] TMP_Text overallTotal_Txt;
+
+    [Header("Request & Dialogue")]
     public TMP_Text requestTxtSpace;
     [SerializeField] List<string> Answers = new();
-
     [SerializeField] List<string> entry = new();
     [SerializeField] TMP_Text logTxt;
 
-    [Header("Planets")]
-    [SerializeField] List<PlanetRequirements> planetDatabase = new();
-
-    [Header("Patience")]
-    [SerializeField] float patienceTimer;
-    float elapsed = 0;
-    bool isFilling = false;
-    public bool success;
+    [Header("Patience Visual Bars")]
+    [SerializeField] float maxPatience;
     [SerializeField] Image patienceBar;
     [SerializeField] Image patienceBarFB;
 
-    [SerializeField] PlanetRequirements selPlanetData;
-    [SerializeField] bool isStamped = false;
-    public GameObject Timbro;
+    float curPatience = 0;
+    bool isFilling = false;
+    [HideInInspector] public bool success;
+
+    [Header("fonts")]
+    public TMP_FontAsset normal;
+    public TMP_FontAsset alien;
+    //public ScoreResult result;
+    //[Header("Day & Economy")]
+    //[HideInInspector] public int currentDay;
+
+
+    //public int currentMoney;
+
+    //[Header("Balance")]
+    //public int todayGains;
+    //public int todayExpanses;
+    //public int todayTotal;
+    //public int overallTotal;
+
+    //[Header("Requests")]
+
+
+    //[Header("Planets")]
+    //[SerializeField] List<PlanetRequirements> planetDatabase = new();
+
+    //[Header("Patience")]
+
+    //[SerializeField] PlanetRequirements selPlanetData;
+    ////[SerializeField] bool isStamped = false;
+    //public GameObject Timbro;
 
     //eventi
     public static event Action OnDeliver;
-
     public static UI_Manager instance;
 
     private void Awake()
     {
-        if (instance != null)
-        {
-            Destroy(instance);
-            return;
-        }
+        if (instance != null) { Destroy(gameObject); return; }
         instance = this;
     }
     private void OnEnable()
     {
+        Game_Manager.OnDay += UpdateDate; 
         Game_Manager.OnPoint += UpdateGoal;
         NPC_Manager.OnRequest += UpdateRequest;
         NPC_Manager.OnTimer += StartTimer;
-        Game_Manager.OnDay += UpdateDayCounter;
-        Game_Manager.OnDay += ClearLog;
+        Game_Manager.OnRefreshUI += RefreshUIFields;
     }
     private void OnDisable()
     {
+        Game_Manager.OnDay -= UpdateDate; 
         Game_Manager.OnPoint -= UpdateGoal;
         NPC_Manager.OnRequest -= UpdateRequest;
         NPC_Manager.OnTimer -= StartTimer;
-        Game_Manager.OnDay -= UpdateDayCounter;
-        Game_Manager.OnDay -= ClearLog;
+        Game_Manager.OnRefreshUI -= RefreshUIFields;
     }
     private void Update()
     {
-        if (isFilling && elapsed > 0)
+        if (isFilling && curPatience > 0)
         {
-            elapsed -= Time.deltaTime;
-            patienceBar.fillAmount = elapsed / patienceTimer;
-            patienceBarFB.fillAmount = elapsed / patienceTimer;
-            if (elapsed <= 0)
-            {
-                TriggerFailure();
-            }
+            curPatience -= Time.deltaTime;
+            float fillRatio = curPatience / maxPatience;
+            patienceBar.fillAmount = fillRatio;
+            patienceBarFB.fillAmount = fillRatio;
+            if (curPatience <= 0) TriggerFailure();
         }
+    }
+    public float GetPatienceMultiplier() { return curPatience / (maxPatience / 2); }
+    void UpdateDate()
+    {
+        day = Game_Manager.instance.currentDay;
+        dayCounter.text = "day \n n: " + (day < 10 ? "0" : "") + day;
     }
     void UpdateRequest()
     {
         //richiesta corrente
+        if (NPC_Manager.instance.randomNPC >= 7)
+        {
+            requestTxtSpace.font = alien;
+        }
         requestTxtSpace.text = NPC_Manager.instance.curRequest;
-        
+
         //log
         string log = $" - {NPC_Manager.instance.curClient} requested: {NPC_Manager.instance.curRequest}";
         entry.Add(log);
@@ -91,105 +126,38 @@ public class UI_Manager : MonoBehaviour
     void StartTimer()
     {
         success = false;
-        elapsed = patienceTimer;
+        curPatience = maxPatience;
         patienceBar.fillAmount = 1;
         patienceBarFB.fillAmount = 1;
         patienceBar.gameObject.SetActive(true);
         isFilling = true;
-        RemoveStampData();
+        Jew_Manager.instance.RemoveStampData();
     }
-    public void SelectPlanet(int planetIndex)
-    {
-        if(planetIndex >= 0 && planetIndex < planetDatabase.Count)
-        {
-           //ApplyStampData(planetDatabase[planetIndex]);
-        }
-    }
-    public void ApplyStampData(PlanetRequirements planetData)
-    {
-        selPlanetData = planetData;
-        isStamped = true;
-        DeliverAndCalculate();
-    }
-    public void RemoveStampData()
-    {
-        selPlanetData = new PlanetRequirements();
-        isStamped = false;
-    }
-    public void DeliverAndCalculate()
-    {
-        if (!isStamped) return;
-        PlanetRequirements npcRequirements = NPC_Manager.instance.curRequirements;
-
-        int required = 0;
-        int guessed = 0;
-        if (npcRequirements.temperature != Temperature.None)
-        {
-            required++;
-            if (selPlanetData.temperature == npcRequirements.temperature) guessed++;
-        }
-        if (npcRequirements.lifeQuantity != LifeQuantity.None)
-        {
-            required++;
-            if (selPlanetData.lifeQuantity == npcRequirements.lifeQuantity) guessed++;
-        }
-        if (npcRequirements.population != Population.None)
-        {
-            required++;
-            if (selPlanetData.population == npcRequirements.population) guessed++;
-        }
-        if (npcRequirements.permanance != Permanance.None)
-        {
-            required++;
-            if (selPlanetData.permanance == npcRequirements.permanance) guessed++;
-        }
-        if (npcRequirements.sector != Sector.None)
-        {
-            required++;
-            if (selPlanetData.sector == npcRequirements.sector) guessed++;
-        }
-        if (guessed == required) result = ScoreResult.MaxScore;
-        else if (guessed >= (required / 2f) && guessed != required) result = ScoreResult.Reduced;
-        else result = ScoreResult.Failed;
-
-        ProcessFinalScore(result);
-    }
-    public void ProcessFinalScore(ScoreResult result)
+    public void ShowEvaluationResult(int answerIndex, int moneyAdded, string logResult)
     {
         isFilling = false;
         patienceBar.gameObject.SetActive(false);
-        string logResult = "";
-
-        switch(result)
-        {
-            case ScoreResult.MaxScore:
-                success = true;
-                NPC_Manager.instance.curResult = "Perfect Evaluation";
-                requestTxtSpace.text = Answers[2];
-                logResult = "PERFECT  (Max Score)";
-                break;
-            case ScoreResult.Reduced:
-                success = true;
-                NPC_Manager.instance.curResult = "Partially Satisfied";
-                requestTxtSpace.text = Answers[2];
-                logResult = "PARTIAL  (Reduced Score)";
-                break;
-            case ScoreResult.Failed:
-                success = false;
-                NPC_Manager.instance.curResult = "Not Satisfied";
-                requestTxtSpace.text = Answers[1];
-                logResult = "FAIL  (0 Points)";
-                break;
-        }
+        if (moneyAdded > 0) StartCoroutine(LerpTransparency(moneyAdded));
+        requestTxtSpace.text = Answers[answerIndex];
 
         string log = $" - {NPC_Manager.instance.curClient} is {logResult}";
         entry.Add(log);
         logTxt.text = string.Join("\n", entry);
+
+        moneyCounter.text = Jew_Manager.instance.currentMoney + " Æ";
         OnDeliver?.Invoke();
     }
 
-    void ClearLog()
+    void RefreshUIFields()
     {
+        //balance scrren
+        todayGains_Txt.text = $"today gains: {Jew_Manager.instance.todayGains} Æ";
+        int totalExpanses = Jew_Manager.instance.todayExpanses + (25 * day);
+        todayExpanses_Txt.text= $"Today expenses: {totalExpanses} Æ";
+        todayTotal_Txt.text = $"today Total: {Jew_Manager.instance.todayTotal} Æ";
+        overallTotal_Txt.text = $"overall Total: {Jew_Manager.instance.overallTotal} Æ";
+
+        //log window
         entry.Clear();
         logTxt.text = string.Empty;
     }
@@ -197,18 +165,35 @@ public class UI_Manager : MonoBehaviour
     {
         isFilling = false;
         patienceBar.gameObject.SetActive(false);
-        ProcessFinalScore(ScoreResult.Failed);
+        Jew_Manager.instance.CalculatePassaportScore(new PlanetRequirements(), NPC_Manager.instance.curRequirements, 0, maxPatience);
     }
     void UpdateGoal()
     {
         FB_Manager.instance.score.text = FB_Manager.instance.currentScore + "/" + FB_Manager.instance.Goal;
     }
-    void UpdateDayCounter()
+    IEnumerator LerpTransparency(int mon)
     {
-        if (currentDay < 10)
-            dayCounter.text = "day " + "\n n: 0" + currentDay;
-        else
-            dayCounter.text = "day " + "\n n: " + currentDay;
+        plusMoney.text = $"+ {mon} Æ";
+        Color plusMoneyCol = plusMoney.color;
+
+        plusMoney.gameObject.SetActive(true);
+        plusMoneyCol.a = 1;
+        plusMoney.color = plusMoneyCol;
+
+        float fadeDuration = 1.5f;
+        float timer = 0f;
+
+        while (timer < 1)
+        {
+            timer += Time.deltaTime / fadeDuration;
+
+
+            plusMoneyCol.a = Mathf.Lerp(1, 0, timer);
+
+            plusMoney.color = plusMoneyCol;
+            yield return null;
+        }
+        plusMoney.gameObject.SetActive(false);
     }
     
 }

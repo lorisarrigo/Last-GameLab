@@ -13,7 +13,7 @@ public class StampButton : MonoBehaviour
     }
     void OnStampClicked()
     {
-        UI_Manager.instance.ApplyStampData(PlanetData);
+        //UI_Manager.instance.ApplyStampData(PlanetData);
         transform.parent.gameObject.SetActive(false);
     }
 }

@@ -32,15 +32,15 @@ public class NPC_Manager : MonoBehaviour
 {
     bool canMove;
     bool clientResolved;
-    
+
     [Header("NPC & Requests")]
     public int clientToday; 
     public GameObject NPC;
-    [SerializeField] List<Material> NPC_Mat = new();
+    [SerializeField] List<Sprite> NPC_Sprite = new();
     [SerializeField] List<string> Requests = new();
     [SerializeField] GameObject[] Waypoints;
     [SerializeField] float speed;
-
+    public int randomNPC;
 
     [HideInInspector] public string curRequest;
     [HideInInspector] public string curClient;
@@ -53,8 +53,6 @@ public class NPC_Manager : MonoBehaviour
 
     [Header("Current Client Requirements")]
     public PlanetRequirements curRequirements;
-
-    //parameters
     public List<PlanetRequirements> clientDatabase = new();
 
     //eventi
@@ -66,31 +64,20 @@ public class NPC_Manager : MonoBehaviour
     public static NPC_Manager instance;
     void Awake()
     {
-        if (instance != null)
-        {
-            Destroy(this);
-            return;
-        }
+        if (instance != null) { Destroy(gameObject); return; }
         instance = this;
     }
-    private void OnEnable()
-    {
-        UI_Manager.OnDeliver += Delivered;
-    }
-    private void OnDisable()
-    {
-        UI_Manager.OnDeliver -= Delivered;
-    }
-    public void StartDay(int clients)
-    {
-        StartCoroutine(DailyLoop(clients));
-    }
+
+    private void OnEnable() { UI_Manager.OnDeliver += Delivered; }
+    private void OnDisable() { UI_Manager.OnDeliver -= Delivered; }
+    public void StartDay(int clients) { StartCoroutine(DailyLoop(clients)); }
 
     IEnumerator DailyLoop(int nClients)
     {
-        while (nClients >0)
+        while (nClients > 0)
         {
             RandomClient();
+
             canMove = false;
             clientResolved = false;
             StartCoroutine(MoveNPC(Waypoints[0], Waypoints[1]));
@@ -102,16 +89,10 @@ public class NPC_Manager : MonoBehaviour
 
             yield return new WaitUntil(() => clientResolved);
             OnAnswer?.Invoke();         
-            Ticket.SetActive(false);    
 
-            if (UI_Manager.instance.success)
-            {
-                StartCoroutine(MoveNPC(Waypoints[1], Waypoints[2]));
-            }
-            else
-            {
-                StartCoroutine(MoveNPC(Waypoints[1], Waypoints[0]));
-            }
+            if (UI_Manager.instance.success) StartCoroutine(MoveNPC(Waypoints[1], Waypoints[2]));
+            else StartCoroutine(MoveNPC(Waypoints[1], Waypoints[0]));
+
             yield return new WaitForSeconds(3);
             nClients--;
         }
@@ -120,13 +101,11 @@ public class NPC_Manager : MonoBehaviour
 
     void RandomClient()
     {
-        Renderer npc = NPC.GetComponent<Renderer>();
-        if (clientToday > NPC_Mat.Count) clientToday = NPC_Mat.Count;
-        int randomNPC = UnityEngine.Random.Range(0, clientToday);
+        SpriteRenderer npc = NPC.GetComponent<SpriteRenderer>();
+        if (clientToday > NPC_Sprite.Count) clientToday = NPC_Sprite.Count;
+        randomNPC = UnityEngine.Random.Range(0, clientToday);
 
-        npc.material = NPC_Mat[randomNPC];
-
-        curClient = NPC_Mat[randomNPC].name;
+        npc.sprite = NPC_Sprite[randomNPC];
 
         if(randomNPC<Requests.Count)
         {
@@ -162,8 +141,5 @@ public class NPC_Manager : MonoBehaviour
         }
         OnTimer?.Invoke();
     }
-    void Delivered()
-    {
-        clientResolved = true;
-    }
+    void Delivered() { clientResolved = true; }
 }

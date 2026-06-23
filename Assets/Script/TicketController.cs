@@ -14,8 +14,8 @@ public class TicketController : MonoBehaviour
 
     [Header("Settings")]
     public float durateLerp = 0.5f;
-    public PlanetRequirements planetData;
-
+    //public PlanetRequirements planetData;
+    
     [HideInInspector] public bool isTimbrato = false;
 
     private bool isMoving = false;
@@ -68,28 +68,29 @@ public class TicketController : MonoBehaviour
         }
     }
 
-    public void OnChiudiUI()
+    public void OnChiudiUI(int planetindex)
     {
         if (isMoving) return;
 
         if (oggettoUI != null)
+        {
             oggettoUI.SetActive(false);
             Button.SetActive(true);
-
+        }
         StartCoroutine(LerpTo(zonaIniziale.position, onComplete: () =>
         {
             isAndato = false;
 
             StartCoroutine(LerpTo(zonaFinale.position, onComplete: () =>
             {
-                OnArrivatoZonaFinale();
+                OnArrivatoZonaFinale(planetindex);
             }));
         }));
     }
 
-    void OnArrivatoZonaFinale()
+    void OnArrivatoZonaFinale(int index)
     {
-        UI_Manager.instance.ApplyStampData(planetData);
+        Jew_Manager.instance.SelectPlanet(index);
         Debug.Log("Arrivato in Zona 3!");
     }
 
