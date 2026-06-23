@@ -89,7 +89,7 @@ public class TicketController : MonoBehaviour
 
     void OnArrivatoZonaFinale()
     {
-        UI_Manager.instance.ApplyStampData(planetData);
+        Jew_Manager.instance.ApplyStampData(planetData);
         Debug.Log("Arrivato in Zona 3!");
     }
 

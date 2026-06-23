@@ -60,7 +60,7 @@ public class UI_Manager : MonoBehaviour
     [Header("Patience")]
 
     [SerializeField] PlanetRequirements selPlanetData;
-    [SerializeField] bool isStamped = false;
+    //[SerializeField] bool isStamped = false;
     public GameObject Timbro;
 
     //eventi
@@ -136,18 +136,18 @@ public class UI_Manager : MonoBehaviour
         entry.Add(log);
         logTxt.text = string.Join("\n", entry);
 
-        moneyCounter.text = Jew_Manager.instance.currentMoney + " �";
+        moneyCounter.text = Jew_Manager.instance.currentMoney + " Æ";
         OnDeliver?.Invoke();
     }
 
     void RefreshUIFields()
     {
         //balance scrren
-        todayGains_Txt.text = $"today gains �: {Jew_Manager.instance.todayGains} �";
+        todayGains_Txt.text = $"today gains �: {Jew_Manager.instance.todayGains} Æ";
         int totalExpanses = Jew_Manager.instance.todayExpanses + (25 * day);
-        todayExpanses_Txt.text= $"Today expenses: {totalExpanses} �";
-        todayTotal_Txt.text = $"today Total: {Jew_Manager.instance.todayTotal} �";
-        overallTotal_Txt.text = $"overall Total: {Jew_Manager.instance.overallTotal} �";
+        todayExpanses_Txt.text= $"Today expenses: {totalExpanses} Æ";
+        todayTotal_Txt.text = $"today Total: {Jew_Manager.instance.todayTotal} Æ";
+        overallTotal_Txt.text = $"overall Total: {Jew_Manager.instance.overallTotal} Æ";
 
         //log window
         entry.Clear();
