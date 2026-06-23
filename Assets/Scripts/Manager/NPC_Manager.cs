@@ -88,7 +88,6 @@ public class NPC_Manager : MonoBehaviour
 
             yield return new WaitUntil(() => clientResolved);
             OnAnswer?.Invoke();         
-            Ticket.SetActive(false);    
 
             if (UI_Manager.instance.success) StartCoroutine(MoveNPC(Waypoints[1], Waypoints[2]));
             else StartCoroutine(MoveNPC(Waypoints[1], Waypoints[0]));
