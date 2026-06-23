@@ -88,7 +88,9 @@ public class NPC_Manager : MonoBehaviour
             OnRequest?.Invoke();
 
             yield return new WaitUntil(() => clientResolved);
-            OnAnswer?.Invoke();         
+            
+            if(randomNPC >= 7)
+                OnAnswer?.Invoke();         
 
             if (UI_Manager.instance.success) StartCoroutine(MoveNPC(Waypoints[1], Waypoints[2]));
             else StartCoroutine(MoveNPC(Waypoints[1], Waypoints[0]));
@@ -103,7 +105,7 @@ public class NPC_Manager : MonoBehaviour
     {
         SpriteRenderer npc = NPC.GetComponent<SpriteRenderer>();
         if (clientToday > NPC_Sprite.Count) clientToday = NPC_Sprite.Count;
-        randomNPC = UnityEngine.Random.Range(0, clientToday);
+        randomNPC = UnityEngine.Random.Range(0, clientToday/* / 2)*/);
 
         npc.sprite = NPC_Sprite[randomNPC];
 

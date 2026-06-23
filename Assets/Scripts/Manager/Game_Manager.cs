@@ -20,12 +20,13 @@ public class Game_Manager : MonoBehaviour
     [SerializeField] GameObject balance_Pannel;
     GameStates maingame = GameStates.Running;
 
-    int Difficulty;
+    public int Difficulty;
 
     //eventi
     public static event Action OnDay;
     public static event Action OnPoint;
     public static event Action OnRefreshUI;
+    public static event Action OnWinFB;
 
     public static Game_Manager instance;
 
@@ -101,6 +102,12 @@ public class Game_Manager : MonoBehaviour
     {
         OnDay?.Invoke();
         NPC_Manager.instance.clientToday = baseClients + (currentDay * clientToAdd);
+        if(currentDay >= 8)
+        {
+            FB_Manager.instance.speed += 0.25f * (currentDay - 8f);
+            FB_Manager.instance.spawnRate /= 1 + (0.05f * (currentDay - 7f));
+        }
+        UI_Manager.instance.maxPatience /= 1 + (0.05f * currentDay);
         NPC_Manager.instance.StartDay(NPC_Manager.instance.clientToday);
     }
     void EndDay()
@@ -114,12 +121,12 @@ public class Game_Manager : MonoBehaviour
     public void Translate()
     {
         maingame = GameStates.Flapping;
-        Difficulty = UnityEngine.Random.Range(0, 3);
-        switch (Difficulty)
+
+        switch (NPC_Manager.instance.randomNPC)
         {
-            case 0: FB_Manager.instance.Goal = FB_Manager.instance.goal1; break;
-            case 1: FB_Manager.instance.Goal = FB_Manager.instance.goal2; break;
-            case 2: FB_Manager.instance.Goal = FB_Manager.instance.goal3; break;
+            case 7: FB_Manager.instance.Goal = FB_Manager.instance.goal1; break;
+            case 8: FB_Manager.instance.Goal = FB_Manager.instance.goal2; break;
+            case 9: FB_Manager.instance.Goal = FB_Manager.instance.goal3; break;
         }
         OnPoint?.Invoke();
     }
@@ -136,6 +143,7 @@ public class Game_Manager : MonoBehaviour
     void WinMinigame()
     {
         ResetMG();
+        OnWinFB?.Invoke();
     }
     void ResetMG()
     {

@@ -10,18 +10,44 @@ public class BTN_Manager : MonoBehaviour
     [SerializeField] GameObject PauseMenu;
 
     [SerializeField] Button LoadBtn;
+    [SerializeField] Button TranslateBtn;
+
     [SerializeField] string mainMenuScene = "";
 
     public static event Action OnPause;
     public static event Action OnResume;
 
+
     private void Start()
     {
         CheckLoadButton();
     }
+    private void OnEnable()
+    {
+        NPC_Manager.OnRequest += Translatable;
+        NPC_Manager.OnAnswer += Untraslatable;
+    }
+    private void OnDisable()
+    {
+        NPC_Manager.OnRequest -= Translatable;
+        NPC_Manager.OnAnswer += Untraslatable;
+    }
     public void NewGameBtn()
     {
-        if(Save_Manager.instance != null) Save_Manager.instance.NewGame();
+        if (Save_Manager.instance != null) Save_Manager.instance.NewGame();
+    }
+    void Translatable()
+    {
+        int currentNPCIndex = NPC_Manager.instance.randomNPC;
+
+        bool cantranslate = currentNPCIndex >= 7;
+
+        TranslateBtn.interactable = cantranslate;
+    }
+    void Untraslatable()
+    {
+        //if(TranslateBtn.interactable && TranslateBtn == null)
+        TranslateBtn.interactable = false;
     }
     public void Pause()
     {
@@ -42,7 +68,7 @@ public class BTN_Manager : MonoBehaviour
     }
     void CheckLoadButton()
     {
-        if(LoadBtn != null)
+        if (LoadBtn != null)
         {
             bool hasSave = PlayerPrefs.GetInt("HasSavedData", 0) == 1;
             LoadBtn.interactable = hasSave;
