@@ -165,7 +165,7 @@ public class UI_Manager : MonoBehaviour
     }
     IEnumerator LerpTransparency(int mon)
     {
-        plusMoney.text = $"+ {mon} �";
+        plusMoney.text = $"+ {mon} Æ";
         Color plusMoneyCol = plusMoney.color;
 
         plusMoney.gameObject.SetActive(true);

@@ -7212,14 +7212,13 @@ GameObject:
   - component: {fileID: 1107799480}
   - component: {fileID: 1107799479}
   - component: {fileID: 1107799478}
-  - component: {fileID: 1107799477}
   m_Layer: 5
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1107799476
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7239,18 +7238,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1107799477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1107799475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8db65084a2afd9e43bb7156ccc939a9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TimbrActivator
 --- !u!65 &1107799478
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12033,7 +12020,7 @@ MonoBehaviour:
   zonaIniziale: {fileID: 980023709}
   zonaFinale: {fileID: 1303936106}
   oggettoUI: {fileID: 1225338348}
-  Button: {fileID: 495501768}
+  Button: {fileID: 1843210288}
   durateLerp: 0.5
   planetData:
     temperature: 0
