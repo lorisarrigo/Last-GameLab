@@ -30,7 +30,7 @@ public class Jew_Manager : MonoBehaviour
             ApplyStampData(planetDB[planetIndex]);
         }
     }
-    public void ApplyStampData(PlanetRequirements planetData)
+    void ApplyStampData(PlanetRequirements planetData)
     {
         selPlanetData = planetData;
         isStamped = true;

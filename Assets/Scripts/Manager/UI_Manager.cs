@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,31 +39,33 @@ public class UI_Manager : MonoBehaviour
     bool isFilling = false;
     [HideInInspector] public bool success;
 
-    [Header("da spostare o cancellare")]
-    public ScoreResult result;
-    [Header("Day & Economy")]
-    [HideInInspector] public int currentDay;
+    [Header("fonts")]
+    public TMP_FontAsset normal;
+    public TMP_FontAsset alien;
+    //public ScoreResult result;
+    //[Header("Day & Economy")]
+    //[HideInInspector] public int currentDay;
 
 
-    public int currentMoney;
+    //public int currentMoney;
 
-    [Header("Balance")]
-    public int todayGains;
-    public int todayExpanses;
-    public int todayTotal;
-    public int overallTotal;
+    //[Header("Balance")]
+    //public int todayGains;
+    //public int todayExpanses;
+    //public int todayTotal;
+    //public int overallTotal;
 
-    [Header("Requests")]
+    //[Header("Requests")]
 
 
-    [Header("Planets")]
-    [SerializeField] List<PlanetRequirements> planetDatabase = new();
+    //[Header("Planets")]
+    //[SerializeField] List<PlanetRequirements> planetDatabase = new();
 
-    [Header("Patience")]
+    //[Header("Patience")]
 
-    [SerializeField] PlanetRequirements selPlanetData;
-    //[SerializeField] bool isStamped = false;
-    public GameObject Timbro;
+    //[SerializeField] PlanetRequirements selPlanetData;
+    ////[SerializeField] bool isStamped = false;
+    //public GameObject Timbro;
 
     //eventi
     public static event Action OnDeliver;
@@ -69,7 +73,7 @@ public class UI_Manager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null) { Destroy(instance); return; }
+        if (instance != null) { Destroy(gameObject); return; }
         instance = this;
     }
     private void OnEnable()
@@ -108,6 +112,10 @@ public class UI_Manager : MonoBehaviour
     void UpdateRequest()
     {
         //richiesta corrente
+        if (NPC_Manager.instance.randomNPC >= 7)
+        {
+            requestTxtSpace.font = alien;
+        }
         requestTxtSpace.text = NPC_Manager.instance.curRequest;
 
         //log
@@ -143,7 +151,7 @@ public class UI_Manager : MonoBehaviour
     void RefreshUIFields()
     {
         //balance scrren
-        todayGains_Txt.text = $"today gains �: {Jew_Manager.instance.todayGains} Æ";
+        todayGains_Txt.text = $"today gains: {Jew_Manager.instance.todayGains} Æ";
         int totalExpanses = Jew_Manager.instance.todayExpanses + (25 * day);
         todayExpanses_Txt.text= $"Today expenses: {totalExpanses} Æ";
         todayTotal_Txt.text = $"today Total: {Jew_Manager.instance.todayTotal} Æ";

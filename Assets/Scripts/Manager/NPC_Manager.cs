@@ -40,7 +40,7 @@ public class NPC_Manager : MonoBehaviour
     [SerializeField] List<string> Requests = new();
     [SerializeField] GameObject[] Waypoints;
     [SerializeField] float speed;
-
+    public int randomNPC;
 
     [HideInInspector] public string curRequest;
     [HideInInspector] public string curClient;
@@ -64,7 +64,7 @@ public class NPC_Manager : MonoBehaviour
     public static NPC_Manager instance;
     void Awake()
     {
-        if (instance != null) { Destroy(this); return; }
+        if (instance != null) { Destroy(gameObject); return; }
         instance = this;
     }
 
@@ -77,6 +77,7 @@ public class NPC_Manager : MonoBehaviour
         while (nClients > 0)
         {
             RandomClient();
+
             canMove = false;
             clientResolved = false;
             StartCoroutine(MoveNPC(Waypoints[0], Waypoints[1]));
@@ -102,7 +103,7 @@ public class NPC_Manager : MonoBehaviour
     {
         SpriteRenderer npc = NPC.GetComponent<SpriteRenderer>();
         if (clientToday > NPC_Sprite.Count) clientToday = NPC_Sprite.Count;
-        int randomNPC = UnityEngine.Random.Range(0, clientToday);
+        randomNPC = UnityEngine.Random.Range(0, clientToday);
 
         npc.sprite = NPC_Sprite[randomNPC];
 
