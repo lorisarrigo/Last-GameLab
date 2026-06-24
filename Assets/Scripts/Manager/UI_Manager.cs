@@ -104,6 +104,7 @@ public class UI_Manager : MonoBehaviour
             patienceBarFB.fillAmount = fillRatio;
             if (curPatience <= 0) TriggerFailure();
         }
+
     }
     public float GetPatienceMultiplier() { return curPatience / (maxPatience / 2); }
     void UpdateDate()
@@ -115,7 +116,11 @@ public class UI_Manager : MonoBehaviour
     {
         //richiesta corrente
         if(NPC_Manager.instance.randomNPC < 7) requestTxtSpace.font = normal;
-        else requestTxtSpace.font = alien;
+        else 
+        {
+            requestTxtSpace.font = alien;
+            TicketController.instance.Button.SetActive(false);
+        }
         requestTxtSpace.text = NPC_Manager.instance.curRequest;
 
         //log
@@ -136,6 +141,8 @@ public class UI_Manager : MonoBehaviour
     void Translate()
     {
         requestTxtSpace.font = normal;
+        TicketController.instance.Button.SetActive(true);
+        BTN_Manager.instance.TranslateBtn.interactable = false;
     }
     public void ShowEvaluationResult(int answerIndex, int moneyAdded, string logResult)
     {
@@ -154,7 +161,7 @@ public class UI_Manager : MonoBehaviour
 
     void RefreshUIFields()
     {
-        //balance scrren
+        //balance screen
         todayGains_Txt.text = $"today gains: {Jew_Manager.instance.todayGains} Æ";
         int totalExpanses = Jew_Manager.instance.todayExpanses + (25 * day);
         todayExpanses_Txt.text= $"Today expenses: {totalExpanses} Æ";
@@ -170,6 +177,8 @@ public class UI_Manager : MonoBehaviour
         isFilling = false;
         patienceBar.gameObject.SetActive(false);
         Jew_Manager.instance.CalculatePassaportScore(new PlanetRequirements(), NPC_Manager.instance.curRequirements, 0, maxPatience);
+        TicketController.instance.oggettoUI.SetActive(false);
+        TicketController.instance.isAndato = false;
     }
     void UpdateGoal()
     {

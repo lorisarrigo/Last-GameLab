@@ -14,13 +14,22 @@ public class TicketController : MonoBehaviour
 
     [Header("Settings")]
     public float durateLerp = 0.5f;
-    //public PlanetRequirements planetData;
     
     [HideInInspector] public bool isTimbrato = false;
 
     private bool isMoving = false;
-    private bool isAndato = false;
+    public bool isAndato = false;
+    public static TicketController instance;
 
+    public void Awake()
+    {
+        if(instance != null)
+        {
+            Destroy(instance);
+            return;
+        }
+            instance = this;
+    }
     void Start()
     {
         if (zonaIniziale == null)
@@ -91,7 +100,8 @@ public class TicketController : MonoBehaviour
     void OnArrivatoZonaFinale(int index)
     {
         Jew_Manager.instance.SelectPlanet(index);
-        Debug.Log("Arrivato in Zona 3!");
+        NPC_Manager.instance.Ticket.SetActive(false);
+        MaterialColorChanger.instance.targetObject.SetActive(false);
     }
 
     void OnSecondoClick()
