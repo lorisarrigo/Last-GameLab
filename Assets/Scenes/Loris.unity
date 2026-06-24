@@ -741,8 +741,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -880,7 +880,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.94744873, y: 0.9731104}
-  m_AnchoredPosition: {x: 39.52112, y: -0.66226196}
+  m_AnchoredPosition: {x: 39.52112, y: 11.079163}
   m_SizeDelta: {x: 79.04231, y: -801.89276}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &107050618
@@ -1166,7 +1166,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 145, y: 247.5}
-  m_SizeDelta: {x: 265, y: 193}
+  m_SizeDelta: {x: 271.5, y: 258.7}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &162529773
 MonoBehaviour:
@@ -1188,7 +1188,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8358593ded0fd6a4080df76d9f80c2b0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cd132d69aeb959d438df30924d34e140, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1197,7 +1197,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2
 --- !u!222 &162529774
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1645,7 +1645,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8358593ded0fd6a4080df76d9f80c2b0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cd132d69aeb959d438df30924d34e140, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1654,7 +1654,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2
 --- !u!222 &312883518
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1826,7 +1826,7 @@ Transform:
   m_GameObject: {fileID: 332244531}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.39, y: 7.23, z: 5.55}
+  m_LocalPosition: {x: -1.39, y: 7.23, z: 6.54}
   m_LocalScale: {x: 3.3, y: 3.3, z: 3.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1882,7 +1882,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 8eda44c8301bfb543a78460838ea952c, type: 3}
-  m_Color: {r: 0.8037735, g: 0.8037735, b: 0.8037735, a: 1}
+  m_Color: {r: 0.59119487, g: 0.59119487, b: 0.59119487, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2056,8 +2056,8 @@ RectTransform:
   m_GameObject: {fileID: 352740546}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.84, y: 1.3, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.0597825, z: 0.8152174}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 839724978}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2243,8 +2243,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 145, y: 9}
-  m_SizeDelta: {x: 265, y: 190}
+  m_AnchoredPosition: {x: 145, y: -20}
+  m_SizeDelta: {x: 272, y: 257.8}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &397612981
 MonoBehaviour:
@@ -2266,7 +2266,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8358593ded0fd6a4080df76d9f80c2b0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cd132d69aeb959d438df30924d34e140, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2275,7 +2275,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2
 --- !u!222 &397612982
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3601,8 +3601,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278451968
-  m_fontColor: {r: 0, g: 1, b: 0.010204256, a: 1}
+    rgba: 4294965504
+  m_fontColor: {r: 0, g: 0.9747343, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4755,7 +4755,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 145, y: -70}
-  m_SizeDelta: {x: 140, y: 140}
+  m_SizeDelta: {x: 140, y: 140.93}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &815494270
 MonoBehaviour:
@@ -4845,7 +4845,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8358593ded0fd6a4080df76d9f80c2b0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cd132d69aeb959d438df30924d34e140, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4854,7 +4854,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2
 --- !u!222 &815494272
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4921,7 +4921,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8358593ded0fd6a4080df76d9f80c2b0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cd132d69aeb959d438df30924d34e140, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6328,14 +6328,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: cd132d69aeb959d438df30924d34e140, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6344,7 +6344,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 3
 --- !u!222 &996595173
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7077,8 +7077,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7184,8 +7184,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -188.4599, y: 74}
-  m_SizeDelta: {x: 1558.74, y: 230.31}
+  m_AnchoredPosition: {x: -347, y: 146}
+  m_SizeDelta: {x: 1250.4, y: 166.4}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1067457578
 MonoBehaviour:
@@ -7263,7 +7263,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8358593ded0fd6a4080df76d9f80c2b0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cd132d69aeb959d438df30924d34e140, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7272,7 +7272,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 1.5
 --- !u!222 &1067457580
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7412,7 +7412,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8358593ded0fd6a4080df76d9f80c2b0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cd132d69aeb959d438df30924d34e140, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8111,16 +8111,30 @@ MonoBehaviour:
     con i comuni mortali: cerco un mondo abitato esclusivamente da divinit\xE0 al
     mio livello. Le mie fonti mi dicono che i salotti celesti pi\xF9 esclusivi si
     trovano proprio nel Settore Gamma."
-  - week & beta
+  - Il ghiaccio di Nettuno mi ha sfinita, mi serve una vacanza veloce. Trovami un
+    posto nel Settore Beta dove posso rilassarmi per poche settimane. Hai qualcosa
+    di adatto per una breve fuga?
   - TK-421 a rapporto. Il comando mi ha finalmente concesso una licenza di poche
     settimane e voglio allontanarmi dai doveri dell'Impero. Mi serve una destinazione
     nel Settore Alpha per tenermi in allenamento con il tiro al bersaglio. Trovami
     un pianeta brulicante di vita, possibilmente infestato da mostri feroci a cui
     poter sparare.
-  - tempered, bountyful & months
-  - cold, present & week
-  - present & alpha
-  - cold, none, gods & years
+  - "Vengo da un pianeta di ologrammi e cemento. Mi serve un'intera stagione per
+    disintossicarmi in mezzo a flora e creature vere. Trovami un'oasi senza estremi
+    termici: non voglio dover usare n\xE9 cappotti pesanti n\xE9 tute refrigeranti."
+  - "Egregio impiegato, i miei saluti. Sebbene io provenga gi\xE0 dalle spietate
+    tormente di Titan, gradirei mantenere un clima freddo per le mie imminenti vacanze
+    di qualche settimana. Tuttavia, desidero esplorare un mondo in cui la vita sia
+    presente, onde poter passeggiare ammirando la flora e la fauna locali."
+  - "Salve, sono Loris. Il mio TARDIS \xE8 in manutenzione e i miei due cuori cercano
+    nuovi stimoli. Mandami nel Settore Alpha, ma assicurati che ci sia vita presente
+    e abbondante! Non sopporto i mondi sterili, ho bisogno di civilt\xE0 o creature
+    interessanti da osservare."
+  - "Ascolta bene, plebeo, e non farmi respirare la tua stessa aria. Voglio ritirarmi
+    per anni lontano dalla feccia di questo universo! Esigo un pianeta gelido e immacolato,
+    con pochissima vita a disturbare la mia sacra quiete. E i pochi esseri presenti
+    dovranno essere esclusivamente divinit\xE0, gli unici degni di ospitare un Drago
+    Celeste!"
   Waypoints:
   - {fileID: 678415144}
   - {fileID: 228072659}
@@ -8331,8 +8345,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4291940817
+  m_fontColor: {r: 0.8207547, g: 0.8207547, b: 0.8207547, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -8349,8 +8363,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8388,7 +8402,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 8.957695, y: 33.79699, z: 17.091454, w: 33.486847}
+  m_margin: {x: 37.89006, y: 71.18667, z: 40.72094, w: 75.91648}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -8546,8 +8560,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -9554,9 +9568,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'NEXT
-
-    DAY'
+  m_text: "NEXT \tDAY"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 432887baba0876f44925574caf71fc56, type: 2}
   m_sharedMaterial: {fileID: -5459405997931860103, guid: 432887baba0876f44925574caf71fc56, type: 2}
@@ -10304,8 +10316,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 348.2, y: -98.4}
-  m_SizeDelta: {x: 265, y: 96}
+  m_AnchoredPosition: {x: 350, y: -85}
+  m_SizeDelta: {x: 264.2, y: 121.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1490892515
 MonoBehaviour:
@@ -10383,7 +10395,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8358593ded0fd6a4080df76d9f80c2b0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cd132d69aeb959d438df30924d34e140, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10482,7 +10494,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 4000, y: 0}
-  m_SizeDelta: {x: 8195.778, y: 0}
+  m_SizeDelta: {x: 8193.321, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1511559843
 MonoBehaviour:
@@ -13533,7 +13545,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8358593ded0fd6a4080df76d9f80c2b0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cd132d69aeb959d438df30924d34e140, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13542,7 +13554,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2
 --- !u!222 &1868822160
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13683,7 +13695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.38431376, g: 0.38431376, b: 0.38431376, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -13774,8 +13786,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -13831,7 +13843,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 21.436218, y: 16.722618, z: 22.218353, w: 68.43704}
+  m_margin: {x: 42.65262, y: 36.13517, z: 43.431885, w: 80.91569}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -14175,8 +14187,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -14235,7 +14247,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1974184409
@@ -14303,7 +14315,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8358593ded0fd6a4080df76d9f80c2b0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cd132d69aeb959d438df30924d34e140, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14581,8 +14593,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -14599,8 +14611,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

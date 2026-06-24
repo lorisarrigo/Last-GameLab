@@ -155,7 +155,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 122, y: -104.960014}
+  m_AnchoredPosition: {x: 96, y: -104.960014}
   m_SizeDelta: {x: 232.9, y: 83.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &48047568
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2
 --- !u!222 &48047570
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -841,7 +841,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -184.75003, y: -61.200024}
+  m_AnchoredPosition: {x: -184.75003, y: -61.200027}
   m_SizeDelta: {x: 697.1668, y: 477.59998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &221074781
@@ -1268,6 +1268,8 @@ MonoBehaviour:
   Maingame: {fileID: 0}
   MainGameCanva: {fileID: 0}
   PauseMenu: {fileID: 0}
+  jokingFrase: {fileID: 0}
+  saveFrase: 
   LoadBtn: {fileID: 1862695917}
   TranslateBtn: {fileID: 0}
   mainMenuScene: 
@@ -3175,7 +3177,7 @@ RectTransform:
   m_GameObject: {fileID: 1404558825}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 549174745}
@@ -3183,8 +3185,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -142, y: -104.960014}
-  m_SizeDelta: {x: 232.9, y: 83.7}
+  m_AnchoredPosition: {x: -123, y: -100.6}
+  m_SizeDelta: {x: 238, y: 57.03}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1404558827
 MonoBehaviour:
@@ -3262,7 +3264,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8358593ded0fd6a4080df76d9f80c2b0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cd132d69aeb959d438df30924d34e140, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3271,7 +3273,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 4
 --- !u!222 &1404558829
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3950,7 +3952,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.1
 --- !u!222 &1716931653
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4415,7 +4417,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2
 --- !u!222 &1862695919
 CanvasRenderer:
   m_ObjectHideFlags: 0
