@@ -12,9 +12,9 @@ public class Game_Manager : MonoBehaviour
     [SerializeField] GameObject gameOverScreen;
 
     [Header("Day variables")]
+    [SerializeField] int baseClients;
+    [SerializeField] int maxClient;
     public int currentDay;
-    public int baseClients;
-    public int clientToAdd;
 
     [Header("Balance")]
     [SerializeField] GameObject balance_Pannel;
@@ -101,7 +101,9 @@ public class Game_Manager : MonoBehaviour
     void StartFlow()
     {
         OnDay?.Invoke();
-        NPC_Manager.instance.clientToday = baseClients + (currentDay * clientToAdd);
+        NPC_Manager.instance.clientToday = baseClients + currentDay;
+        if (NPC_Manager.instance.clientToday > maxClient) NPC_Manager.instance.clientToday = maxClient;
+        NPC_Manager.instance.clientType = Mathf.RoundToInt(baseClients + (currentDay/2));
         if(currentDay >= 8)
         {
             FB_Manager.instance.speed += 0.25f * (currentDay - 8f);

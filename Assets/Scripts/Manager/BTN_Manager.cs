@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,6 +10,9 @@ public class BTN_Manager : MonoBehaviour
     [SerializeField] GameObject Maingame;
     [SerializeField] GameObject MainGameCanva;
     [SerializeField] GameObject PauseMenu;
+
+    [SerializeField] TMP_Text jokingFrase;
+    [SerializeField] string saveFrase;
 
     [SerializeField] Button LoadBtn;
     public Button TranslateBtn;
@@ -22,7 +27,7 @@ public class BTN_Manager : MonoBehaviour
     {
         if(instance != null)
         {
-            Destroy(instance);
+            Destroy(gameObject);
             return;
         }
             instance = this;
@@ -35,12 +40,10 @@ public class BTN_Manager : MonoBehaviour
     private void OnEnable()
     {
         NPC_Manager.OnRequest += Translatable;
-        NPC_Manager.OnAnswer += Untraslatable;
     }
     private void OnDisable()
     {
         NPC_Manager.OnRequest -= Translatable;
-        NPC_Manager.OnAnswer -= Untraslatable;
     }
     public void NewGameBtn()
     {
@@ -53,10 +56,6 @@ public class BTN_Manager : MonoBehaviour
         bool cantranslate = currentNPCIndex >= 7;
 
         TranslateBtn.interactable = cantranslate;
-    }
-    void Untraslatable()
-    {
-        //TranslateBtn.interactable = false;
     }
     public void Pause()
     {
@@ -71,6 +70,12 @@ public class BTN_Manager : MonoBehaviour
         MainGameCanva.SetActive(true);
         PauseMenu.SetActive(false);
     }
+    public void FalseSave()
+    {
+        jokingFrase.gameObject.SetActive(true);
+        StartCoroutine(LerpTransparency());
+    }
+
     public void LoadGame()
     {
         if (Save_Manager.instance != null) Save_Manager.instance.LoadGame();
@@ -86,4 +91,29 @@ public class BTN_Manager : MonoBehaviour
     public void Retry() { SceneManager.LoadScene(SceneManager.GetActiveScene().name); }
     public void MainMenu() { SceneManager.LoadScene(mainMenuScene); }
     public void QuitGame() { Application.Quit(); }
+
+    IEnumerator LerpTransparency()
+    {
+        jokingFrase.text = saveFrase;
+        Color plusMoneyCol = jokingFrase.color;
+
+        jokingFrase.gameObject.SetActive(true);
+        plusMoneyCol.a = 1;
+        jokingFrase.color = plusMoneyCol;
+
+        float fadeDuration = 1.5f;
+        float timer = 0f;
+
+        while (timer < 1)
+        {
+            timer += Time.unscaledDeltaTime / fadeDuration;
+
+            plusMoneyCol.a = Mathf.Lerp(1, 0, timer);
+
+            jokingFrase.color = plusMoneyCol;
+            yield return null;
+        }
+        jokingFrase.gameObject.SetActive(false);
+    }
+
 }

@@ -34,7 +34,8 @@ public class NPC_Manager : MonoBehaviour
     bool clientResolved;
 
     [Header("NPC & Requests")]
-    public int clientToday; 
+    public int clientToday;
+    public int clientType;
     public GameObject NPC;
     [SerializeField] List<Sprite> NPC_Sprite = new();
     [SerializeField] List<string> Requests = new();
@@ -58,7 +59,6 @@ public class NPC_Manager : MonoBehaviour
     //eventi
     public static event Action OnRequest;
     public static event Action OnTimer;
-    public static event Action OnAnswer;
     public static event Action OnEndDay;
 
     public static NPC_Manager instance;
@@ -89,9 +89,6 @@ public class NPC_Manager : MonoBehaviour
 
             yield return new WaitUntil(() => clientResolved);
             
-            if(randomNPC >= 7)
-                OnAnswer?.Invoke();         
-
             if (UI_Manager.instance.success) StartCoroutine(MoveNPC(Waypoints[1], Waypoints[2]));
             else StartCoroutine(MoveNPC(Waypoints[1], Waypoints[0]));
 
@@ -104,8 +101,8 @@ public class NPC_Manager : MonoBehaviour
     void RandomClient()
     {
         SpriteRenderer npc = NPC.GetComponent<SpriteRenderer>();
-        if (clientToday > NPC_Sprite.Count) clientToday = NPC_Sprite.Count;
-        randomNPC = UnityEngine.Random.Range(0, clientToday/* / 2)*/);
+        if (clientType > NPC_Sprite.Count) clientType = NPC_Sprite.Count;
+        randomNPC = UnityEngine.Random.Range(0, clientType);
 
         npc.sprite = NPC_Sprite[randomNPC];
 
