@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,9 @@ public class Save_Manager : MonoBehaviour
 
     [Header("Starting Settings")]
     [SerializeField] int startingMoney = 100;
+    public int bestDay;
+
+    //[SerializeField] TMP_Text bestScore;
 
     const string KEY_DAY = "SavedDay", KEY_MONEY = "SavedMoney", KEY_HAS_SAVE = "HasSavedData";
 
@@ -70,6 +74,11 @@ public class Save_Manager : MonoBehaviour
             int _currentDay = Game_Manager.instance.currentDay;
             if(_currentDay >= 0)
             {
+                if(_currentDay > bestDay)
+                {
+                    bestDay = _currentDay;
+                    Option_Manager.instance.bestScore.text = (_currentDay < 10 ? "0" : "") + _currentDay;
+                }
                 PlayerPrefs.SetFloat(KEY_DAY, (float)_currentDay);
                 PlayerPrefs.SetFloat(KEY_MONEY, (float)Jew_Manager.instance.overallTotal);
                 PlayerPrefs.SetInt(KEY_HAS_SAVE, 1);

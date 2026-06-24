@@ -2218,6 +2218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Save_Manager
   sceneToLoad: Loris
   startingMoney: 100
+  bestDay: 0
 --- !u!1 &940907364
 GameObject:
   m_ObjectHideFlags: 0
@@ -4493,6 +4494,7 @@ MonoBehaviour:
   qualityDropdown: {fileID: 1132492873}
   vSyingToggle: {fileID: 1716982410}
   fullscreenToggle: {fileID: 180100046}
+  bestScore: {fileID: 1540437904}
 --- !u!1 &1933676662
 GameObject:
   m_ObjectHideFlags: 0
