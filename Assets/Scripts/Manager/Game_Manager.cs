@@ -101,7 +101,7 @@ public class Game_Manager : MonoBehaviour
     void StartFlow()
     {
         OnDay?.Invoke();
-        NPC_Manager.instance.clientToday = baseClients + (currentDay * clientToAdd);
+        NPC_Manager.instance.clientToday = baseClients + Mathf.RoundToInt(currentDay/2/* * clienttoadd*/);
         if(currentDay >= 8)
         {
             FB_Manager.instance.speed += 0.25f * (currentDay - 8f);
