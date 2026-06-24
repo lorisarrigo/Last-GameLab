@@ -10,15 +10,23 @@ public class TicketController : MonoBehaviour
 
     [Header("UI")]
     public GameObject oggettoUI;
-    public GameObject Button;
+    public GameObject stampButton;
+    public GameObject confirmBtn;
+    public GameObject OpenStamp;
+    public GameObject changeStamp;
 
     [Header("Settings")]
     public float durateLerp = 0.5f;
-    
+
+    [Header("Planet")]
+    public int planetchoose;
+
     [HideInInspector] public bool isTimbrato = false;
 
     private bool isMoving = false;
     public bool isAndato = false;
+
+
     public static TicketController instance;
 
     public void Awake()
@@ -66,8 +74,8 @@ public class TicketController : MonoBehaviour
                 isAndato = true;
                 if (oggettoUI != null)
                 {
-                    oggettoUI.SetActive(true);
-                    Button.SetActive(false);
+                    OpenStamp.SetActive(true);
+                    stampButton.SetActive(false);
                 }
             }));
         }
@@ -76,7 +84,19 @@ public class TicketController : MonoBehaviour
             OnSecondoClick();
         }
     }
-
+    public void ChangeStamp()
+    {
+        confirmBtn.SetActive(false);
+        if(isMoving) return;
+        StartCoroutine(LerpTo(zonaTarget.position, onComplete: () =>
+        {
+            if (oggettoUI != null)
+            {
+                OpenStamp.SetActive(true);
+                stampButton.SetActive(false);
+            }
+        }));
+    }
     public void OnChiudiUI(int planetindex)
     {
         if (isMoving) return;
@@ -84,19 +104,29 @@ public class TicketController : MonoBehaviour
         if (oggettoUI != null)
         {
             oggettoUI.SetActive(false);
-            Button.SetActive(true);
         }
         StartCoroutine(LerpTo(zonaIniziale.position, onComplete: () =>
         {
-            isAndato = false;
-
-            StartCoroutine(LerpTo(zonaFinale.position, onComplete: () =>
-            {
-                OnArrivatoZonaFinale(planetindex);
-            }));
+            confirmBtn.SetActive(true);
+            planetchoose = planetindex;
+            changeStamp.SetActive(true);
         }));
     }
-
+    public void ReadyToSend()
+    {
+        isAndato = false;
+        changeStamp.SetActive(false);
+        int definitiveplanet = planetchoose;
+        {
+            StartCoroutine(LerpTo(zonaFinale.position, onComplete: () =>
+            {
+                OnArrivatoZonaFinale(definitiveplanet);
+                confirmBtn.SetActive(false);
+                stampButton.SetActive(true);
+                MaterialColorChanger.instance.targetObject.SetActive(false);
+            }));
+        }
+    }
     void OnArrivatoZonaFinale(int index)
     {
         Jew_Manager.instance.SelectPlanet(index);

@@ -2216,7 +2216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e719d1c787ab75440b337500c552e439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Save_Manager
-  sceneToLoad: Loris
+  sceneToLoad: MainLvl
   startingMoney: 100
   bestDay: 0
 --- !u!1 &940907364

@@ -24,9 +24,10 @@ public class UI_Manager : MonoBehaviour
 
     [Header("Request & Dialogue")]
     public TMP_Text requestTxtSpace;
-    [SerializeField] List<string> Answers = new();
     [SerializeField] List<string> entry = new();
     [SerializeField] TMP_Text logTxt;
+
+    public int npc;
 
     [Header("Patience Visual Bars")]
     public float maxPatience;
@@ -92,7 +93,7 @@ public class UI_Manager : MonoBehaviour
         else 
         {
             requestTxtSpace.font = alien;
-            TicketController.instance.Button.SetActive(false);
+            TicketController.instance.stampButton.SetActive(false);
         }
         requestTxtSpace.text = NPC_Manager.instance.curRequest;
 
@@ -114,15 +115,18 @@ public class UI_Manager : MonoBehaviour
     void Translate()
     {
         requestTxtSpace.font = normal;
-        TicketController.instance.Button.SetActive(true);
+        TicketController.instance.stampButton.SetActive(true);
         BTN_Manager.instance.TranslateBtn.interactable = false;
     }
+
     public void ShowEvaluationResult(int answerIndex, int moneyAdded, string logResult)
     {
         isFilling = false;
         patienceBar.gameObject.SetActive(false);
         if (moneyAdded > 0) StartCoroutine(LerpTransparency(moneyAdded));
-        requestTxtSpace.text = Answers[answerIndex];
+
+        string answer = NPC_Manager.instance.GetNPCAnswer(npc,answerIndex);
+        /*answer-->*/requestTxtSpace.text = answer;
 
         string log = $" - {NPC_Manager.instance.curClient} is {logResult}";
         entry.Add(log);
@@ -150,8 +154,13 @@ public class UI_Manager : MonoBehaviour
         isFilling = false;
         patienceBar.gameObject.SetActive(false);
         Jew_Manager.instance.CalculatePassaportScore(new PlanetRequirements(), NPC_Manager.instance.curRequirements, 0, maxPatience);
-        TicketController.instance.oggettoUI.SetActive(false);
         TicketController.instance.isAndato = false;
+        TicketController.instance.oggettoUI.SetActive(false);
+        TicketController.instance.stampButton.gameObject.SetActive(false);
+        TicketController.instance.confirmBtn.gameObject.SetActive(false);
+        TicketController.instance.OpenStamp.gameObject.SetActive(false);
+        TicketController.instance.changeStamp.gameObject.SetActive(false);
+        NPC_Manager.instance.Ticket.SetActive(false);
     }
     void UpdateGoal()
     {

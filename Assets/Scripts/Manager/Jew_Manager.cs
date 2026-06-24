@@ -104,14 +104,14 @@ public class Jew_Manager : MonoBehaviour
                 currentMoney += addMoney;
                 todayGains += addMoney;
                 logResult = $"PARTIAL  (added Money: {addMoney} Æ, total Money: {currentMoney} Æ)";
-                UI_Manager.instance.ShowEvaluationResult(2, addMoney, logResult);
+                UI_Manager.instance.ShowEvaluationResult(1, addMoney, logResult);
                 break;
 
             case ScoreResult.Failed:
                 UI_Manager.instance.success = false;
                 NPC_Manager.instance.curResult = "Not Satisfied";
                 logResult = $"FAIL  (added Money: 0 Æ total Money: {currentMoney} Æ)";
-                UI_Manager.instance.ShowEvaluationResult(1, 0, logResult);
+                UI_Manager.instance.ShowEvaluationResult(0, 0, logResult);
                 break;
         }
     }

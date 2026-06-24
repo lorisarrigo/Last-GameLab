@@ -28,6 +28,17 @@ public struct PlanetRequirements
     }
 }
 
+[System.Serializable]
+public struct NPCAnswers
+{
+    [TextArea(2, 4)]
+    public string satisfiedAnswer;
+    [TextArea(2, 4)]
+    public string neutralAnswer;
+    [TextArea(2, 4)]
+    public string unsatisfiedAnswer;
+}
+
 public class NPC_Manager : MonoBehaviour
 {
     bool canMove;
@@ -55,7 +66,29 @@ public class NPC_Manager : MonoBehaviour
     [Header("Current Client Requirements")]
     public PlanetRequirements curRequirements;
     public List<PlanetRequirements> clientDatabase = new();
-
+    [Header("Answers")]
+    [SerializeField] NPCAnswers[] NPC_answers;
+    public string GetNPCAnswer(int npc, int satisfaction)
+    {
+        if(npc < 0 || npc >= NPC_answers.Length)
+        {
+            Debug.LogError("indice fuori dal limite");
+            return"...";
+        }
+        NPCAnswers curNPC = NPC_answers[npc];
+        switch (satisfaction)
+        {
+            case 2:
+                return curNPC.satisfiedAnswer;
+            case 1:
+                return curNPC.neutralAnswer;
+            case 0:
+                return curNPC.unsatisfiedAnswer;
+            default:
+                Debug.LogWarning("Punteggio non riconosciuto!");
+                return "...";
+        }
+    }
     //eventi
     public static event Action OnRequest;
     public static event Action OnTimer;
@@ -108,6 +141,7 @@ public class NPC_Manager : MonoBehaviour
 
         if(randomNPC<Requests.Count)
         {
+            UI_Manager.instance.npc = randomNPC;
             curRequest = Requests[randomNPC];
             if (randomNPC < clientDatabase.Count) curRequirements = clientDatabase[randomNPC];
         }
@@ -129,7 +163,8 @@ public class NPC_Manager : MonoBehaviour
 
     IEnumerator MoveTicket()
     {
-        TicketController.instance.Button.SetActive(false);
+        TicketController.instance.confirmBtn.SetActive(false);
+        TicketController.instance.stampButton.SetActive(false);
         Ticket.transform.position = Waypoints[1].transform.position;
         Ticket.SetActive(true);
         float t =  0;
@@ -139,7 +174,7 @@ public class NPC_Manager : MonoBehaviour
             Ticket.transform.position = Vector3.Lerp(Waypoints[1].transform.position, ticketDeskPos.position, t);
             yield return null;
         }
-        if(UI_Manager.instance.requestTxtSpace.font != UI_Manager.instance.alien)TicketController.instance.Button.SetActive(true);
+        if(UI_Manager.instance.requestTxtSpace.font != UI_Manager.instance.alien)TicketController.instance.stampButton.SetActive(true);
 
         OnTimer?.Invoke();
     }

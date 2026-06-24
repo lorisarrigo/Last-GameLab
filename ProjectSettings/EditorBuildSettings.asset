@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: d85f1cc232ff55b47b3e56dcf14db672
   - enabled: 1
-    path: Assets/Scenes/Loris.unity
+    path: Assets/Scenes/MainLvl.unity
     guid: 8703044eba697b94c9e37def9e4719a4
   - enabled: 0
     path: Assets/Scenes/Manuel.unity

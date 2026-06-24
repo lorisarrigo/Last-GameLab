@@ -77,7 +77,6 @@ public class Save_Manager : MonoBehaviour
                 if(_currentDay > bestDay)
                 {
                     bestDay = _currentDay;
-                    Option_Manager.instance.bestScore.text = (_currentDay < 10 ? "0" : "") + _currentDay;
                 }
                 PlayerPrefs.SetFloat(KEY_DAY, (float)_currentDay);
                 PlayerPrefs.SetFloat(KEY_MONEY, (float)Jew_Manager.instance.overallTotal);
