@@ -10,13 +10,23 @@ public class BTN_Manager : MonoBehaviour
     [SerializeField] GameObject PauseMenu;
 
     [SerializeField] Button LoadBtn;
-    [SerializeField] Button TranslateBtn;
+    public Button TranslateBtn;
 
     [SerializeField] string mainMenuScene = "";
 
     public static event Action OnPause;
     public static event Action OnResume;
+    public static BTN_Manager instance;
 
+    void Awake()
+    {
+        if(instance != null)
+        {
+            Destroy(instance);
+            return;
+        }
+            instance = this;
+    }
 
     private void Start()
     {
@@ -30,7 +40,7 @@ public class BTN_Manager : MonoBehaviour
     private void OnDisable()
     {
         NPC_Manager.OnRequest -= Translatable;
-        NPC_Manager.OnAnswer += Untraslatable;
+        NPC_Manager.OnAnswer -= Untraslatable;
     }
     public void NewGameBtn()
     {
@@ -46,8 +56,7 @@ public class BTN_Manager : MonoBehaviour
     }
     void Untraslatable()
     {
-        //if(TranslateBtn.interactable && TranslateBtn == null)
-        TranslateBtn.interactable = false;
+        //TranslateBtn.interactable = false;
     }
     public void Pause()
     {

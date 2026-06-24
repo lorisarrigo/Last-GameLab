@@ -47,7 +47,7 @@ public class NPC_Manager : MonoBehaviour
     public string curResult;
 
     [Header("Ticket")]
-    [SerializeField] GameObject Ticket;
+    public GameObject Ticket;
     [SerializeField] float ticketSpeed;
     [SerializeField] Transform ticketDeskPos;
 
@@ -132,6 +132,7 @@ public class NPC_Manager : MonoBehaviour
 
     IEnumerator MoveTicket()
     {
+        TicketController.instance.Button.SetActive(false);
         Ticket.transform.position = Waypoints[1].transform.position;
         Ticket.SetActive(true);
         float t =  0;
@@ -141,6 +142,8 @@ public class NPC_Manager : MonoBehaviour
             Ticket.transform.position = Vector3.Lerp(Waypoints[1].transform.position, ticketDeskPos.position, t);
             yield return null;
         }
+        if(UI_Manager.instance.requestTxtSpace.font != UI_Manager.instance.alien)TicketController.instance.Button.SetActive(true);
+
         OnTimer?.Invoke();
     }
     void Delivered() { clientResolved = true; }
