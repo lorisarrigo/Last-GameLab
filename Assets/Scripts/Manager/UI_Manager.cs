@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -40,6 +42,30 @@ public class UI_Manager : MonoBehaviour
     [Header("fonts")]
     public TMP_FontAsset normal;
     public TMP_FontAsset alien;
+    //public ScoreResult result;
+    //[Header("Day & Economy")]
+    //[HideInInspector] public int currentDay;
+
+
+    //public int currentMoney;
+
+    //[Header("Balance")]
+    //public int todayGains;
+    //public int todayExpanses;
+    //public int todayTotal;
+    //public int overallTotal;
+
+    //[Header("Requests")]
+
+
+    //[Header("Planets")]
+    //[SerializeField] List<PlanetRequirements> planetDatabase = new();
+
+    //[Header("Patience")]
+
+    //[SerializeField] PlanetRequirements selPlanetData;
+    ////[SerializeField] bool isStamped = false;
+    //public GameObject Timbro;
 
     //eventi
     public static event Action OnDeliver;
