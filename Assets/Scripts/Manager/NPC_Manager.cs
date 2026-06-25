@@ -62,7 +62,7 @@ public class NPC_Manager : MonoBehaviour
     public string curResult;
 
     [SerializeField] float speakTime;
-    public float speckGap;
+    public float speakGap;
     [Header("Ticket")]
     public GameObject Ticket;
     [SerializeField] float ticketSpeed;
@@ -183,11 +183,11 @@ public class NPC_Manager : MonoBehaviour
         while (timer < speakTime && canSpeak)
         {
             npc.sprite = NPC_SpriteB[randomNPC];
-            yield return new WaitForSeconds(speckGap);
-            timer += speckGap;
+            yield return new WaitForSeconds(speakGap);
+            timer += speakGap;
             npc.sprite = NPC_Sprite[randomNPC];
-            yield return new WaitForSeconds(speckGap);
-            timer += speckGap;
+            yield return new WaitForSeconds(speakGap);
+            timer += speakGap;
         }
         npc.sprite = NPC_Sprite[randomNPC];
         canSpeak = false;

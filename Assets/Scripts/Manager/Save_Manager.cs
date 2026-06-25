@@ -12,9 +12,9 @@ public class Save_Manager : MonoBehaviour
     [SerializeField] int startingMoney = 100;
     public int bestDay;
 
-    //[SerializeField] TMP_Text bestScore;
+    const string KEY_DAY = "SavedDay", KEY_MONEY = "SavedMoney", KEY_HAS_SAVE = "HasSavedData", KEY_BEST_DAY = "SaveBestDay";
+    const string KEY_QUALITY = "", KEY_VSYNC = "", KEY_FULLSCREEN = "", KEY_VOLUME = "";
 
-    const string KEY_DAY = "SavedDay", KEY_MONEY = "SavedMoney", KEY_HAS_SAVE = "HasSavedData";
 
     bool shouldLoadSavedData = false;
     public static Save_Manager instance;
@@ -26,6 +26,8 @@ public class Save_Manager : MonoBehaviour
 
         transform.SetParent(null);
         DontDestroyOnLoad(gameObject);
+        bestDay = PlayerPrefs.GetInt(KEY_DAY,0);
+        LoadSettings();
     }
 
     void OnEnable() { SceneManager.sceneLoaded += OnSceneLoaded; }
@@ -44,6 +46,27 @@ public class Save_Manager : MonoBehaviour
             SceneManager.LoadScene(sceneToLoad);
         }
     }
+    public void SaveSettings(int qualityIndex, bool isVSyinc, bool isFull)
+    {
+        PlayerPrefs.SetInt(KEY_QUALITY, qualityIndex);
+        PlayerPrefs.SetInt(KEY_VSYNC, isVSyinc ? 1:0);
+        PlayerPrefs.SetInt(KEY_FULLSCREEN, isFull ? 1:0);
+
+        PlayerPrefs.Save();
+    }
+    void LoadSettings()
+    {
+        if(PlayerPrefs.HasKey(KEY_QUALITY))
+        {
+            int quality = PlayerPrefs.GetInt(KEY_QUALITY);
+            bool vsync = PlayerPrefs.GetInt(KEY_VSYNC) == 1;
+            bool fullscreen = PlayerPrefs.GetInt(KEY_FULLSCREEN) == 1;
+
+            QualitySettings.SetQualityLevel(quality);
+            QualitySettings.vSyncCount = vsync ? 1 : 0;
+            Screen.fullScreen = fullscreen;
+        }
+    }
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if(scene.name == sceneToLoad)
@@ -52,6 +75,7 @@ public class Save_Manager : MonoBehaviour
             {
                 Game_Manager.instance.currentDay = Mathf.RoundToInt(PlayerPrefs.GetFloat(KEY_DAY));
                 Jew_Manager.instance.currentMoney = Mathf.RoundToInt(PlayerPrefs.GetFloat(KEY_MONEY));
+                
                 Debug.Log($"[SaveSystem]Dati caricati con successo!"); 
             }
             else
@@ -77,6 +101,7 @@ public class Save_Manager : MonoBehaviour
                 if(_currentDay > bestDay)
                 {
                     bestDay = _currentDay;
+                    PlayerPrefs.SetInt(KEY_BEST_DAY, bestDay);
                 }
                 PlayerPrefs.SetFloat(KEY_DAY, (float)_currentDay);
                 PlayerPrefs.SetFloat(KEY_MONEY, (float)Jew_Manager.instance.overallTotal);

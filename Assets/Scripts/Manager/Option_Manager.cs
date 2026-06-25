@@ -25,18 +25,28 @@ public class Option_Manager : MonoBehaviour
 
     public void SetFullscreen(bool isFullscreen)
     {
-        Screen.fullScreen = isFullscreen;
+        Screen.fullScreen = isFullscreen ? true : false;
         Debug.Log($"Fullscrenn impostato a: {isFullscreen}");
+        PassDataToSaveManager();
     }
     public void SetVysinc(bool isVSync)
     {
         QualitySettings.vSyncCount = isVSync ? 1 : 0;
         Debug.Log($"VSyinc impostato a: {isVSync}");
+        PassDataToSaveManager();
     }
 
     public void SetQuality(int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
         Debug.Log($"Qualit? grafica impostata al livello {qualityIndex}");
+        PassDataToSaveManager();
+    }
+    void PassDataToSaveManager()
+    {
+        if(Save_Manager.instance != null)
+        {
+            Save_Manager.instance.SaveSettings(qualityDropdown.value, vSyingToggle.isOn,fullscreenToggle.isOn);
+        }
     }
 }

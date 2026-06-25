@@ -2140,6 +2140,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 326963999}
   m_CullTransparentMesh: 1
+--- !u!1 &328714912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 328714913}
+  - component: {fileID: 328714914}
+  m_Layer: 0
+  m_Name: Music_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &328714913
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328714912}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 797847421}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &328714914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328714912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a9530dc6ccca394488f919ab70becb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Music_Manager
 --- !u!1 &332244531
 GameObject:
   m_ObjectHideFlags: 0
@@ -6036,6 +6080,7 @@ Transform:
   - {fileID: 259041375}
   - {fileID: 104503952}
   - {fileID: 283468392}
+  - {fileID: 328714913}
   - {fileID: 1025689759}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9790,7 +9835,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd76dbf1209d5464388c5e2613be4e67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC_Manager
-  speckGap: 0.15
   canSpeak: 0
   clientToday: 0
   clientLeft: 1
@@ -9870,6 +9914,7 @@ MonoBehaviour:
   curClient: 
   curResult: 
   speakTime: 5
+  speakGap: 0.15
   Ticket: {fileID: 1843210288}
   ticketSpeed: 0.7
   ticketDeskPos: {fileID: 1106976990}
