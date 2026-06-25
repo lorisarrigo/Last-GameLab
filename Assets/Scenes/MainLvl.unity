@@ -1384,7 +1384,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 145, y: 247.5}
+  m_AnchoredPosition: {x: 145, y: 239}
   m_SizeDelta: {x: 271.5, y: 258.7}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &162529773
@@ -2646,7 +2646,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 145, y: -15}
+  m_AnchoredPosition: {x: 145, y: -152}
   m_SizeDelta: {x: 272, y: 257.8}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &397612981
@@ -3441,8 +3441,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 41.8
-  m_fontSizeBase: 41.8
+  m_fontSize: 42
+  m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -9917,36 +9917,38 @@ MonoBehaviour:
     permanance: 3
     sector: 0
   NPC_answers:
-  - satisfiedAnswer: Na'Vi soddisfatta
-    neutralAnswer: Na'Vi mhe
-    unsatisfiedAnswer: Na'Vi non soddisfatta
-  - satisfiedAnswer: Toad soddisfatto
-    neutralAnswer: Toad mhe
-    unsatisfiedAnswer: Toad non soddisfatto
-  - satisfiedAnswer: alieno verde soddisfatto
-    neutralAnswer: alieno verde mhe
-    unsatisfiedAnswer: alieno verde non soddisfatto
-  - satisfiedAnswer: venere soddisfatta
-    neutralAnswer: venere mhe
-    unsatisfiedAnswer: venere non soddisfatta
-  - satisfiedAnswer: aliena viola soddisfatta
-    neutralAnswer: aliena viola mhe
-    unsatisfiedAnswer: aliena viola non soddisfatta
-  - satisfiedAnswer: stormtrooper soddisfatto
-    neutralAnswer: stormtrooper mhe
-    unsatisfiedAnswer: stormtrooper non soddisfatto
-  - satisfiedAnswer: alieno possente soddisfatto
-    neutralAnswer: alieno possente mhe
-    unsatisfiedAnswer: alieno possente non soddisfatto
-  - satisfiedAnswer: doggo soddisfatto
-    neutralAnswer: doggo mhe
-    unsatisfiedAnswer: doggo non soddisfatto
-  - satisfiedAnswer: time lord soddisfatto
-    neutralAnswer: time lord mhe
-    unsatisfiedAnswer: time lord non soddisfatto
-  - satisfiedAnswer: one piece soddisfatto
-    neutralAnswer: one piece mhe
-    unsatisfiedAnswer: one piece non soddisfatto
+  - satisfiedAnswer: Perfetto, sento l'energia vitale!
+    neutralAnswer: Abbastanza verde per riposare.
+    unsatisfiedAnswer: Troppo sterile, manca l'anima!
+  - satisfiedAnswer: Evviva, perfetto per anni di relax!
+    neutralAnswer: "Dai, andr\xE0 bene per un po'."
+    unsatisfiedAnswer: Oh no, qui impazzirei!
+  - satisfiedAnswer: Finalmente deserto, caldo e silenzio.
+    neutralAnswer: Accettabile.
+    unsatisfiedAnswer: insopportabile!
+  - satisfiedAnswer: Un vero salotto divino, splendido!
+    neutralAnswer: Compagnia passabile.
+    unsatisfiedAnswer: Inaccettabile...
+  - satisfiedAnswer: Perfetto...
+    neutralAnswer: "Durer\xE0 poco, ma almeno mi riposer\xF2."
+    unsatisfiedAnswer: Mi hai rovinato la vacanza.
+  - satisfiedAnswer: Bersagli mostruosi perfetti. Ottimo lavoro.
+    neutralAnswer: mi accontento.
+    unsatisfiedAnswer: Incompetente!
+  - satisfiedAnswer: "Un ecosistema perfetto e mite, rinascer\xF2 in questa pausa!"
+    neutralAnswer: non il massimo, ma posso sopportarlo.
+    unsatisfiedAnswer: "\xE8 l'incubo da cui fuggivo!"
+  - satisfiedAnswer: Eccelso! Un clima magnificamente gelido e una fauna assai stimolante
+      per il mio breve soggiorno.
+    neutralAnswer: "mi adatter\xF2 per queste settimane."
+    unsatisfiedAnswer: Disdicevole! non tollero simili mancanze di tatto.
+  - satisfiedAnswer: lo fa, lo fa
+    neutralAnswer: Enrique
+    unsatisfiedAnswer: peso
+  - satisfiedAnswer: "Eccellente! Un gelido paradiso divino dove regner\xF2 indiscusso
+      per anni."
+    neutralAnswer: "queste \"divinit\xE0\" non sono nobili quanto me."
+    unsatisfiedAnswer: Diventerai il mio schiavo!
   steps: {fileID: 8300000, guid: 872a5bde6e5674045a53b5c8e78a6e1d, type: 3}
 --- !u!1 &1159381572
 GameObject:
@@ -11303,8 +11305,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 145, y: -220}
-  m_SizeDelta: {x: 272, y: 147}
+  m_AnchoredPosition: {x: 128, y: 47}
+  m_SizeDelta: {x: 301.3, y: 117.6}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1322670081
 MonoBehaviour:
