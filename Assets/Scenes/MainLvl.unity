@@ -2787,7 +2787,7 @@ MonoBehaviour:
         m_MethodName: ApplicaSprite
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: 73dc5cae5e5eee84ba7061bf98ea92c6, type: 3}
+          m_ObjectArgument: {fileID: 21300000, guid: e93c5bb1ffb06754ca0f5a774d937b5d, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -6792,7 +6792,7 @@ MonoBehaviour:
         m_MethodName: ApplicaSprite
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: 9aa91da0068f8de478f5ac5d9a7dcd72, type: 3}
+          m_ObjectArgument: {fileID: 21300000, guid: 1097217efcec3184aa980cea173a8d7f, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -8366,7 +8366,7 @@ MonoBehaviour:
         m_MethodName: ApplicaSprite
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: c849bc29c7a5d2e45aff2dd9aab06a91, type: 3}
+          m_ObjectArgument: {fileID: 21300000, guid: 98c364a63b0fcb44f9f52bac976368a8, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -8523,7 +8523,7 @@ MonoBehaviour:
         m_MethodName: ApplicaSprite
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: 18114eaaff301244da180ff7d82761ce, type: 3}
+          m_ObjectArgument: {fileID: 21300000, guid: 6c140deeb2aa60546b58104a0d425a3e, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -13128,7 +13128,7 @@ MonoBehaviour:
         m_MethodName: ApplicaSprite
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: ef3581305edf0da43ae11b6825d5a020, type: 3}
+          m_ObjectArgument: {fileID: 21300000, guid: 6bd96b77b01985e42b7ac4cd525c0031, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -13818,7 +13818,7 @@ MonoBehaviour:
         m_MethodName: ApplicaSprite
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: be5432846b0c4e040b69aee32bf726f4, type: 3}
+          m_ObjectArgument: {fileID: 21300000, guid: b0f20cb99f319b740b56f603bf221598, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -14226,7 +14226,7 @@ MonoBehaviour:
         m_MethodName: ApplicaSprite
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: 2ab7228c53b51e445b64dbba540ea58d, type: 3}
+          m_ObjectArgument: {fileID: 21300000, guid: 83aa762466a4ced419dc7e0cf095eb01, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -15216,7 +15216,7 @@ MonoBehaviour:
         m_MethodName: ApplicaSprite
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: ea47ef70c2b2d43478191b536867486a, type: 3}
+          m_ObjectArgument: {fileID: 21300000, guid: 3a548456237da00448aff08c1eebb9bd, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -17366,7 +17366,7 @@ MonoBehaviour:
         m_MethodName: ApplicaSprite
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: efda0667f6d234b4abf4047b3eb3e6ae, type: 3}
+          m_ObjectArgument: {fileID: 21300000, guid: c8f0ee1faa4714a428584ed7ea6cc97d, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -17695,7 +17695,7 @@ MonoBehaviour:
         m_MethodName: ApplicaSprite
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: caf691f4b18f47949824acc114323a16, type: 3}
+          m_ObjectArgument: {fileID: 21300000, guid: 3a849b9bee29ada489aae8838eb14bfe, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
