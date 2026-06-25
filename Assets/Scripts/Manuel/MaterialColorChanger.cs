@@ -6,7 +6,8 @@ public class MaterialColorChanger : MonoBehaviour
     [Header("Target")]
     [Tooltip("La RawImage su cui applicare il materiale")]
     public GameObject targetObject;
-    public SpriteRenderer sr;
+    [HideInInspector] public SpriteRenderer sr;
+    [SerializeField] Color[] col;
     public static MaterialColorChanger instance;
     void Awake()
     {
@@ -14,7 +15,7 @@ public class MaterialColorChanger : MonoBehaviour
         instance = this;
         sr = targetObject.GetComponent<SpriteRenderer>();
     }
-    public void ApplicaMateriale(Sprite timbro)
+    public void ApplicaSprite(Sprite timbro)
     {
         if (targetObject == null)
         {

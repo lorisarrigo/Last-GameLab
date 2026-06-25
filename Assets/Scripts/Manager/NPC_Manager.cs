@@ -45,7 +45,8 @@ public class NPC_Manager : MonoBehaviour
     bool clientResolved;
 
     [Header("NPC & Requests")]
-    public int clientToday;
+    public int clientToday; //da usare come massimo
+    public int clientLeft;
     public int clientType;
     public GameObject NPC;
     [SerializeField] List<Sprite> NPC_Sprite = new();
@@ -93,9 +94,11 @@ public class NPC_Manager : MonoBehaviour
                 return "...";
         }
     }
+
     //eventi
     public static event Action OnRequest;
     public static event Action OnTimer;
+    public static event Action OnClient;
     public static event Action OnEndDay;
 
     public static NPC_Manager instance;
@@ -111,8 +114,10 @@ public class NPC_Manager : MonoBehaviour
 
     IEnumerator DailyLoop(int nClients)
     {
+        
         while (nClients > 0)
         {
+            OnClient?.Invoke();
             RandomClient();
 
             canMove = false;
@@ -131,6 +136,7 @@ public class NPC_Manager : MonoBehaviour
 
             yield return new WaitForSeconds(3);
             nClients--;
+            clientLeft++;
         }
         OnEndDay?.Invoke();
     }

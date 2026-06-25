@@ -27,6 +27,8 @@ public class UI_Manager : MonoBehaviour
     [SerializeField] List<string> entry = new();
     [SerializeField] TMP_Text logTxt;
 
+    [Header("NPC")]
+    [SerializeField] TMP_Text clientsCounter;
     public int npc;
 
     [Header("Patience Visual Bars")]
@@ -41,6 +43,7 @@ public class UI_Manager : MonoBehaviour
     [Header("fonts")]
     public TMP_FontAsset normal;
     public TMP_FontAsset alien;
+
     //eventi
     public static event Action OnDeliver;
     public static UI_Manager instance;
@@ -57,6 +60,7 @@ public class UI_Manager : MonoBehaviour
         Game_Manager.OnWinFB += Translate;
         NPC_Manager.OnRequest += UpdateRequest;
         NPC_Manager.OnTimer += StartTimer;
+        NPC_Manager.OnClient += UpdateClientC;
         Game_Manager.OnRefreshUI += RefreshUIFields;
     }
     private void OnDisable()
@@ -66,6 +70,7 @@ public class UI_Manager : MonoBehaviour
         Game_Manager.OnWinFB -= Translate;
         NPC_Manager.OnRequest -= UpdateRequest;
         NPC_Manager.OnTimer -= StartTimer;
+        NPC_Manager.OnClient -= UpdateClientC;
         Game_Manager.OnRefreshUI -= RefreshUIFields;
     }
     private void Update()
@@ -85,6 +90,10 @@ public class UI_Manager : MonoBehaviour
     {
         day = Game_Manager.instance.currentDay;
         dayCounter.text = "day \n n: " + (day < 10 ? "0" : "") + day;
+    }
+    void UpdateClientC()
+    {
+        clientsCounter.text = NPC_Manager.instance.clientLeft + " / " + NPC_Manager.instance.clientToday;
     }
     void UpdateRequest()
     {

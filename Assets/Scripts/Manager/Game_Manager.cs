@@ -87,6 +87,7 @@ public class Game_Manager : MonoBehaviour
     {
         if (Jew_Manager.instance.overallTotal > 0)
         {
+            NPC_Manager.instance.clientLeft = 0;
             Jew_Manager.instance.currentMoney = Jew_Manager.instance.overallTotal;
             UI_Manager.instance.moneyCounter.text = Jew_Manager.instance.currentMoney + " Æ";
 
