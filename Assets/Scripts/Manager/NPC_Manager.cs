@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Temperature {None, Hot, Tempered, Cold }
-public enum LifeQuantity {None, Bountyful, Present, Little }
-public enum Population {None, Monster, Indigenous, Gods }
-public enum Permanance {None, Week, Months, Years }
-public enum Sector {None, Alpha, Beta, Gamma }
+public enum Temperature { None, Hot, Tempered, Cold }
+public enum LifeQuantity { None, Bountyful, Present, Little }
+public enum Population { None, Monster, Indigenous, Gods }
+public enum Permanance { None, Week, Months, Years }
+public enum Sector { None, Alpha, Beta, Gamma }
 
 [System.Serializable]
 public struct PlanetRequirements
@@ -41,15 +41,17 @@ public struct NPCAnswers
 
 public class NPC_Manager : MonoBehaviour
 {
+    SpriteRenderer npc;
     bool canMove;
     bool clientResolved;
-
+    public bool canSpeak;
     [Header("NPC & Requests")]
     public int clientToday; //da usare come massimo
     public int clientLeft;
     public int clientType;
     public GameObject NPC;
     [SerializeField] List<Sprite> NPC_Sprite = new();
+    [SerializeField] List<Sprite> NPC_SpriteB = new();
     [SerializeField] List<string> Requests = new();
     [SerializeField] GameObject[] Waypoints;
     [SerializeField] float speed;
@@ -59,6 +61,8 @@ public class NPC_Manager : MonoBehaviour
     [HideInInspector] public string curClient;
     public string curResult;
 
+    [SerializeField] float speakTime;
+    public float speckGap;
     [Header("Ticket")]
     public GameObject Ticket;
     [SerializeField] float ticketSpeed;
@@ -75,10 +79,10 @@ public class NPC_Manager : MonoBehaviour
     public AudioClip steps;
     public string GetNPCAnswer(int npc, int satisfaction)
     {
-        if(npc < 0 || npc >= NPC_answers.Length)
+        if (npc < 0 || npc >= NPC_answers.Length)
         {
             Debug.LogError("indice fuori dal limite");
-            return"...";
+            return "...";
         }
         NPCAnswers curNPC = NPC_answers[npc];
         switch (satisfaction)
@@ -106,15 +110,16 @@ public class NPC_Manager : MonoBehaviour
     {
         if (instance != null) { Destroy(gameObject); return; }
         instance = this;
+        npc = NPC.GetComponent<SpriteRenderer>();
     }
-
     private void OnEnable() { UI_Manager.OnDeliver += Delivered; }
     private void OnDisable() { UI_Manager.OnDeliver -= Delivered; }
+
     public void StartDay(int clients) { StartCoroutine(DailyLoop(clients)); }
 
     IEnumerator DailyLoop(int nClients)
     {
-        
+
         while (nClients > 0)
         {
             OnClient?.Invoke();
@@ -125,12 +130,13 @@ public class NPC_Manager : MonoBehaviour
             StartCoroutine(MoveNPC(Waypoints[0], Waypoints[1]));
 
             yield return new WaitUntil(() => canMove);
-
+            canSpeak = true;
             StartCoroutine(MoveTicket());
             OnRequest?.Invoke();
+            StartCoroutine(Speaking());
 
             yield return new WaitUntil(() => clientResolved);
-            
+
             if (UI_Manager.instance.success) StartCoroutine(MoveNPC(Waypoints[1], Waypoints[2]));
             else StartCoroutine(MoveNPC(Waypoints[1], Waypoints[0]));
 
@@ -143,13 +149,13 @@ public class NPC_Manager : MonoBehaviour
 
     void RandomClient()
     {
-        SpriteRenderer npc = NPC.GetComponent<SpriteRenderer>();
+        npc = NPC.GetComponent<SpriteRenderer>();
         if (clientType > NPC_Sprite.Count) clientType = NPC_Sprite.Count;
         randomNPC = UnityEngine.Random.Range(0, clientType);
 
         npc.sprite = NPC_Sprite[randomNPC];
 
-        if(randomNPC<Requests.Count)
+        if (randomNPC < Requests.Count)
         {
             UI_Manager.instance.npc = randomNPC;
             curRequest = Requests[randomNPC];
@@ -171,21 +177,35 @@ public class NPC_Manager : MonoBehaviour
 
         if (endP == Waypoints[1]) canMove = true;
     }
-
+    IEnumerator Speaking()
+    {
+        float timer = 0f;
+        while (timer < speakTime && canSpeak)
+        {
+            npc.sprite = NPC_SpriteB[randomNPC];
+            yield return new WaitForSeconds(speckGap);
+            timer += speckGap;
+            npc.sprite = NPC_Sprite[randomNPC];
+            yield return new WaitForSeconds(speckGap);
+            timer += speckGap;
+        }
+        npc.sprite = NPC_Sprite[randomNPC];
+        canSpeak = false;
+    }
     IEnumerator MoveTicket()
     {
         TicketController.instance.confirmBtn.SetActive(false);
         TicketController.instance.stampButton.SetActive(false);
         Ticket.transform.position = Waypoints[1].transform.position;
         Ticket.SetActive(true);
-        float t =  0;
+        float t = 0;
         while (t < 1)
         {
             t += Time.deltaTime * ticketSpeed;
             Ticket.transform.position = Vector3.Lerp(Waypoints[1].transform.position, ticketDeskPos.position, t);
             yield return null;
         }
-        if(UI_Manager.instance.requestTxtSpace.font != UI_Manager.instance.alien)TicketController.instance.stampButton.SetActive(true);
+        if (UI_Manager.instance.requestTxtSpace.font != UI_Manager.instance.alien) TicketController.instance.stampButton.SetActive(true);
 
         OnTimer?.Invoke();
     }
