@@ -22,6 +22,9 @@ public class Game_Manager : MonoBehaviour
 
     public int Difficulty;
 
+    [Header("SFX")]
+    public AudioClip flipPages;
+
     //eventi
     public static event Action OnDay;
     public static event Action OnPoint;
@@ -75,6 +78,10 @@ public class Game_Manager : MonoBehaviour
                 break;
         }
         #endregion
+    }
+    public void PlayPages()
+    {
+        SFX_Manager.instance.PlaySfx(flipPages);
     }
     public void StartDayBTN()
     {
@@ -141,9 +148,12 @@ public class Game_Manager : MonoBehaviour
     void GameOverMinigame()
     {
         ResetMG();
+        SFX_Manager.instance.PlaySfx(FB_Manager.instance.hit);
+
     }
     void WinMinigame()
     {
+        SFX_Manager.instance.PlaySfx(FB_Manager.instance.win);
         ResetMG();
         OnWinFB?.Invoke();
     }

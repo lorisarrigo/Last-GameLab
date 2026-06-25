@@ -19,6 +19,9 @@ public class BTN_Manager : MonoBehaviour
 
     [SerializeField] string mainMenuScene = "";
 
+    [Header("SFX")]
+    [SerializeField] AudioClip Click;
+
     public static event Action OnPause;
     public static event Action OnResume;
     public static BTN_Manager instance;
@@ -32,19 +35,23 @@ public class BTN_Manager : MonoBehaviour
         }
             instance = this;
     }
-
     private void Start()
     {
         CheckLoadButton();
     }
     private void OnEnable()
     {
-        NPC_Manager.OnRequest += Translatable;
+        NPC_Manager.OnTimer += Translatable;
     }
     private void OnDisable()
     {
-        NPC_Manager.OnRequest -= Translatable;
+        NPC_Manager.OnTimer -= Translatable;
     }
+    public void PlayClick()
+    {
+        SFX_Manager.instance.PlaySfx(Click);
+    }
+
     public void NewGameBtn()
     {
         if (Save_Manager.instance != null) Save_Manager.instance.NewGame();
@@ -63,19 +70,21 @@ public class BTN_Manager : MonoBehaviour
         MainGameCanva.SetActive(false);
         PauseMenu.SetActive(true);
         CheckLoadButton();
+        PlayClick();
     }
     public void Resume()
     {
         OnResume?.Invoke();
         MainGameCanva.SetActive(true);
         PauseMenu.SetActive(false);
+        PlayClick();
     }
     public void FalseSave()
     {
         jokingFrase.gameObject.SetActive(true);
         StartCoroutine(LerpTransparency());
+        PlayClick();
     }
-
     public void LoadGame()
     {
         if (Save_Manager.instance != null) Save_Manager.instance.LoadGame();

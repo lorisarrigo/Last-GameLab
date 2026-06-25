@@ -14,7 +14,8 @@ public class TicketController : MonoBehaviour
     public GameObject confirmBtn;
     public GameObject OpenStamp;
     public GameObject changeStamp;
-
+    [Header("SFX")]
+    [SerializeField] AudioClip stampSFX;
     [Header("Settings")]
     public float durateLerp = 0.5f;
 
@@ -103,6 +104,7 @@ public class TicketController : MonoBehaviour
 
         if (oggettoUI != null)
         {
+            SFX_Manager.instance.PlaySfx(stampSFX);
             oggettoUI.SetActive(false);
         }
         StartCoroutine(LerpTo(zonaIniziale.position, onComplete: () =>

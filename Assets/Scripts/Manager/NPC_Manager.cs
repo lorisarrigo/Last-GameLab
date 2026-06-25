@@ -66,8 +66,12 @@ public class NPC_Manager : MonoBehaviour
     [Header("Current Client Requirements")]
     public PlanetRequirements curRequirements;
     public List<PlanetRequirements> clientDatabase = new();
+
     [Header("Answers")]
     [SerializeField] NPCAnswers[] NPC_answers;
+
+    [Header("SFX")]
+    public AudioClip steps;
     public string GetNPCAnswer(int npc, int satisfaction)
     {
         if(npc < 0 || npc >= NPC_answers.Length)
@@ -148,6 +152,7 @@ public class NPC_Manager : MonoBehaviour
     }
     IEnumerator MoveNPC(GameObject startP, GameObject endP)
     {
+        SFX_Manager.instance.PlaySfx(steps);
         float t = 0;
         NPC.transform.position = startP.transform.position;
 

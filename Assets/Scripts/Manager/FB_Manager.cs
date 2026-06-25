@@ -40,6 +40,9 @@ public class FB_Manager : MonoBehaviour
     public int goal2;
     public int goal3;
 
+    [Header("SFX")]
+    public AudioClip win;
+    public AudioClip hit;
     public static FB_Manager instance;
 
     private void Awake()

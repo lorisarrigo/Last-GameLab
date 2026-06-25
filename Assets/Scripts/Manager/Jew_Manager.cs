@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class Jew_Manager : MonoBehaviour
 {
+    [Header("SFX")]
+    public AudioClip gudMoney;
+    public AudioClip mheMoney;
+    public AudioClip badMoney;
     [Header("Wallet Data")]
     public int currentMoney;
     public int todayGains;
@@ -84,6 +88,7 @@ public class Jew_Manager : MonoBehaviour
         switch (result)
         {
             case ScoreResult.MaxScore:
+                SFX_Manager.instance.PlaySfx(gudMoney);
                 UI_Manager.instance.success = true;
                 NPC_Manager.instance.curResult = "Perfect Evaluation";
                 Y = 100;
@@ -96,6 +101,7 @@ public class Jew_Manager : MonoBehaviour
                 break;
 
             case ScoreResult.Reduced:
+                SFX_Manager.instance.PlaySfx(mheMoney);
                 UI_Manager.instance.success = true;
                 NPC_Manager.instance.curResult = "Partially Satisfied";
                 Y = 50;
@@ -108,6 +114,7 @@ public class Jew_Manager : MonoBehaviour
                 break;
 
             case ScoreResult.Failed:
+                SFX_Manager.instance.PlaySfx(badMoney);
                 UI_Manager.instance.success = false;
                 NPC_Manager.instance.curResult = "Not Satisfied";
                 logResult = $"FAIL  (added Money: 0 Æ total Money: {currentMoney} Æ)";
