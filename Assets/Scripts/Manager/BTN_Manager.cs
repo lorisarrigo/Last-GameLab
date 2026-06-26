@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.ComponentModel.Design;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,6 +15,7 @@ public class BTN_Manager : MonoBehaviour
     [SerializeField] TMP_Text jokingFrase;
     [SerializeField] string saveFrase;
 
+    [SerializeField] Button stampBtn, changeBtn;
     [SerializeField] Button LoadBtn;
     public Button TranslateBtn;
 
@@ -59,6 +61,14 @@ public class BTN_Manager : MonoBehaviour
     public void NewGameBtn()
     {
         if (Save_Manager.instance != null) Save_Manager.instance.NewGame();
+    }
+    public void CheckInteractable(bool interactable)
+    {
+        if (stampBtn != null || changeBtn != null)
+        {
+            stampBtn.interactable = interactable;
+            changeBtn.interactable = interactable;
+        }
     }
     void Translatable()
     {

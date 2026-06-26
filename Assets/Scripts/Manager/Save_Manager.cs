@@ -83,14 +83,11 @@ public class Save_Manager : MonoBehaviour
             {
                 Game_Manager.instance.currentDay = Mathf.RoundToInt(PlayerPrefs.GetFloat(KEY_DAY));
                 Jew_Manager.instance.currentMoney = Mathf.RoundToInt(PlayerPrefs.GetFloat(KEY_MONEY));
-
-                Debug.Log($"[SaveSystem]Dati caricati con successo!");
             }
             else
             {
                 Game_Manager.instance.currentDay = 0;
                 Jew_Manager.instance.currentMoney = startingMoney;
-                Debug.Log("[SaveSystem] Nuova partita avviata con dati di default.");
             }
             Jew_Manager.instance.todayGains = 0;
             Jew_Manager.instance.todayTotal = 0;
@@ -115,9 +112,6 @@ public class Save_Manager : MonoBehaviour
                 PlayerPrefs.SetFloat(KEY_MONEY, (float)Jew_Manager.instance.overallTotal);
                 PlayerPrefs.SetInt(KEY_HAS_SAVE, 1);
                 PlayerPrefs.Save();
-
-                Debug.Log($"[SaveSystem] Gioco salvato su disco. Giorno{_currentDay}, Soldi: {Jew_Manager.instance.currentMoney}"); //da sostituire con un tmp_text
-
             }
         }
     }

@@ -285,6 +285,8 @@ MonoBehaviour:
   PauseMenu: {fileID: 706555788}
   jokingFrase: {fileID: 1526583028}
   saveFrase: The game saves AUTOMATICALLY
+  stampBtn: {fileID: 704112007}
+  changeBtn: {fileID: 52077900}
   LoadBtn: {fileID: 706555790}
   TranslateBtn: {fileID: 1490892515}
   mainMenuScene: MainMenu
@@ -2122,8 +2124,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 332244531}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5, y: 9.2, z: 6.5}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.5, y: 9.200001, z: 6.5}
   m_LocalScale: {x: 3.3, y: 3.3, z: 3.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2450,6 +2452,30 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1862954964}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6187,7 +6213,7 @@ MonoBehaviour:
   gameOverScreen: {fileID: 1179092665}
   baseClients: 3
   maxClient: 10
-  currentDay: 33
+  currentDay: 0
   balance_Pannel: {fileID: 629955082}
   Difficulty: 0
   flipPages: {fileID: 8300000, guid: efef84ef35ac7104f8c3cfddb3313f31, type: 3}
@@ -9821,11 +9847,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9155901691718167104, guid: 39445a521edb4ec4bb5df67f5dae0cf8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9155901691718167104, guid: 39445a521edb4ec4bb5df67f5dae0cf8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9155901691718167104, guid: 39445a521edb4ec4bb5df67f5dae0cf8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9155901691718167104, guid: 39445a521edb4ec4bb5df67f5dae0cf8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -9836,15 +9866,39 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 781823320}
     - target: {fileID: 9155901691718167104, guid: 39445a521edb4ec4bb5df67f5dae0cf8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 5499358}
+    - target: {fileID: 9155901691718167104, guid: 39445a521edb4ec4bb5df67f5dae0cf8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9155901691718167104, guid: 39445a521edb4ec4bb5df67f5dae0cf8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: PlayPages
+      objectReference: {fileID: 0}
+    - target: {fileID: 9155901691718167104, guid: 39445a521edb4ec4bb5df67f5dae0cf8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: CheckInteractable
       objectReference: {fileID: 0}
     - target: {fileID: 9155901691718167104, guid: 39445a521edb4ec4bb5df67f5dae0cf8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: Game_Manager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 9155901691718167104, guid: 39445a521edb4ec4bb5df67f5dae0cf8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: BTN_Manager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 9155901691718167104, guid: 39445a521edb4ec4bb5df67f5dae0cf8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9155901691718167104, guid: 39445a521edb4ec4bb5df67f5dae0cf8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9155901691718167104, guid: 39445a521edb4ec4bb5df67f5dae0cf8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -12011,6 +12065,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5499358}
+        m_TargetAssemblyTypeName: BTN_Manager, Assembly-CSharp
+        m_MethodName: CheckInteractable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1377737861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13197,7 +13263,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 533.52765, y: -151.08}
+  m_AnchoredPosition: {x: 533.3334, y: -151.08}
   m_SizeDelta: {x: 1000, y: 151.08}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1570598961
@@ -15267,6 +15333,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 5499358}
+        m_TargetAssemblyTypeName: BTN_Manager, Assembly-CSharp
+        m_MethodName: CheckInteractable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1750007427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16268,6 +16346,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: BTN_Manager, Assembly-CSharp
         m_MethodName: PlayClick
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5499358}
+        m_TargetAssemblyTypeName: BTN_Manager, Assembly-CSharp
+        m_MethodName: CheckInteractable
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
