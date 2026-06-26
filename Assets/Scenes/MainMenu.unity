@@ -1539,6 +1539,8 @@ MonoBehaviour:
   PauseMenu: {fileID: 0}
   jokingFrase: {fileID: 0}
   saveFrase: 
+  stampBtn: {fileID: 0}
+  changeBtn: {fileID: 0}
   LoadBtn: {fileID: 1862695917}
   TranslateBtn: {fileID: 0}
   mainMenuScene: 
@@ -3276,7 +3278,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &940907365
 RectTransform:
   m_ObjectHideFlags: 0
