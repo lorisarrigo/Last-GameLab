@@ -31,6 +31,11 @@ public class Option_Manager : MonoBehaviour
 
         bestScore.text = (Save_Manager.instance.bestDay < 10 ? "0" : "") + Save_Manager.instance.bestDay;
     }
+    private void OnEnable()
+    {
+        if(Save_Manager.instance != null) bestScore.text = (Save_Manager.instance.bestDay < 10 ? "0" : "") + Save_Manager.instance.bestDay;
+
+    }
     public void SetMasterVolume(float volume)
     {
         if (SoundMixer_Manager.instance == null)

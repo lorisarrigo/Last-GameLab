@@ -27,7 +27,7 @@ public class Save_Manager : MonoBehaviour
 
         transform.SetParent(null);
         DontDestroyOnLoad(gameObject);
-        bestDay = PlayerPrefs.GetInt(KEY_DAY, 0);
+        bestDay = PlayerPrefs.GetInt(KEY_BEST_DAY, 0);
         LoadSettings();
     }
 
