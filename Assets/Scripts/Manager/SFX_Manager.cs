@@ -1,9 +1,11 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.VFX;
 
 public class SFX_Manager : MonoBehaviour
 {
+    [SerializeField] AudioMixerGroup SFXMixer;
     public static SFX_Manager instance;
     private void Awake()
     {
@@ -13,6 +15,8 @@ public class SFX_Manager : MonoBehaviour
             return;
         }
         instance = this;
+        transform.SetParent(null);
+        DontDestroyOnLoad(gameObject);
     }
 
     public void PlaySfx(AudioClip audioClip, float volume = 1f)
@@ -23,6 +27,7 @@ public class SFX_Manager : MonoBehaviour
     IEnumerator playSFX(AudioClip audioClip, float volume = 1f)
     {
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.outputAudioMixerGroup = SFXMixer;
         audioSource.clip = audioClip;
         audioSource.volume = volume;
         audioSource.Play();

@@ -1,33 +1,41 @@
-using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
+
 
 public class Music_Manager : MonoBehaviour
 {
+    private AudioSource musicSource;
+    [SerializeField] AudioClip mainGameMusic;
+    [SerializeField] AudioMixerGroup musicMixer;
     public static Music_Manager instance;
     private void Awake()
     {
         if (instance != null)
         {
-            Destroy(this);
+            Destroy(gameObject);
             return;
         }
         instance = this;
+        transform.SetParent(null);
+        DontDestroyOnLoad(gameObject);
+        musicSource = gameObject.AddComponent<AudioSource>();
+        musicSource.loop = true;
+        musicSource.playOnAwake = false;
     }
-
+    private void Start()
+    {
+        if(mainGameMusic != null)
+        {
+            PlayMusic(mainGameMusic);
+        }
+    }
     public void PlayMusic(AudioClip audioClip, float volume = 1f)
     {
-        StartCoroutine(playmusic(audioClip, volume));
+        musicSource.outputAudioMixerGroup = musicMixer;
+        musicSource.clip = audioClip;
+        musicSource.volume = volume;
+        musicSource.Play();
     }
-
-    IEnumerator playmusic(AudioClip audioClip, float volume = 1f)
-    {
-        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.clip = audioClip;
-        audioSource.volume = volume;
-        audioSource.Play();
-
-        yield return new WaitForSeconds(audioSource.clip.length);
-
-        Destroy(audioSource);
-    }
+    public void StopMusic() {  musicSource.Pause(); }
+    public void ResumeMusic() { musicSource.UnPause(); }
 }

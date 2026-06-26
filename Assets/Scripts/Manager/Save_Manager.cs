@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,8 +14,8 @@ public class Save_Manager : MonoBehaviour
     public int bestDay;
 
     const string KEY_DAY = "SavedDay", KEY_MONEY = "SavedMoney", KEY_HAS_SAVE = "HasSavedData", KEY_BEST_DAY = "SaveBestDay";
-    const string KEY_QUALITY = "", KEY_VSYNC = "", KEY_FULLSCREEN = "", KEY_VOLUME = "";
-
+    const string KEY_QUALITY = "Opt_Quality", KEY_VSYNC = "Opt_VSync", KEY_FULLSCREEN = "Opt_Fullscreen";
+    const string KEY_MASTER_VOL = "Opt_Master", KEY_MUSIC_VOL = "Opt_Music", KEY_SFX_VOL = "Opt_Sfx";
 
     bool shouldLoadSavedData = false;
     public static Save_Manager instance;
@@ -26,7 +27,7 @@ public class Save_Manager : MonoBehaviour
 
         transform.SetParent(null);
         DontDestroyOnLoad(gameObject);
-        bestDay = PlayerPrefs.GetInt(KEY_DAY,0);
+        bestDay = PlayerPrefs.GetInt(KEY_DAY, 0);
         LoadSettings();
     }
 
@@ -40,43 +41,50 @@ public class Save_Manager : MonoBehaviour
     }
     public void LoadGame()
     {
-        if(PlayerPrefs.GetInt(KEY_HAS_SAVE, 0) == 1)
+        if (PlayerPrefs.GetInt(KEY_HAS_SAVE, 0) == 1)
         {
             shouldLoadSavedData = true;
             SceneManager.LoadScene(sceneToLoad);
         }
     }
-    public void SaveSettings(int qualityIndex, bool isVSyinc, bool isFull)
+    public void SaveSettings(int qualityIndex, bool isVSyinc, bool isFull, float master, float music, float sfx)
     {
         PlayerPrefs.SetInt(KEY_QUALITY, qualityIndex);
-        PlayerPrefs.SetInt(KEY_VSYNC, isVSyinc ? 1:0);
-        PlayerPrefs.SetInt(KEY_FULLSCREEN, isFull ? 1:0);
+        PlayerPrefs.SetInt(KEY_VSYNC, isVSyinc ? 1 : 0);
+        PlayerPrefs.SetInt(KEY_FULLSCREEN, isFull ? 1 : 0);
+        PlayerPrefs.SetFloat(KEY_MASTER_VOL, master);
+        PlayerPrefs.SetFloat(KEY_MUSIC_VOL, music);
+        PlayerPrefs.SetFloat(KEY_SFX_VOL, sfx);
 
         PlayerPrefs.Save();
     }
     void LoadSettings()
     {
-        if(PlayerPrefs.HasKey(KEY_QUALITY))
-        {
-            int quality = PlayerPrefs.GetInt(KEY_QUALITY);
-            bool vsync = PlayerPrefs.GetInt(KEY_VSYNC) == 1;
-            bool fullscreen = PlayerPrefs.GetInt(KEY_FULLSCREEN) == 1;
+        if (!PlayerPrefs.HasKey(KEY_QUALITY)) return;
+        int quality = PlayerPrefs.GetInt(KEY_QUALITY);
+        bool vsync = PlayerPrefs.GetInt(KEY_VSYNC) == 1;
+        bool fullscreen = PlayerPrefs.GetInt(KEY_FULLSCREEN) == 1;
+        float master = PlayerPrefs.GetFloat(KEY_MASTER_VOL, 1f);
+        float music = PlayerPrefs.GetFloat(KEY_MUSIC_VOL, 1f);
+        float sfx = PlayerPrefs.GetFloat(KEY_SFX_VOL, 1f);
 
-            QualitySettings.SetQualityLevel(quality);
-            QualitySettings.vSyncCount = vsync ? 1 : 0;
-            Screen.fullScreen = fullscreen;
-        }
+        QualitySettings.SetQualityLevel(quality);
+        QualitySettings.vSyncCount = vsync ? 1 : 0;
+        Screen.fullScreen = fullscreen;
+        StartCoroutine(ApplySettingsDelayed(master, music, sfx));
+
     }
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if(scene.name == sceneToLoad)
+        LoadSettings();
+        if (scene.name == sceneToLoad)
         {
-            if(shouldLoadSavedData)
+            if (shouldLoadSavedData)
             {
                 Game_Manager.instance.currentDay = Mathf.RoundToInt(PlayerPrefs.GetFloat(KEY_DAY));
                 Jew_Manager.instance.currentMoney = Mathf.RoundToInt(PlayerPrefs.GetFloat(KEY_MONEY));
-                
-                Debug.Log($"[SaveSystem]Dati caricati con successo!"); 
+
+                Debug.Log($"[SaveSystem]Dati caricati con successo!");
             }
             else
             {
@@ -94,11 +102,11 @@ public class Save_Manager : MonoBehaviour
     public void SaveGame()
     {
         if (Game_Manager.instance != null && Jew_Manager.instance != null)
-        { 
+        {
             int _currentDay = Game_Manager.instance.currentDay;
-            if(_currentDay >= 0)
+            if (_currentDay >= 0)
             {
-                if(_currentDay > bestDay)
+                if (_currentDay > bestDay)
                 {
                     bestDay = _currentDay;
                     PlayerPrefs.SetInt(KEY_BEST_DAY, bestDay);
@@ -112,5 +120,14 @@ public class Save_Manager : MonoBehaviour
 
             }
         }
+    }
+    IEnumerator ApplySettingsDelayed(float master, float music, float sfx)
+    {
+        while (SoundMixer_Manager.instance == null) yield return null;
+
+
+        SoundMixer_Manager.instance.SetMasterVolume(master);
+        SoundMixer_Manager.instance.SetMusicVolume(music);
+        SoundMixer_Manager.instance.SetSFXVolume(sfx);
     }
 }

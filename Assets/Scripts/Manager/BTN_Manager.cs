@@ -21,6 +21,7 @@ public class BTN_Manager : MonoBehaviour
 
     [Header("SFX")]
     [SerializeField] AudioClip Click;
+    [SerializeField] AudioClip openMG;
 
     public static event Action OnPause;
     public static event Action OnResume;
@@ -51,7 +52,10 @@ public class BTN_Manager : MonoBehaviour
     {
         SFX_Manager.instance.PlaySfx(Click);
     }
-
+    public void PlayMGjingle()
+    {
+        SFX_Manager.instance.PlaySfx(openMG);
+    }
     public void NewGameBtn()
     {
         if (Save_Manager.instance != null) Save_Manager.instance.NewGame();
@@ -71,6 +75,7 @@ public class BTN_Manager : MonoBehaviour
         PauseMenu.SetActive(true);
         CheckLoadButton();
         PlayClick();
+        Music_Manager.instance.StopMusic();
     }
     public void Resume()
     {
@@ -78,6 +83,7 @@ public class BTN_Manager : MonoBehaviour
         MainGameCanva.SetActive(true);
         PauseMenu.SetActive(false);
         PlayClick();
+        Music_Manager.instance.ResumeMusic();
     }
     public void FalseSave()
     {
@@ -88,6 +94,7 @@ public class BTN_Manager : MonoBehaviour
     public void LoadGame()
     {
         if (Save_Manager.instance != null) Save_Manager.instance.LoadGame();
+        Music_Manager.instance.ResumeMusic();
     }
     void CheckLoadButton()
     {
@@ -98,7 +105,11 @@ public class BTN_Manager : MonoBehaviour
         }
     }
     public void Retry() { SceneManager.LoadScene(SceneManager.GetActiveScene().name); }
-    public void MainMenu() { SceneManager.LoadScene(mainMenuScene); }
+    public void MainMenu() 
+    { 
+        SceneManager.LoadScene(mainMenuScene);
+        Music_Manager.instance.ResumeMusic();
+    }
     public void QuitGame() { Application.Quit(); }
 
     IEnumerator LerpTransparency()
