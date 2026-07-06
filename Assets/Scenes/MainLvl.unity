@@ -10653,6 +10653,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: deee7987ef523b846804924bb8d0327e, type: 3}
   - {fileID: 21300000, guid: 1aecd845baefff44fa1c3aef4f364abe, type: 3}
   - {fileID: 21300000, guid: 7f3c1407d41db984391f2ca90ffccb5d, type: 3}
+  - {fileID: 21300000, guid: 177edfc47b3d1ad4a9c0f9c8df907633, type: 3}
   NPC_SpriteB:
   - {fileID: 21300000, guid: 22ad7abd6a4bc294db1490deea93cd08, type: 3}
   - {fileID: 21300000, guid: 1a2fb0658786d5646bfec1943747a3bf, type: 3}
@@ -10664,6 +10665,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4e85385512433b94b824277d0fd37272, type: 3}
   - {fileID: 21300000, guid: e2986866db0a58148827cac8a55c4236, type: 3}
   - {fileID: 21300000, guid: 7fa425d459cff384a8a27bd9347c5095, type: 3}
+  - {fileID: 21300000, guid: 4498557f90c1c50419f13d6f6d0ee8ee, type: 3}
   Requests:
   - Oel ngati kameie, impiegato. Cerco una meta dove il respiro del pianeta sia forte,
     dove immensi biom e innumerevoli creature vivano in perfetta connessione. Ho
@@ -10704,6 +10706,7 @@ MonoBehaviour:
     con pochissima vita a disturbare la mia sacra quiete. E i pochi esseri presenti
     dovranno essere esclusivamente divinit\xE0, gli unici degni di ospitare un Drago
     Celeste!"
+  - sono l'NPC 11
   Waypoints:
   - {fileID: 678415144}
   - {fileID: 228072659}
@@ -10775,6 +10778,11 @@ MonoBehaviour:
     population: 3
     permanance: 3
     sector: 0
+  - temperature: 2
+    lifeQuantity: 2
+    population: 2
+    permanance: 2
+    sector: 2
   NPC_answers:
   - satisfiedAnswer: Perfect, I feel the vital energy!
     neutralAnswer: Green enough to rest.
@@ -10809,6 +10817,9 @@ MonoBehaviour:
       for years.
     neutralAnswer: these "deities" are not as noble as I am.
     unsatisfiedAnswer: You will become my slave!
+  - satisfiedAnswer: BIP
+    neutralAnswer: BOOP
+    unsatisfiedAnswer: NIGGA
   steps: {fileID: 8300000, guid: 872a5bde6e5674045a53b5c8e78a6e1d, type: 3}
 --- !u!1 &1159381572
 GameObject:
