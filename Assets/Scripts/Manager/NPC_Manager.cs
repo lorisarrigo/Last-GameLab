@@ -74,6 +74,13 @@ public class NPC_Manager : MonoBehaviour
 
     [Header("Answers")]
     [SerializeField] NPCAnswers[] NPC_answers;
+    
+    [Header("Colorful Alien")]
+    public int ColorfullAlienIndex;
+    [SerializeField] Color[] NPC_Colors;
+    [SerializeField] List<string> ColorfulRequests = new();
+    public List<PlanetRequirements> ColorfulClientDatabase = new();
+    [SerializeField] NPCAnswers[] ColorfulNPC_answers;
 
     [Header("SFX")]
     public AudioClip steps;
@@ -155,11 +162,17 @@ public class NPC_Manager : MonoBehaviour
 
         npc.sprite = NPC_Sprite[randomNPC];
 
-        if (randomNPC < Requests.Count)
+        if (randomNPC < Requests.Count && randomNPC != ColorfullAlienIndex)
         {
             UI_Manager.instance.npc = randomNPC;
             curRequest = Requests[randomNPC];
             if (randomNPC < clientDatabase.Count) curRequirements = clientDatabase[randomNPC];
+        }
+        
+        if(randomNPC == ColorfullAlienIndex)
+        {
+            int randomColor = UnityEngine.Random.Range(0, NPC_Colors.Length);
+            UI_Manager.instance.npc = randomColor;
         }
     }
     IEnumerator MoveNPC(GameObject startP, GameObject endP)

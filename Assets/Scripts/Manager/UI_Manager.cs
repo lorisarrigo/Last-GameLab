@@ -134,8 +134,8 @@ public class UI_Manager : MonoBehaviour
         isFilling = false;
         patienceBar.gameObject.SetActive(false);
         if (moneyAdded > 0) StartCoroutine(LerpTransparency(moneyAdded));
-
-        string answer = NPC_Manager.instance.GetNPCAnswer(npc,answerIndex);
+        
+        string answer = NPC_Manager.instance.GetNPCAnswer(npc,answerIndex);          
         /*answer-->*/requestTxtSpace.text = answer;
 
         string log = $" - {NPC_Manager.instance.curClient} is {logResult}";
