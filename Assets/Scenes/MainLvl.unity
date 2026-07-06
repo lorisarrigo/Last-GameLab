@@ -7810,6 +7810,7 @@ MonoBehaviour:
   todayExpanses_Txt: {fileID: 429077924}
   todayTotal_Txt: {fileID: 1922967205}
   overallTotal_Txt: {fileID: 1854518397}
+  alienTxtIndex: 7
   requestTxtSpace: {fileID: 1906752140}
   entry: []
   logTxt: {fileID: 107050618}
