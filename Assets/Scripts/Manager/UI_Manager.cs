@@ -23,6 +23,7 @@ public class UI_Manager : MonoBehaviour
     [SerializeField] TMP_Text overallTotal_Txt;
 
     [Header("Request & Dialogue")]
+    [SerializeField] int alienTxtIndex;
     public TMP_Text requestTxtSpace;
     [SerializeField] List<string> entry = new();
     [SerializeField] TMP_Text logTxt;
@@ -98,7 +99,7 @@ public class UI_Manager : MonoBehaviour
     void UpdateRequest()
     {
         //richiesta corrente
-        if(NPC_Manager.instance.randomNPC < 7) requestTxtSpace.font = normal;
+        if(NPC_Manager.instance.randomNPC < alienTxtIndex) requestTxtSpace.font = normal;
         else 
         {
             requestTxtSpace.font = alien;

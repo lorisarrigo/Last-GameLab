@@ -109,6 +109,7 @@ public class TicketController : MonoBehaviour
         }
         StartCoroutine(LerpTo(zonaIniziale.position, onComplete: () =>
         {
+            stampButton.SetActive(true);
             confirmBtn.SetActive(true);
             planetchoose = planetindex;
             changeStamp.SetActive(true);
