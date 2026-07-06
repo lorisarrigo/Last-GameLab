@@ -10776,39 +10776,39 @@ MonoBehaviour:
     permanance: 3
     sector: 0
   NPC_answers:
-  - satisfiedAnswer: Perfetto, sento l'energia vitale!
-    neutralAnswer: Abbastanza verde per riposare.
-    unsatisfiedAnswer: Troppo sterile, manca l'anima!
-  - satisfiedAnswer: Evviva, perfetto per anni di relax!
-    neutralAnswer: "Dai, andr\xE0 bene per un po'."
-    unsatisfiedAnswer: Oh no, qui impazzirei!
-  - satisfiedAnswer: Finalmente deserto, caldo e silenzio.
-    neutralAnswer: Accettabile.
-    unsatisfiedAnswer: insopportabile!
-  - satisfiedAnswer: Un vero salotto divino, splendido!
-    neutralAnswer: Compagnia passabile.
-    unsatisfiedAnswer: Inaccettabile...
-  - satisfiedAnswer: Perfetto...
-    neutralAnswer: "Durer\xE0 poco, ma almeno mi riposer\xF2."
-    unsatisfiedAnswer: Mi hai rovinato la vacanza.
-  - satisfiedAnswer: "sar\xE0 perfetto per cacciare mostri per qualche settimana.
-      ottimo lavoro."
-    neutralAnswer: mi accontento.
-    unsatisfiedAnswer: Incompetente!
-  - satisfiedAnswer: "Un ecosistema perfetto e mite, rinascer\xF2 in questa pausa!"
-    neutralAnswer: non il massimo, ma posso sopportarlo.
-    unsatisfiedAnswer: "\xE8 l'incubo da cui fuggivo!"
-  - satisfiedAnswer: Eccelso! Un clima magnificamente gelido e una fauna assai stimolante
-      per il mio breve soggiorno.
-    neutralAnswer: "mi adatter\xF2 per queste settimane."
-    unsatisfiedAnswer: Disdicevole! non tollero simili mancanze di tatto.
-  - satisfiedAnswer: lo fa, lo fa
+  - satisfiedAnswer: Perfect, I feel the vital energy!
+    neutralAnswer: Green enough to rest.
+    unsatisfiedAnswer: Too sterile, it lacks soul!
+  - satisfiedAnswer: Hoorray, perfect for years of relaxation!
+    neutralAnswer: Come on, it will be fine for a while.
+    unsatisfiedAnswer: Oh no, I would go crazy here!
+  - satisfiedAnswer: Finally desert, heat, and silence.
+    neutralAnswer: Acceptable.
+    unsatisfiedAnswer: unbearable!
+  - satisfiedAnswer: A true divine lounge, splendid!
+    neutralAnswer: Passable company.
+    unsatisfiedAnswer: "Unacceptable\u2026"
+  - satisfiedAnswer: Perfect...
+    neutralAnswer: It won't last long, but at least I will rest.
+    unsatisfiedAnswer: You ruined my vacation.
+  - satisfiedAnswer: it will be perfect for hunting monsters for a few weeks. great
+      job.
+    neutralAnswer: i'm satisfied
+    unsatisfiedAnswer: Incompetent!
+  - satisfiedAnswer: A perfect and mild ecosystem, I will be reborn during this break!
+    neutralAnswer: not the best, but I can bear it.
+    unsatisfiedAnswer: it's the nightmare I was fleeing from!
+  - satisfiedAnswer: Sublime! A magnificently freezing climate and a very stimulating
+      fauna for my short stay.
+    neutralAnswer: I will adapt for these weeks.
+    unsatisfiedAnswer: Disgraceful! I do not tolerate such lack of tact.
+  - satisfiedAnswer: it does, it does
     neutralAnswer: Enrique
-    unsatisfiedAnswer: peso
-  - satisfiedAnswer: "Eccellente! Un gelido paradiso divino dove regner\xF2 indiscusso
-      per anni."
-    neutralAnswer: "queste \"divinit\xE0\" non sono nobili quanto me."
-    unsatisfiedAnswer: Diventerai il mio schiavo!
+    unsatisfiedAnswer: Crazy
+  - satisfiedAnswer: Excellent! A freezing divine paradise where I will reign supreme
+      for years.
+    neutralAnswer: these "deities" are not as noble as I am.
+    unsatisfiedAnswer: You will become my slave!
   steps: {fileID: 8300000, guid: 872a5bde6e5674045a53b5c8e78a6e1d, type: 3}
 --- !u!1 &1159381572
 GameObject:
