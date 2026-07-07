@@ -941,6 +941,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 704112005}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &64114305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2038,6 +2050,7 @@ MonoBehaviour:
   score: {fileID: 215845660}
   currentScore: 0
   Goal: 0
+  goals: 0a000000140000001e00000019000000
   goal1: 10
   goal2: 20
   goal3: 30
@@ -10820,6 +10833,61 @@ MonoBehaviour:
   - satisfiedAnswer: BIP
     neutralAnswer: BOOP
     unsatisfiedAnswer: NIGGA
+  ColorfullAlienIndex: 10
+  NPC_Colors:
+  - {r: 0, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 1, b: 0, a: 1}
+  - {r: 1, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0, b: 1, a: 1}
+  ColorfulRequests:
+  - WAAAA
+  - WEEEE
+  - WIII
+  - WOOO
+  - WUUUU
+  ColorfulClientDatabase:
+  - temperature: 1
+    lifeQuantity: 1
+    population: 1
+    permanance: 1
+    sector: 1
+  - temperature: 2
+    lifeQuantity: 2
+    population: 2
+    permanance: 2
+    sector: 2
+  - temperature: 3
+    lifeQuantity: 3
+    population: 3
+    permanance: 3
+    sector: 3
+  - temperature: 1
+    lifeQuantity: 2
+    population: 3
+    permanance: 1
+    sector: 2
+  - temperature: 3
+    lifeQuantity: 2
+    population: 1
+    permanance: 3
+    sector: 2
+  ColorfulNPC_answers:
+  - satisfiedAnswer: WAAA
+    neutralAnswer: mheWAAA
+    unsatisfiedAnswer: WAHAHAHHA
+  - satisfiedAnswer: WEEEE
+    neutralAnswer: mheWEEE
+    unsatisfiedAnswer: WEHHHEHEHE
+  - satisfiedAnswer: WIII
+    neutralAnswer: mheWIII
+    unsatisfiedAnswer: WHIHIH
+  - satisfiedAnswer: WOOO
+    neutralAnswer: mheWOOOO
+    unsatisfiedAnswer: WHOHOOHOHO
+  - satisfiedAnswer: WUUU
+    neutralAnswer: mheWUUUU
+    unsatisfiedAnswer: WUHUHUHUH
   steps: {fileID: 8300000, guid: 872a5bde6e5674045a53b5c8e78a6e1d, type: 3}
 --- !u!1 &1159381572
 GameObject:

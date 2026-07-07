@@ -36,6 +36,7 @@ public class FB_Manager : MonoBehaviour
     [HideInInspector] public int Goal;
 
     [Header("difficulties")]
+    public int[] goals;
     public int goal1;
     public int goal2;
     public int goal3;

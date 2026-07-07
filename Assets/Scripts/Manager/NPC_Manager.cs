@@ -91,18 +91,37 @@ public class NPC_Manager : MonoBehaviour
             Debug.LogError("indice fuori dal limite");
             return "...";
         }
-        NPCAnswers curNPC = NPC_answers[npc];
-        switch (satisfaction)
+        if (randomNPC != ColorfullAlienIndex)
         {
-            case 2:
-                return curNPC.satisfiedAnswer;
-            case 1:
-                return curNPC.neutralAnswer;
-            case 0:
-                return curNPC.unsatisfiedAnswer;
-            default:
-                Debug.LogWarning("Punteggio non riconosciuto!");
-                return "...";
+            NPCAnswers curNPC = NPC_answers[npc];
+            switch (satisfaction)
+            {
+                case 2:
+                    return curNPC.satisfiedAnswer;
+                case 1:
+                    return curNPC.neutralAnswer;
+                case 0:
+                    return curNPC.unsatisfiedAnswer;
+                default:
+                    Debug.LogWarning("Punteggio non riconosciuto!");
+                    return "...";
+            }
+        }
+        else
+        {
+            NPCAnswers curNPC = ColorfulNPC_answers[npc];
+            switch (satisfaction)
+            {
+                case 2:
+                    return curNPC.satisfiedAnswer;
+                case 1:
+                    return curNPC.neutralAnswer;
+                case 0:
+                    return curNPC.unsatisfiedAnswer;
+                default:
+                    Debug.LogWarning("Punteggio non riconosciuto!");
+                    return "...";
+            }
         }
     }
 
@@ -157,6 +176,7 @@ public class NPC_Manager : MonoBehaviour
     void RandomClient()
     {
         npc = NPC.GetComponent<SpriteRenderer>();
+        npc.color = Color.white;
         if (clientType > NPC_Sprite.Count) clientType = NPC_Sprite.Count;
         randomNPC = UnityEngine.Random.Range(0, clientType);
 
@@ -172,7 +192,10 @@ public class NPC_Manager : MonoBehaviour
         if(randomNPC == ColorfullAlienIndex)
         {
             int randomColor = UnityEngine.Random.Range(0, NPC_Colors.Length);
+            npc.color = NPC_Colors[randomColor];
             UI_Manager.instance.npc = randomColor;
+            curRequest = ColorfulRequests[randomColor];
+            if(randomColor < ColorfulClientDatabase.Count) curRequirements = ColorfulClientDatabase[randomColor]; 
         }
     }
     IEnumerator MoveNPC(GameObject startP, GameObject endP)

@@ -131,12 +131,13 @@ public class Game_Manager : MonoBehaviour
     public void Translate()
     {
         maingame = GameStates.Flapping;
-
+        int cases = NPC_Manager.instance.randomNPC;
         switch (NPC_Manager.instance.randomNPC)
         {
-            case 7: FB_Manager.instance.Goal = FB_Manager.instance.goal1; break;
-            case 8: FB_Manager.instance.Goal = FB_Manager.instance.goal2; break;
-            case 9: FB_Manager.instance.Goal = FB_Manager.instance.goal3; break;
+            case 7: FB_Manager.instance.Goal = FB_Manager.instance.goals[0]; break;
+            case 8: FB_Manager.instance.Goal = FB_Manager.instance.goals[1]; break;
+            case 9: FB_Manager.instance.Goal = FB_Manager.instance.goals[2]; break;
+            case 10: FB_Manager.instance.Goal = FB_Manager.instance.goals[3]; break;
         }
         OnPoint?.Invoke();
     }
