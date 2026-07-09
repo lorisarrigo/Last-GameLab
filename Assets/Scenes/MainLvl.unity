@@ -10418,45 +10418,44 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e2986866db0a58148827cac8a55c4236, type: 3}
   - {fileID: 21300000, guid: 7fa425d459cff384a8a27bd9347c5095, type: 3}
   Requests:
-  - Oel ngati kameie, impiegato. Cerco una meta dove il respiro del pianeta sia forte,
-    dove immensi biom e innumerevoli creature vivano in perfetta connessione. Ho
-    bisogno di un mondo pulsante di vita selvaggia ed energia.
-  - "Sono cos\xEC stanco di correre sempre da un castello all'altro! Questa volta
-    voglio una vacanza lunghissima, un posto tranquillo dove potermi rilassare per
-    anni interi senza preoccupazioni. I miei amici mi hanno consigliato caldamente
-    di cercare un pianeta nel Settore Beta della galassia."
-  - "Salve. Amo il silenzio del mio cratere lunare, ma non ne posso davvero pi\xF9
-    di tutto questo gelo siderale! Cerco un mondo con temperature roventi per riscaldarmi,
-    rigorosamente arido e senza fastidiose forme di vita a disturbare la mia pace.
-    Ho intenzione di trasferirmi l\xEC per diversi mesi, quindi mi raccomando: niente
-    foreste o pianeti affollati."
-  - "Caro mio, essendo abituata al lusso di Venere, esigo una meta con temperature
-    altrettanto roventi, che mi faccia sentire a casa! Inoltre, non intendo mescolarmi
-    con i comuni mortali: cerco un mondo abitato esclusivamente da divinit\xE0 al
-    mio livello. Le mie fonti mi dicono che i salotti celesti pi\xF9 esclusivi si
-    trovano proprio nel Settore Gamma."
-  - Il ghiaccio di Nettuno mi ha sfinita, mi serve una vacanza veloce. Trovami un
-    posto nel Settore Beta dove posso rilassarmi per poche settimane. Hai qualcosa
-    di adatto per una breve fuga?
-  - "Cerco un rifugio temporaneo nel Settore Alpha per una sosta di qualche settimana.
-    Il silenzio assoluto per\xF2 non fa per me: trovami un mondo ostile dove possa
-    tenermi in allenamento cacciando bestie feroci. Questa \xE8 la via.\""
-  - "Vengo da un pianeta di ologrammi e cemento. Mi serve un'intera stagione per
-    disintossicarmi in mezzo a flora e creature vere. Trovami un'oasi senza estremi
-    termici: non voglio dover usare n\xE9 cappotti pesanti n\xE9 tute refrigeranti."
-  - "Egregio impiegato, i miei saluti. Sebbene io provenga gi\xE0 dalle spietate
-    tormente di Titan, gradirei mantenere un clima freddo per le mie imminenti vacanze
-    di qualche settimana. Tuttavia, desidero esplorare un mondo in cui la vita sia
-    presente, onde poter passeggiare ammirando la flora e la fauna locali."
-  - "Salve, sono Loris. Il mio TARDIS \xE8 in manutenzione e i miei due cuori cercano
-    nuovi stimoli. Mandami nel Settore Alpha, ma assicurati che ci sia vita presente
-    e abbondante! Non sopporto i mondi sterili, ho bisogno di civilt\xE0 o creature
-    interessanti da osservare."
-  - "Ascolta bene, plebeo, e non farmi respirare la tua stessa aria. Voglio ritirarmi
-    per anni lontano dalla feccia di questo universo! Esigo un pianeta gelido e immacolato,
-    con pochissima vita a disturbare la mia sacra quiete. E i pochi esseri presenti
-    dovranno essere esclusivamente divinit\xE0, gli unici degni di ospitare un Drago
-    Celeste!"
+  - Oel ngati kameie, employee. I seek a destination where the planet's breath is
+    strong, where immense biomes and countless creatures live in perfect connection.
+    I need a world pulsating with wildlife and energy.
+  - I'm so tired of always running from one castle to another! This time I want a
+    very long vacation, a quiet place where I can relax for years without worries.
+    My friends have strongly recommended I look for a planet in the Beta Sector of
+    the galaxy.
+  - 'Hello. I love the silence of my lunar crater, but I''m really fed up with all
+    this sidereal cold! I''m looking for a world with scorching temperatures to warm
+    me, strictly arid and without any annoying lifeforms to disturb my peace. I plan
+    to move there for several months, so please remember: no forests or crowded planets.'
+  - 'My dear, accustomed to the luxury of Venus, I demand a destination with equally
+    scorching temperatures, one that makes me feel at home! Furthermore, I have no
+    intention of mingling with mere mortals: I seek a world inhabited exclusively
+    by deities of my level. My sources tell me that the most exclusive celestial
+    salons are found in the Gamma Sector.'
+  - Neptune's ice has exhausted me, and I need a quick vacation. Find me a place
+    in the Beta Sector where I can relax for a few weeks. Do you have anything suitable
+    for a short getaway?
+  - 'I''m seeking temporary refuge in Sector Alpha for a few weeks. Absolute silence,
+    however, isn''t for me: find me a hostile world where I can keep myself in training
+    by hunting wild beasts. That''s the way.'
+  - 'I come from a planet of holograms and concrete. I need a whole season to detox
+    among real flora and creatures. Find me an oasis without extreme temperatures:
+    I don''t want to have to wear heavy coats or cold suits.'
+  - Dear employee, greetings. Although I've just come from the merciless storms of
+    Titan, I'd like to maintain a cool climate for my upcoming vacation of a few
+    weeks. However, I long to explore a world where life exists, so I can wander
+    around admiring the local flora and fauna.
+  - Hi, I'm Loris. My TARDIS is undergoing maintenance, and my two hearts are longing
+    for new stimulation. Send me to Sector Alpha, but make sure there's life present
+    and abundant! I can't stand barren worlds; I need civilizations or interesting
+    creatures to observe.
+  - Listen carefully, commoner, and don't let me breathe your air. I want to retreat
+    for years, far from the dregs of this universe! I demand a frozen and pristine
+    planet, with very little life to disturb my sacred peace. And the few beings
+    present must be exclusively deities, the only ones worthy of hosting a Celestial
+    Dragon!
   Waypoints:
   - {fileID: 678415144}
   - {fileID: 228072659}
