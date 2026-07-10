@@ -10,7 +10,7 @@ public class Game_Manager : MonoBehaviour
     [SerializeField] GameObject mainGame;
     [SerializeField] GameObject miniGame;
     [SerializeField] GameObject gameOverScreen;
-    public bool alien;
+
     [Header("Day variables")]
     [SerializeField] int baseClients;
     [SerializeField] int maxClient;
@@ -131,10 +131,9 @@ public class Game_Manager : MonoBehaviour
     public void Translate()
     {
         maingame = GameStates.Flapping;
-        int cases = NPC_Manager.instance.randomNPC;
+
         switch (NPC_Manager.instance.randomNPC)
         {
-<<<<<<< HEAD
             case 7: FB_Manager.instance.Goal = FB_Manager.instance.goal1; break;
             case 8: FB_Manager.instance.Goal = FB_Manager.instance.goal2; break;
             case 9: FB_Manager.instance.Goal = FB_Manager.instance.goal3; break;
@@ -145,30 +144,6 @@ public class Game_Manager : MonoBehaviour
             case 17: FB_Manager.instance.Goal = FB_Manager.instance.goal1; break;
             case 18: FB_Manager.instance.Goal = FB_Manager.instance.goal2; break;
             case 19: FB_Manager.instance.Goal = FB_Manager.instance.goal3; break;
-<<<<<<< Updated upstream
-=======
-=======
-            case 7: 
-                FB_Manager.instance.Goal = FB_Manager.instance.goals[0];
-                alien = true;
-                break;
-            case 8: 
-                FB_Manager.instance.Goal = FB_Manager.instance.goals[1]; 
-                alien = true;
-                break;
-            case 9: 
-                FB_Manager.instance.Goal = FB_Manager.instance.goals[2]; 
-                alien = true;
-                break;
-            case 10: 
-                FB_Manager.instance.Goal = FB_Manager.instance.goals[3];
-                alien = true;
-                break;
-            default:
-                alien = false;
-                break;
->>>>>>> 0bd991fe0d2db0e8499916b42f971d768dc350e9
->>>>>>> Stashed changes
         }
         OnPoint?.Invoke();
     }

@@ -74,13 +74,6 @@ public class NPC_Manager : MonoBehaviour
 
     [Header("Answers")]
     [SerializeField] NPCAnswers[] NPC_answers;
-    
-    [Header("Colorful Alien")]
-    public int ColorfullAlienIndex;
-    [SerializeField] Color[] NPC_Colors;
-    [SerializeField] List<string> ColorfulRequests = new();
-    public List<PlanetRequirements> ColorfulClientDatabase = new();
-    [SerializeField] NPCAnswers[] ColorfulNPC_answers;
 
     [Header("SFX")]
     public AudioClip steps;
@@ -91,37 +84,18 @@ public class NPC_Manager : MonoBehaviour
             Debug.LogError("indice fuori dal limite");
             return "...";
         }
-        if (randomNPC != ColorfullAlienIndex)
+        NPCAnswers curNPC = NPC_answers[npc];
+        switch (satisfaction)
         {
-            NPCAnswers curNPC = NPC_answers[npc];
-            switch (satisfaction)
-            {
-                case 2:
-                    return curNPC.satisfiedAnswer;
-                case 1:
-                    return curNPC.neutralAnswer;
-                case 0:
-                    return curNPC.unsatisfiedAnswer;
-                default:
-                    Debug.LogWarning("Punteggio non riconosciuto!");
-                    return "...";
-            }
-        }
-        else
-        {
-            NPCAnswers curNPC = ColorfulNPC_answers[npc];
-            switch (satisfaction)
-            {
-                case 2:
-                    return curNPC.satisfiedAnswer;
-                case 1:
-                    return curNPC.neutralAnswer;
-                case 0:
-                    return curNPC.unsatisfiedAnswer;
-                default:
-                    Debug.LogWarning("Punteggio non riconosciuto!");
-                    return "...";
-            }
+            case 2:
+                return curNPC.satisfiedAnswer;
+            case 1:
+                return curNPC.neutralAnswer;
+            case 0:
+                return curNPC.unsatisfiedAnswer;
+            default:
+                Debug.LogWarning("Punteggio non riconosciuto!");
+                return "...";
         }
     }
 
@@ -176,26 +150,16 @@ public class NPC_Manager : MonoBehaviour
     void RandomClient()
     {
         npc = NPC.GetComponent<SpriteRenderer>();
-        npc.color = Color.white;
         if (clientType > NPC_Sprite.Count) clientType = NPC_Sprite.Count;
         randomNPC = UnityEngine.Random.Range(0, clientType);
 
         npc.sprite = NPC_Sprite[randomNPC];
 
-        if (randomNPC < Requests.Count && randomNPC != ColorfullAlienIndex)
+        if (randomNPC < Requests.Count)
         {
             UI_Manager.instance.npc = randomNPC;
             curRequest = Requests[randomNPC];
             if (randomNPC < clientDatabase.Count) curRequirements = clientDatabase[randomNPC];
-        }
-        
-        if(randomNPC == ColorfullAlienIndex)
-        {
-            int randomColor = UnityEngine.Random.Range(0, NPC_Colors.Length);
-            npc.color = NPC_Colors[randomColor];
-            UI_Manager.instance.npc = randomColor;
-            curRequest = ColorfulRequests[randomColor];
-            if(randomColor < ColorfulClientDatabase.Count) curRequirements = ColorfulClientDatabase[randomColor]; 
         }
     }
     IEnumerator MoveNPC(GameObject startP, GameObject endP)

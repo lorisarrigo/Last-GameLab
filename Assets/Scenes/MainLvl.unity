@@ -941,18 +941,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 704112005}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
 --- !u!114 &64114305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2050,7 +2038,6 @@ MonoBehaviour:
   score: {fileID: 215845660}
   currentScore: 0
   Goal: 0
-  goals: 0a000000140000001e00000019000000
   goal1: 10
   goal2: 20
   goal3: 30
@@ -10700,7 +10687,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7e48fbbc15e9e674f8e844091b2db067, type: 3}
   - {fileID: 21300000, guid: e2986866db0a58148827cac8a55c4236, type: 3}
   Requests:
-<<<<<<< HEAD
   - Oel ngati kameie, impiegato. Cerco una meta dove il respiro del pianeta sia forte,
     dove immensi biom e innumerevoli creature vivano in perfetta connessione. Ho
     bisogno di un mondo pulsante di vita selvaggia ed energia.
@@ -10774,49 +10760,6 @@ MonoBehaviour:
   - My two hearts desire a very hot climate, almost extreme, to recharge my temporal
     energies. One scorching week in the right sector and I'll be ready to travel
     again
-<<<<<<< Updated upstream
-=======
-=======
-  - Oel ngati kameie, employee. I seek a destination where the planet's breath is
-    strong, where immense biomes and countless creatures live in perfect connection.
-    I need a world pulsating with wildlife and energy.
-  - I'm so tired of always running from one castle to another! This time I want a
-    very long vacation, a quiet place where I can relax for years without worries.
-    My friends have strongly recommended I look for a planet in the Beta Sector of
-    the galaxy.
-  - 'Hello. I love the silence of my lunar crater, but I''m really fed up with all
-    this sidereal cold! I''m looking for a world with scorching temperatures to warm
-    me, strictly arid and without any annoying lifeforms to disturb my peace. I plan
-    to move there for several months, so please remember: no forests or crowded planets.'
-  - 'My dear, accustomed to the luxury of Venus, I demand a destination with equally
-    scorching temperatures, one that makes me feel at home! Furthermore, I have no
-    intention of mingling with mere mortals: I seek a world inhabited exclusively
-    by deities of my level. My sources tell me that the most exclusive celestial
-    salons are found in the Gamma Sector.'
-  - Neptune's ice has exhausted me, and I need a quick vacation. Find me a place
-    in the Beta Sector where I can relax for a few weeks. Do you have anything suitable
-    for a short getaway?
-  - 'I''m seeking temporary refuge in Sector Alpha for a few weeks. Absolute silence,
-    however, isn''t for me: find me a hostile world where I can keep myself in training
-    by hunting wild beasts. That''s the way.'
-  - 'I come from a planet of holograms and concrete. I need a whole season to detox
-    among real flora and creatures. Find me an oasis without extreme temperatures:
-    I don''t want to have to wear heavy coats or cold suits.'
-  - Dear employee, greetings. Although I've just come from the merciless storms of
-    Titan, I'd like to maintain a cool climate for my upcoming vacation of a few
-    weeks. However, I long to explore a world where life exists, so I can wander
-    around admiring the local flora and fauna.
-  - Hi, I'm Loris. My TARDIS is undergoing maintenance, and my two hearts are longing
-    for new stimulation. Send me to Sector Alpha, but make sure there's life present
-    and abundant! I can't stand barren worlds; I need civilizations or interesting
-    creatures to observe.
-  - Listen carefully, commoner, and don't let me breathe your air. I want to retreat
-    for years, far from the dregs of this universe! I demand a frozen and pristine
-    planet, with very little life to disturb my sacred peace. And the few beings
-    present must be exclusively deities, the only ones worthy of hosting a Celestial
-    Dragon!
->>>>>>> 0bd991fe0d2db0e8499916b42f971d768dc350e9
->>>>>>> Stashed changes
   Waypoints:
   - {fileID: 678415144}
   - {fileID: 228072659}
@@ -10977,10 +10920,6 @@ MonoBehaviour:
       for years.
     neutralAnswer: these "deities" are not as noble as I am.
     unsatisfiedAnswer: You will become my slave!
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
->>>>>>> Stashed changes
   - satisfiedAnswer: I LOVE IT THANKS!
     neutralAnswer: IT'S FINE
     unsatisfiedAnswer: UNACCEPTABLE!!!!
@@ -11016,69 +10955,6 @@ MonoBehaviour:
     neutralAnswer: The temperature warms me up nicely for this short time trip.
     unsatisfiedAnswer: Wrong sector or unbearable frost, leaving instantly in the
       TARDIS!
-<<<<<<< Updated upstream
-=======
-=======
-  - satisfiedAnswer: BIP
-    neutralAnswer: BOOP
-    unsatisfiedAnswer: NIGGA
-  ColorfullAlienIndex: 10
-  NPC_Colors:
-  - {r: 0, g: 0, b: 1, a: 1}
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 1, b: 0, a: 1}
-  - {r: 1, g: 1, b: 0, a: 1}
-  - {r: 1, g: 0, b: 1, a: 1}
-  ColorfulRequests:
-  - WAAAA
-  - WEEEE
-  - WIII
-  - WOOO
-  - WUUUU
-  ColorfulClientDatabase:
-  - temperature: 1
-    lifeQuantity: 1
-    population: 1
-    permanance: 1
-    sector: 1
-  - temperature: 2
-    lifeQuantity: 2
-    population: 2
-    permanance: 2
-    sector: 2
-  - temperature: 3
-    lifeQuantity: 3
-    population: 3
-    permanance: 3
-    sector: 3
-  - temperature: 1
-    lifeQuantity: 2
-    population: 3
-    permanance: 1
-    sector: 2
-  - temperature: 3
-    lifeQuantity: 2
-    population: 1
-    permanance: 3
-    sector: 2
-  ColorfulNPC_answers:
-  - satisfiedAnswer: WAAA
-    neutralAnswer: mheWAAA
-    unsatisfiedAnswer: WAHAHAHHA
-  - satisfiedAnswer: WEEEE
-    neutralAnswer: mheWEEE
-    unsatisfiedAnswer: WEHHHEHEHE
-  - satisfiedAnswer: WIII
-    neutralAnswer: mheWIII
-    unsatisfiedAnswer: WHIHIH
-  - satisfiedAnswer: WOOO
-    neutralAnswer: mheWOOOO
-    unsatisfiedAnswer: WHOHOOHOHO
-  - satisfiedAnswer: WUUU
-    neutralAnswer: mheWUUUU
-    unsatisfiedAnswer: WUHUHUHUH
->>>>>>> 0bd991fe0d2db0e8499916b42f971d768dc350e9
->>>>>>> Stashed changes
   steps: {fileID: 8300000, guid: 872a5bde6e5674045a53b5c8e78a6e1d, type: 3}
 --- !u!1 &1159381572
 GameObject:

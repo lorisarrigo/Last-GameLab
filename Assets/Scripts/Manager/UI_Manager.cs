@@ -99,13 +99,12 @@ public class UI_Manager : MonoBehaviour
     void UpdateRequest()
     {
         //richiesta corrente
-        if (Game_Manager.instance.alien)
+        if(NPC_Manager.instance.randomNPC < alienTxtIndex) requestTxtSpace.font = normal;
+        else 
         {
             requestTxtSpace.font = alien;
             TicketController.instance.stampButton.SetActive(false);
         }
-        else requestTxtSpace.font = normal;
-        
         requestTxtSpace.text = NPC_Manager.instance.curRequest;
 
         //log
@@ -135,8 +134,8 @@ public class UI_Manager : MonoBehaviour
         isFilling = false;
         patienceBar.gameObject.SetActive(false);
         if (moneyAdded > 0) StartCoroutine(LerpTransparency(moneyAdded));
-        
-        string answer = NPC_Manager.instance.GetNPCAnswer(npc,answerIndex);          
+
+        string answer = NPC_Manager.instance.GetNPCAnswer(npc,answerIndex);
         /*answer-->*/requestTxtSpace.text = answer;
 
         string log = $" - {NPC_Manager.instance.curClient} is {logResult}";
