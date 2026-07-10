@@ -198,7 +198,7 @@ public class NPC_Manager : MonoBehaviour
             curRequest = ColorfulRequests[randomColor];
             if(randomColor < ColorfulClientDatabase.Count) curRequirements = ColorfulClientDatabase[randomColor]; 
         }
-        switch (NPC_Manager.instance.randomNPC)
+        switch (randomNPC)
         {
             case 7:
                 FB_Manager.instance.Goal = FB_Manager.instance.goal1;

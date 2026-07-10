@@ -154,7 +154,6 @@ public class Game_Manager : MonoBehaviour
     {
         maingame = GameStates.MinigameGO;
         FB_Manager.instance.currentScore = 0;
-        FB_Manager.instance.Goal = 0;
     }
     #endregion
     void PauseGame() { maingame = GameStates.Paused; }
