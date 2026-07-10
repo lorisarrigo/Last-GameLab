@@ -10667,6 +10667,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1aecd845baefff44fa1c3aef4f364abe, type: 3}
   - {fileID: 21300000, guid: 7f3c1407d41db984391f2ca90ffccb5d, type: 3}
   - {fileID: 21300000, guid: 177edfc47b3d1ad4a9c0f9c8df907633, type: 3}
+  - {fileID: 21300000, guid: 6fdc34f137b30e143a330ad6a97dc221, type: 3}
+  - {fileID: 21300000, guid: d82fc878db1cb934dbc83c7d3cb7820b, type: 3}
+  - {fileID: 21300000, guid: 7c74489cdaf5bd643905593582172676, type: 3}
+  - {fileID: 21300000, guid: 45f25a8c914821b43a0b797815e35382, type: 3}
+  - {fileID: 21300000, guid: ef2df297f5e49b04ea3bafde22d1fee9, type: 3}
+  - {fileID: 21300000, guid: 7f3c1407d41db984391f2ca90ffccb5d, type: 3}
+  - {fileID: 21300000, guid: deee7987ef523b846804924bb8d0327e, type: 3}
+  - {fileID: 21300000, guid: a8a8d056e0b1c97478bfe6239931b257, type: 3}
+  - {fileID: 21300000, guid: c1c02d8f5e4fa244884aa54ac65082be, type: 3}
+  - {fileID: 21300000, guid: 1aecd845baefff44fa1c3aef4f364abe, type: 3}
   NPC_SpriteB:
   - {fileID: 21300000, guid: 22ad7abd6a4bc294db1490deea93cd08, type: 3}
   - {fileID: 21300000, guid: 1a2fb0658786d5646bfec1943747a3bf, type: 3}
@@ -10679,7 +10689,94 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e2986866db0a58148827cac8a55c4236, type: 3}
   - {fileID: 21300000, guid: 7fa425d459cff384a8a27bd9347c5095, type: 3}
   - {fileID: 21300000, guid: 4498557f90c1c50419f13d6f6d0ee8ee, type: 3}
+  - {fileID: 21300000, guid: 0e079f6ee9a32634592f75abd742bea1, type: 3}
+  - {fileID: 21300000, guid: fe1a2e60cca9959468770148dc7e5401, type: 3}
+  - {fileID: 21300000, guid: 22ad7abd6a4bc294db1490deea93cd08, type: 3}
+  - {fileID: 21300000, guid: baac147c8ba0de349839883225976fa9, type: 3}
+  - {fileID: 21300000, guid: 20c84766ce80c0d4db3cb8438e39187d, type: 3}
+  - {fileID: 21300000, guid: 7fa425d459cff384a8a27bd9347c5095, type: 3}
+  - {fileID: 21300000, guid: 4e85385512433b94b824277d0fd37272, type: 3}
+  - {fileID: 21300000, guid: 1a2fb0658786d5646bfec1943747a3bf, type: 3}
+  - {fileID: 21300000, guid: 7e48fbbc15e9e674f8e844091b2db067, type: 3}
+  - {fileID: 21300000, guid: e2986866db0a58148827cac8a55c4236, type: 3}
   Requests:
+<<<<<<< HEAD
+  - Oel ngati kameie, impiegato. Cerco una meta dove il respiro del pianeta sia forte,
+    dove immensi biom e innumerevoli creature vivano in perfetta connessione. Ho
+    bisogno di un mondo pulsante di vita selvaggia ed energia.
+  - "Sono cos\xEC stanco di correre sempre da un castello all'altro! Questa volta
+    voglio una vacanza lunghissima, un posto tranquillo dove potermi rilassare per
+    anni interi senza preoccupazioni. I miei amici mi hanno consigliato caldamente
+    di cercare un pianeta nel Settore Beta della galassia."
+  - "Salve. Amo il silenzio del mio cratere lunare, ma non ne posso davvero pi\xF9
+    di tutto questo gelo siderale! Cerco un mondo con temperature roventi per riscaldarmi,
+    rigorosamente arido e senza fastidiose forme di vita a disturbare la mia pace.
+    Ho intenzione di trasferirmi l\xEC per diversi mesi, quindi mi raccomando: niente
+    foreste o pianeti affollati."
+  - "Caro mio, essendo abituata al lusso di Venere, esigo una meta con temperature
+    altrettanto roventi, che mi faccia sentire a casa! Inoltre, non intendo mescolarmi
+    con i comuni mortali: cerco un mondo abitato esclusivamente da divinit\xE0 al
+    mio livello. Le mie fonti mi dicono che i salotti celesti pi\xF9 esclusivi si
+    trovano proprio nel Settore Gamma."
+  - Il ghiaccio di Nettuno mi ha sfinita, mi serve una vacanza veloce. Trovami un
+    posto nel Settore Beta dove posso rilassarmi per poche settimane. Hai qualcosa
+    di adatto per una breve fuga?
+  - "Cerco un rifugio temporaneo nel Settore Alpha per una sosta di qualche settimana.
+    Il silenzio assoluto per\xF2 non fa per me: trovami un mondo ostile dove possa
+    tenermi in allenamento cacciando bestie feroci. Questa \xE8 la via.\""
+  - "Vengo da un pianeta di ologrammi e cemento. Mi serve un'intera stagione per
+    disintossicarmi in mezzo a flora e creature vere. Trovami un'oasi senza estremi
+    termici: non voglio dover usare n\xE9 cappotti pesanti n\xE9 tute refrigeranti."
+  - "Egregio impiegato, i miei saluti. Sebbene io provenga gi\xE0 dalle spietate
+    tormente di Titan, gradirei mantenere un clima freddo per le mie imminenti vacanze
+    di qualche settimana. Tuttavia, desidero esplorare un mondo in cui la vita sia
+    presente, onde poter passeggiare ammirando la flora e la fauna locali."
+  - "Salve, sono Loris. Il mio TARDIS \xE8 in manutenzione e i miei due cuori cercano
+    nuovi stimoli. Mandami nel Settore Alpha, ma assicurati che ci sia vita presente
+    e abbondante! Non sopporto i mondi sterili, ho bisogno di civilt\xE0 o creature
+    interessanti da osservare."
+  - "Ascolta bene, plebeo, e non farmi respirare la tua stessa aria. Voglio ritirarmi
+    per anni lontano dalla feccia di questo universo! Esigo un pianeta gelido e immacolato,
+    con pochissima vita a disturbare la mia sacra quiete. E i pochi esseri presenti
+    dovranno essere esclusivamente divinit\xE0, gli unici degni di ospitare un Drago
+    Celeste!"
+  - 'I WA|||NT A PL|A||NET||| W||HIC||H IS |||TE||M|||PERED, LIF||E IS PRE|||SENT
+    AND IT IS INDIGENOUS AND I CAN STAY THERE MONTHS AND IT IS IN THE BETA SECTOR.
+    THANKS LAD! '
+  - The Guild is sending me to the Gamma Sector for a ruthless hunt. I need a freezing
+    planet crawling with monsters to test my Beskar armor. Find me a world where
+    the ice is as lethal as the beasts.
+  - I want to escape the holographic concrete of my century and hide in the Beta
+    Sector. I'm looking for a natural paradise with bountiful life to stay for an
+    entire year. I just want to get lost in a real, breathing jungle for twelve months
+    and forget about technology.
+  - Eywa guides me toward a month of rest away from Pandora's forests. I need a world
+    with a tempered climate, gentle and balanced, with neither frost nor fire. Thirty
+    days in perfect harmony with mild seasons will be enough to heal my spirit.
+  - 'I demand absolute luxury for just one week. However, I won''t mix with the peasants:
+    find me a cosmic lounge inhabited solely by gods. Seven days among supreme beings
+    is the only kind of rest I can tolerate.'
+  - 'The cold dark of my crater has tired me out. Send me to the Alpha Sector. I
+    want hot temperatures to warm up, in a place with an absolute void: no life whatsoever.
+    Just scorching heat and total silence, far away from anyone.'
+  - I wish to retire for a full year on a terribly hot planet. The only entities
+    tolerated in my lavish exile must be venerable gods.
+  - 'Greetings. I would appreciate a brief excursion of just one week in a very cold
+    habitat. I do not fear rough company: I would love to admire some monsters in
+    their frozen ecosystem. Biting cold and ferocious beasts will be absolutely perfect
+    for my short stay.'
+  - "Hello! I'm looking for a nice, hot spot to dry off the dampness of the Mushroom
+    Kingdom! I want some life present\u2014you know, a little company, but not as
+    crazy as a big city."
+  - I want a cold world for a voluntary exile of a year. There must be absolutely
+    no life to disturb my precious frozen peace. Twelve months of total isolation
+    and sub-zero temperatures, nothing else
+  - My two hearts desire a very hot climate, almost extreme, to recharge my temporal
+    energies. One scorching week in the right sector and I'll be ready to travel
+    again
+<<<<<<< Updated upstream
+=======
+=======
   - Oel ngati kameie, employee. I seek a destination where the planet's breath is
     strong, where immense biomes and countless creatures live in perfect connection.
     I need a world pulsating with wildlife and energy.
@@ -10718,6 +10815,8 @@ MonoBehaviour:
     planet, with very little life to disturb my sacred peace. And the few beings
     present must be exclusively deities, the only ones worthy of hosting a Celestial
     Dragon!
+>>>>>>> 0bd991fe0d2db0e8499916b42f971d768dc350e9
+>>>>>>> Stashed changes
   Waypoints:
   - {fileID: 678415144}
   - {fileID: 228072659}
@@ -10749,10 +10848,10 @@ MonoBehaviour:
     population: 0
     permanance: 3
     sector: 2
-  - temperature: 3
-    lifeQuantity: 2
+  - temperature: 1
+    lifeQuantity: 3
     population: 0
-    permanance: 1
+    permanance: 2
     sector: 0
   - temperature: 1
     lifeQuantity: 0
@@ -10774,10 +10873,10 @@ MonoBehaviour:
     population: 0
     permanance: 2
     sector: 0
-  - temperature: 1
-    lifeQuantity: 3
+  - temperature: 3
+    lifeQuantity: 2
     population: 0
-    permanance: 2
+    permanance: 1
     sector: 0
   - temperature: 0
     lifeQuantity: 2
@@ -10794,6 +10893,56 @@ MonoBehaviour:
     population: 2
     permanance: 2
     sector: 2
+  - temperature: 3
+    lifeQuantity: 0
+    population: 1
+    permanance: 0
+    sector: 3
+  - temperature: 0
+    lifeQuantity: 1
+    population: 0
+    permanance: 3
+    sector: 2
+  - temperature: 2
+    lifeQuantity: 0
+    population: 0
+    permanance: 2
+    sector: 0
+  - temperature: 0
+    lifeQuantity: 0
+    population: 3
+    permanance: 1
+    sector: 0
+  - temperature: 1
+    lifeQuantity: 0
+    population: 0
+    permanance: 0
+    sector: 1
+  - temperature: 1
+    lifeQuantity: 0
+    population: 3
+    permanance: 3
+    sector: 0
+  - temperature: 3
+    lifeQuantity: 0
+    population: 1
+    permanance: 1
+    sector: 0
+  - temperature: 1
+    lifeQuantity: 2
+    population: 0
+    permanance: 0
+    sector: 0
+  - temperature: 3
+    lifeQuantity: 0
+    population: 0
+    permanance: 3
+    sector: 0
+  - temperature: 1
+    lifeQuantity: 0
+    population: 0
+    permanance: 1
+    sector: 1
   NPC_answers:
   - satisfiedAnswer: Perfect, I feel the vital energy!
     neutralAnswer: Green enough to rest.
@@ -10828,6 +10977,48 @@ MonoBehaviour:
       for years.
     neutralAnswer: these "deities" are not as noble as I am.
     unsatisfiedAnswer: You will become my slave!
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+>>>>>>> Stashed changes
+  - satisfiedAnswer: I LOVE IT THANKS!
+    neutralAnswer: IT'S FINE
+    unsatisfiedAnswer: UNACCEPTABLE!!!!
+  - satisfiedAnswer: Lethal frost and fierce monsters in Gamma. This is the way.
+    neutralAnswer: The climate and targets are passable for a short hunt.
+    unsatisfiedAnswer: No monsters or wrong climate? An insult to my armor.
+  - satisfiedAnswer: Twelve months of bountiful nature in Beta, an absolute miracle!
+    neutralAnswer: There is enough life to survive a year in this sector.
+    unsatisfiedAnswer: Concrete everywhere or harsh weather? A total nightmare!
+  - satisfiedAnswer: A month of perfect harmony with the gentle breath of the climate.
+    neutralAnswer: The weather is mild, I will rest well for this month.
+    unsatisfiedAnswer: Unbearable extremes, the balance of nature is broken here.
+  - satisfiedAnswer: Seven sublime days in the exclusive circle of the divine!
+    neutralAnswer: A few gods are around, I will endure this short vacation.
+    unsatisfiedAnswer: Surrounded by peasants? You ruined my entire week!
+  - satisfiedAnswer: Total silence and a scorching sun in Alpha, absolute perfection.
+    neutralAnswer: It's hot enough and I'm isolated in the right sector.
+    unsatisfiedAnswer: Too much vital noise or way too cold! This is annoying.
+  - satisfiedAnswer: A year of heat and divine company, truly worthy of me!
+    neutralAnswer: The climate and gods are acceptable, though not excellent.
+    unsatisfiedAnswer: Freezing cold or unworthy mortals? You will face my wrath!
+  - satisfiedAnswer: An exquisite week, among invigorating frosts and fascinating
+      beasts.
+    neutralAnswer: Brisk weather and a few monsters, an acceptable trip.
+    unsatisfiedAnswer: Lazy temperatures or a lack of fauna? I am quite indignant.
+  - satisfiedAnswer: Yay! Nice and warm with new friends, the ideal vacation!
+    neutralAnswer: It's warm and there's someone to talk to, this will do.
+    unsatisfiedAnswer: Way too cold or too isolated, what a deadly bore!
+  - satisfiedAnswer: A year of absolute and magnificent solitary freezing. Perfect.
+    neutralAnswer: It's cold and I don't see many people, I'll spend my year here.
+    unsatisfiedAnswer: Vital chaos or unbearable heat, I want my glaciers back!
+  - satisfiedAnswer: Pure energy! Perfect heat in Alpha for my two hearts!
+    neutralAnswer: The temperature warms me up nicely for this short time trip.
+    unsatisfiedAnswer: Wrong sector or unbearable frost, leaving instantly in the
+      TARDIS!
+<<<<<<< Updated upstream
+=======
+=======
   - satisfiedAnswer: BIP
     neutralAnswer: BOOP
     unsatisfiedAnswer: NIGGA
@@ -10886,6 +11077,8 @@ MonoBehaviour:
   - satisfiedAnswer: WUUU
     neutralAnswer: mheWUUUU
     unsatisfiedAnswer: WUHUHUHUH
+>>>>>>> 0bd991fe0d2db0e8499916b42f971d768dc350e9
+>>>>>>> Stashed changes
   steps: {fileID: 8300000, guid: 872a5bde6e5674045a53b5c8e78a6e1d, type: 3}
 --- !u!1 &1159381572
 GameObject:
