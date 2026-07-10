@@ -89,7 +89,7 @@ public class Game_Manager : MonoBehaviour
         {
             NPC_Manager.instance.clientLeft = 1;
             Jew_Manager.instance.currentMoney = Jew_Manager.instance.overallTotal;
-            UI_Manager.instance.moneyCounter.text = Jew_Manager.instance.currentMoney + " ï¿½";
+            UI_Manager.instance.moneyCounter.text = Jew_Manager.instance.currentMoney + " Æ";
 
             if (Save_Manager.instance != null)
             {
@@ -134,20 +134,6 @@ public class Game_Manager : MonoBehaviour
         int cases = NPC_Manager.instance.randomNPC;
         switch (NPC_Manager.instance.randomNPC)
         {
-<<<<<<< HEAD
-            case 7: FB_Manager.instance.Goal = FB_Manager.instance.goal1; break;
-            case 8: FB_Manager.instance.Goal = FB_Manager.instance.goal2; break;
-            case 9: FB_Manager.instance.Goal = FB_Manager.instance.goal3; break;
-            case 16: FB_Manager.instance.Goal = FB_Manager.instance.goal1; break;k;
-            case 13: FB_Manager.instance.Goal = FB_Manager.instance.goal1; break;
-            case 12: FB_Manager.instance.Goal = FB_Manager.instance.goal2; break;
-            case 15: FB_Manager.instance.Goal = FB_Manager.instance.goal3; break;
-            case 17: FB_Manager.instance.Goal = FB_Manager.instance.goal1; break;
-            case 18: FB_Manager.instance.Goal = FB_Manager.instance.goal2; break;
-            case 19: FB_Manager.instance.Goal = FB_Manager.instance.goal3; break;
-<<<<<<< Updated upstream
-=======
-=======
             case 7: 
                 FB_Manager.instance.Goal = FB_Manager.instance.goals[0];
                 alien = true;
@@ -167,8 +153,6 @@ public class Game_Manager : MonoBehaviour
             default:
                 alien = false;
                 break;
->>>>>>> 0bd991fe0d2db0e8499916b42f971d768dc350e9
->>>>>>> Stashed changes
         }
         OnPoint?.Invoke();
     }
