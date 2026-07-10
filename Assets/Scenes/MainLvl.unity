@@ -213,6 +213,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &5032685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6735,7 +6747,7 @@ MonoBehaviour:
   miniGame: {fileID: 1277089972}
   gameOverScreen: {fileID: 1179092665}
   alien: 0
-  baseClients: 3
+  baseClients: 6
   maxClient: 10
   currentDay: 0
   balance_Pannel: {fileID: 629955082}
@@ -10974,53 +10986,69 @@ MonoBehaviour:
   - {r: 0.63529414, g: 0.63529414, b: 0, a: 1}
   - {r: 0.63529414, g: 0, b: 0.63529414, a: 1}
   ColorfulRequests:
-  - WAAAA
-  - WEEEE
-  - WIII
-  - WOOO
-  - WUUUU
+  - "Hey man! The endless solar raves on my home world are burning me out. I need
+    a month to chill and play acoustic sets in the Beta Sector. Send me to a cold
+    planet to cool my head, but make sure there\u2019s bountiful life so I still
+    have a massive audience to vibe with my music!"
+  - Wazzup! The concerts back home are getting too soft! I need an extreme vacation
+    in the Alpha Sector for just one week. I want a hot planet, but hook me up with
+    some aggressive monsters so I can start the most epic, brutal mosh pit in the
+    galaxy!
+  - "Peace and love! I'm planning the ultimate outdoor music festival in the Gamma
+    Sector and it\u2019s going to last an entire year. I need a tempered climate
+    so the amplifiers don't melt, and bountiful life so the crowd is endlessly huge
+    and energetic!"
+  - "Hello, fabulous! I need a break from my screaming fans, so book me an exclusive
+    month in the Alpha Sector. Keep the weather hot so I can maintain my perfect
+    tan, but ensure the only locals are literal gods\u2014I only party with VIPs!"
+  - Yo. My ears are ringing from the daily concerts, and our sun is blinding. I need
+    an entire year in the Beta Sector to produce my next album. I want a freezing
+    cold planet with absolutely no life. Just me, my synthesizers, and pure, icy
+    silence
   ColorfulClientDatabase:
-  - temperature: 1
+  - temperature: 3
     lifeQuantity: 1
+    population: 0
+    permanance: 2
+    sector: 2
+  - temperature: 1
+    lifeQuantity: 0
     population: 1
     permanance: 1
     sector: 1
   - temperature: 2
-    lifeQuantity: 2
-    population: 2
-    permanance: 2
-    sector: 2
-  - temperature: 3
-    lifeQuantity: 3
-    population: 3
+    lifeQuantity: 1
+    population: 0
     permanance: 3
     sector: 3
   - temperature: 1
-    lifeQuantity: 2
+    lifeQuantity: 0
     population: 3
-    permanance: 1
-    sector: 2
+    permanance: 2
+    sector: 1
   - temperature: 3
-    lifeQuantity: 2
-    population: 1
+    lifeQuantity: 0
+    population: 0
     permanance: 3
     sector: 2
   ColorfulNPC_answers:
-  - satisfiedAnswer: WAAA
-    neutralAnswer: mheWAAA
-    unsatisfiedAnswer: WAHAHAHHA
-  - satisfiedAnswer: WEEEE
-    neutralAnswer: mheWEEE
-    unsatisfiedAnswer: WEHHHEHEHE
-  - satisfiedAnswer: WIII
-    neutralAnswer: mheWIII
-    unsatisfiedAnswer: WHIHIH
-  - satisfiedAnswer: WOOO
-    neutralAnswer: mheWOOOO
-    unsatisfiedAnswer: WHOHOOHOHO
-  - satisfiedAnswer: WUUU
-    neutralAnswer: mheWUUUU
-    unsatisfiedAnswer: WUHUHUHUH
+  - satisfiedAnswer: Perfect vibes! A massive, cool crowd for my acoustic sets.
+    neutralAnswer: It's a bit quiet or warm, but I can still vibe here for a month.
+    unsatisfiedAnswer: No audience or roasting heat? My music is ruined!
+  - satisfiedAnswer: The most brutal monster mosh pit under the scorching sun! Sick!
+    neutralAnswer: A few beasts to bump into, it's a decent week of partying.
+    unsatisfiedAnswer: Too cold or too peaceful? This vacation is a total snooze-fest!
+  - satisfiedAnswer: Perfect festival weather and an endless crowd for a whole year!
+    neutralAnswer: The weather is okay and the crowd is decent, the festival goes
+      on.
+    unsatisfiedAnswer: Extreme weather or nobody showed up? Festival cancelled!
+  - satisfiedAnswer: A month of hot sunshine and divine VIPs! Absolutely flawless!
+    neutralAnswer: A bit of a downgrade on the guest list, but I'll tolerate it.
+    unsatisfiedAnswer: Commoners or bad weather? Do you know who I am?!
+  - satisfiedAnswer: Total freezing silence! My year of album production will be
+      legendary.
+    neutralAnswer: It's isolated enough, I can get some tracks mixed here.
+    unsatisfiedAnswer: I can't focus on my beats!
   steps: {fileID: 8300000, guid: 872a5bde6e5674045a53b5c8e78a6e1d, type: 3}
 --- !u!1 &1159381572
 GameObject:

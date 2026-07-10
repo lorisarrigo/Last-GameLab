@@ -74,7 +74,7 @@ public class BTN_Manager : MonoBehaviour
     {
         int currentNPCIndex = NPC_Manager.instance.randomNPC;
 
-        bool cantranslate = currentNPCIndex >= 7;
+        bool cantranslate = Game_Manager.instance.alien;
 
         TranslateBtn.interactable = cantranslate;
     }
