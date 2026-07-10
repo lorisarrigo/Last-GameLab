@@ -134,20 +134,43 @@ public class Game_Manager : MonoBehaviour
         int cases = NPC_Manager.instance.randomNPC;
         switch (NPC_Manager.instance.randomNPC)
         {
-            case 7: 
-                FB_Manager.instance.Goal = FB_Manager.instance.goals[0];
+            case 7: FB_Manager.instance.Goal = FB_Manager.instance.goal1;
                 alien = true;
                 break;
             case 8: 
-                FB_Manager.instance.Goal = FB_Manager.instance.goals[1]; 
+                FB_Manager.instance.Goal = FB_Manager.instance.goal2; 
                 alien = true;
                 break;
             case 9: 
-                FB_Manager.instance.Goal = FB_Manager.instance.goals[2]; 
+                FB_Manager.instance.Goal = FB_Manager.instance.goal3; 
                 alien = true;
                 break;
-            case 10: 
-                FB_Manager.instance.Goal = FB_Manager.instance.goals[3];
+            case 12:
+                FB_Manager.instance.Goal = FB_Manager.instance.goal2;
+                alien = true;
+                break;
+            case 13:
+                FB_Manager.instance.Goal = FB_Manager.instance.goal1;
+                alien = true;
+                break;
+            case 15:
+                FB_Manager.instance.Goal = FB_Manager.instance.goal3;
+                alien = true;
+                break;
+            case 16:
+                FB_Manager.instance.Goal = FB_Manager.instance.goal1;
+                alien = true;
+                break;
+            case 17:
+                FB_Manager.instance.Goal = FB_Manager.instance.goal1;
+                alien = true;
+                break;
+            case 18:
+                FB_Manager.instance.Goal = FB_Manager.instance.goal2;
+                alien = true;
+                break;
+            case 19:
+                FB_Manager.instance.Goal = FB_Manager.instance.goal3;
                 alien = true;
                 break;
             default:
@@ -166,7 +189,6 @@ public class Game_Manager : MonoBehaviour
     {
         ResetMG();
         SFX_Manager.instance.PlaySfx(FB_Manager.instance.hit);
-
     }
     void WinMinigame()
     {
