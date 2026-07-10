@@ -941,6 +941,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 704112005}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &64114305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2038,6 +2050,7 @@ MonoBehaviour:
   score: {fileID: 215845660}
   currentScore: 0
   Goal: 0
+  goals: 0a000000140000001e00000019000000
   goal1: 10
   goal2: 20
   goal3: 30
@@ -10815,41 +10828,64 @@ MonoBehaviour:
       for years.
     neutralAnswer: these "deities" are not as noble as I am.
     unsatisfiedAnswer: You will become my slave!
-  - satisfiedAnswer: I LOVE IT THANKS!
-    neutralAnswer: IT'S FINE
-    unsatisfiedAnswer: UNACCEPTABLE!!!!
-  - satisfiedAnswer: Lethal frost and fierce monsters in Gamma. This is the way.
-    neutralAnswer: The climate and targets are passable for a short hunt.
-    unsatisfiedAnswer: No monsters or wrong climate? An insult to my armor.
-  - satisfiedAnswer: Twelve months of bountiful nature in Beta, an absolute miracle!
-    neutralAnswer: There is enough life to survive a year in this sector.
-    unsatisfiedAnswer: Concrete everywhere or harsh weather? A total nightmare!
-  - satisfiedAnswer: A month of perfect harmony with the gentle breath of the climate.
-    neutralAnswer: The weather is mild, I will rest well for this month.
-    unsatisfiedAnswer: Unbearable extremes, the balance of nature is broken here.
-  - satisfiedAnswer: Seven sublime days in the exclusive circle of the divine!
-    neutralAnswer: A few gods are around, I will endure this short vacation.
-    unsatisfiedAnswer: Surrounded by peasants? You ruined my entire week!
-  - satisfiedAnswer: Total silence and a scorching sun in Alpha, absolute perfection.
-    neutralAnswer: It's hot enough and I'm isolated in the right sector.
-    unsatisfiedAnswer: Too much vital noise or way too cold! This is annoying.
-  - satisfiedAnswer: A year of heat and divine company, truly worthy of me!
-    neutralAnswer: The climate and gods are acceptable, though not excellent.
-    unsatisfiedAnswer: Freezing cold or unworthy mortals? You will face my wrath!
-  - satisfiedAnswer: An exquisite week, among invigorating frosts and fascinating
-      beasts.
-    neutralAnswer: Brisk weather and a few monsters, an acceptable trip.
-    unsatisfiedAnswer: Lazy temperatures or a lack of fauna? I am quite indignant.
-  - satisfiedAnswer: Yay! Nice and warm with new friends, the ideal vacation!
-    neutralAnswer: It's warm and there's someone to talk to, this will do.
-    unsatisfiedAnswer: Way too cold or too isolated, what a deadly bore!
-  - satisfiedAnswer: A year of absolute and magnificent solitary freezing. Perfect.
-    neutralAnswer: It's cold and I don't see many people, I'll spend my year here.
-    unsatisfiedAnswer: Vital chaos or unbearable heat, I want my glaciers back!
-  - satisfiedAnswer: Pure energy! Perfect heat in Alpha for my two hearts!
-    neutralAnswer: The temperature warms me up nicely for this short time trip.
-    unsatisfiedAnswer: Wrong sector or unbearable frost, leaving instantly in the
-      TARDIS!
+  - satisfiedAnswer: BIP
+    neutralAnswer: BOOP
+    unsatisfiedAnswer: NIGGA
+  ColorfullAlienIndex: 10
+  NPC_Colors:
+  - {r: 0, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 1, b: 0, a: 1}
+  - {r: 1, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0, b: 1, a: 1}
+  ColorfulRequests:
+  - WAAAA
+  - WEEEE
+  - WIII
+  - WOOO
+  - WUUUU
+  ColorfulClientDatabase:
+  - temperature: 1
+    lifeQuantity: 1
+    population: 1
+    permanance: 1
+    sector: 1
+  - temperature: 2
+    lifeQuantity: 2
+    population: 2
+    permanance: 2
+    sector: 2
+  - temperature: 3
+    lifeQuantity: 3
+    population: 3
+    permanance: 3
+    sector: 3
+  - temperature: 1
+    lifeQuantity: 2
+    population: 3
+    permanance: 1
+    sector: 2
+  - temperature: 3
+    lifeQuantity: 2
+    population: 1
+    permanance: 3
+    sector: 2
+  ColorfulNPC_answers:
+  - satisfiedAnswer: WAAA
+    neutralAnswer: mheWAAA
+    unsatisfiedAnswer: WAHAHAHHA
+  - satisfiedAnswer: WEEEE
+    neutralAnswer: mheWEEE
+    unsatisfiedAnswer: WEHHHEHEHE
+  - satisfiedAnswer: WIII
+    neutralAnswer: mheWIII
+    unsatisfiedAnswer: WHIHIH
+  - satisfiedAnswer: WOOO
+    neutralAnswer: mheWOOOO
+    unsatisfiedAnswer: WHOHOOHOHO
+  - satisfiedAnswer: WUUU
+    neutralAnswer: mheWUUUU
+    unsatisfiedAnswer: WUHUHUHUH
   steps: {fileID: 8300000, guid: 872a5bde6e5674045a53b5c8e78a6e1d, type: 3}
 --- !u!1 &1159381572
 GameObject:
