@@ -10,7 +10,6 @@ public class Game_Manager : MonoBehaviour
     [SerializeField] GameObject mainGame;
     [SerializeField] GameObject miniGame;
     [SerializeField] GameObject gameOverScreen;
-    public bool alien;
     [Header("Day variables")]
     [SerializeField] int baseClients;
     [SerializeField] int maxClient;
@@ -132,51 +131,6 @@ public class Game_Manager : MonoBehaviour
     {
         maingame = GameStates.Flapping;
         int cases = NPC_Manager.instance.randomNPC;
-        switch (NPC_Manager.instance.randomNPC)
-        {
-            case 7: FB_Manager.instance.Goal = FB_Manager.instance.goal1;
-                alien = true;
-                break;
-            case 8: 
-                FB_Manager.instance.Goal = FB_Manager.instance.goal2; 
-                alien = true;
-                break;
-            case 9: 
-                FB_Manager.instance.Goal = FB_Manager.instance.goal3; 
-                alien = true;
-                break;
-            case 12:
-                FB_Manager.instance.Goal = FB_Manager.instance.goal2;
-                alien = true;
-                break;
-            case 13:
-                FB_Manager.instance.Goal = FB_Manager.instance.goal1;
-                alien = true;
-                break;
-            case 15:
-                FB_Manager.instance.Goal = FB_Manager.instance.goal3;
-                alien = true;
-                break;
-            case 16:
-                FB_Manager.instance.Goal = FB_Manager.instance.goal1;
-                alien = true;
-                break;
-            case 17:
-                FB_Manager.instance.Goal = FB_Manager.instance.goal1;
-                alien = true;
-                break;
-            case 18:
-                FB_Manager.instance.Goal = FB_Manager.instance.goal2;
-                alien = true;
-                break;
-            case 19:
-                FB_Manager.instance.Goal = FB_Manager.instance.goal3;
-                alien = true;
-                break;
-            default:
-                alien = false;
-                break;
-        }
         OnPoint?.Invoke();
     }
     void UpdateScore()

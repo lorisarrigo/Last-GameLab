@@ -99,7 +99,7 @@ public class UI_Manager : MonoBehaviour
     void UpdateRequest()
     {
         //richiesta corrente
-        if (Game_Manager.instance.alien)
+        if (NPC_Manager.instance.alien)
         {
             requestTxtSpace.font = alien;
             TicketController.instance.stampButton.SetActive(false);

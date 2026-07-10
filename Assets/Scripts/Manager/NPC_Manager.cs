@@ -56,6 +56,7 @@ public class NPC_Manager : MonoBehaviour
     [SerializeField] GameObject[] Waypoints;
     [SerializeField] float speed;
     public int randomNPC;
+    public bool alien;
 
     [HideInInspector] public string curRequest;
     [HideInInspector] public string curClient;
@@ -196,6 +197,52 @@ public class NPC_Manager : MonoBehaviour
             UI_Manager.instance.npc = randomColor;
             curRequest = ColorfulRequests[randomColor];
             if(randomColor < ColorfulClientDatabase.Count) curRequirements = ColorfulClientDatabase[randomColor]; 
+        }
+        switch (NPC_Manager.instance.randomNPC)
+        {
+            case 7:
+                FB_Manager.instance.Goal = FB_Manager.instance.goal1;
+                alien = true;
+                break;
+            case 8:
+                FB_Manager.instance.Goal = FB_Manager.instance.goal2;
+                alien = true;
+                break;
+            case 9:
+                FB_Manager.instance.Goal = FB_Manager.instance.goal3;
+                alien = true;
+                break;
+            case 12:
+                FB_Manager.instance.Goal = FB_Manager.instance.goal2;
+                alien = true;
+                break;
+            case 13:
+                FB_Manager.instance.Goal = FB_Manager.instance.goal1;
+                alien = true;
+                break;
+            case 15:
+                FB_Manager.instance.Goal = FB_Manager.instance.goal3;
+                alien = true;
+                break;
+            case 16:
+                FB_Manager.instance.Goal = FB_Manager.instance.goal1;
+                alien = true;
+                break;
+            case 17:
+                FB_Manager.instance.Goal = FB_Manager.instance.goal1;
+                alien = true;
+                break;
+            case 18:
+                FB_Manager.instance.Goal = FB_Manager.instance.goal2;
+                alien = true;
+                break;
+            case 19:
+                FB_Manager.instance.Goal = FB_Manager.instance.goal3;
+                alien = true;
+                break;
+            default:
+                alien = false;
+                break;
         }
     }
     IEnumerator MoveNPC(GameObject startP, GameObject endP)
